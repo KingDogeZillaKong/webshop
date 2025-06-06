@@ -3,18 +3,17 @@
 import { ProductModel } from '../product-model';
 import ProductInCart from "./ProductInCart.vue"
 
-      const props =  defineProps<{item: ProductModel }>(); //({barcode: -1, title: "Undefined", price: 0.00, preview: "logo.svg"});
-
+      const props =  defineProps<{item: ProductModel, amountInCart: number | undefined }>(); //({barcode: -1, title: "Undefined", price: 0.00, preview: "logo.svg"});
 
 </script>
 <template>
     <div  class="item">
-         <div class="is-in-cart"><ProductInCart :amount="3"/></div>
+         <div v-if="props.amountInCart" class="is-in-cart"><ProductInCart :amount="props.amountInCart"/></div>
             <img alt="Product image" class="product-image" :src="props.item.preview" width="125" height="125" />
         <div class="flex">
       <h3>{{props.item?.title }}</h3><h3 class="price">${{ props.item.price }}</h3>
         </div>
-  
+        <button @click="$emit('addProductToCart')">Add to cart</button>
     </div>
 </template>
 <style scoped>
@@ -53,6 +52,21 @@ letter-spacing: .1em;
         .price {
             font-weight: bold;
    
+        }
+    }
+
+    button {
+        cursor: pointer;
+        border-radius: 100vw;
+        margin: 6px;
+        padding: 4px 8px;
+        background-color: rgba(255, 255, 255, .45);
+        border: none;
+        outline: 1px solid gold;
+        transition: background-color ease-in-out .15s;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, .87);
         }
     }
 }
