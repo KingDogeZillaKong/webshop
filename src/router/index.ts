@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import CatalogView from '@/views/CatalogView.vue'
+import PortfolioView from '@/views/PortfolioView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -9,6 +10,7 @@ const router = createRouter({
       name: 'Shop',
       component: CatalogView,
     },
+    {path: '/portfolio', name: "Portfolio", component: PortfolioView},
     {
       path: '/cart',
       name: 'Cart',

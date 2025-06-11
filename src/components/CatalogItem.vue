@@ -8,7 +8,7 @@ import ProductInCart from "./ProductInCart.vue"
 </script>
 <template>
     <div  class="item">
-         <div v-if="props.amountInCart" class="is-in-cart"><ProductInCart :amount="props.amountInCart"/></div>
+         <div v-if="props.amountInCart" class="is-in-cart"><ProductInCart :cart-color="'#000000'" :amount="props.amountInCart"/></div>
             <img alt="Product image" class="product-image" :src="props.item.preview" width="125" height="125" />
         <div class="flex">
       <h3>{{props.item?.title }}</h3><h3 class="price">${{ props.item.price }}</h3>

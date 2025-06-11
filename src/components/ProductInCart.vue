@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import IconCart from './icons/IconCart.vue';
-        const props =  defineProps<{amount: number }>(); 
+        const props =  defineProps<{amount: number, cartColor: string }>(); 
 
 
 </script>
 <template>
-    <div class="wrapper">
+    <div class="product-in-cart-wrapper">
 <div class="circle">{{ props.amount }}</div>
-    <IconCart/>
+    <IconCart :style="{fill: cartColor}"/>
     </div>
 </template>
 <style scoped>
-.wrapper {
+.product-in-cart-wrapper {
     position: relative;
+    display: flex;
     width: 64px;
     height: 64px;
+   place-content: center;
+
+   /* > svg {
+    fill: cartColor;
+   } */
 }
     .circle {
         position: absolute;

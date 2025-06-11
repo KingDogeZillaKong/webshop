@@ -11,9 +11,11 @@ export const useCartStore = defineStore('cart', () => {
             return cart.value.reduce((acc,product) => acc + product.price, 0.00)
         })
         
-
+        const cartTotalItems = computed(() => {
+            return cart.value.reduce((acc,product) => acc + 1, 0)
+        })
          const cartItems: ComputedRef<Map<number, number>> = computed(() =>  {return  countProductInCart(cart.value)})
-        
+        const cartMap: ComputedRef<Map<ProductModel, number>> = computed(() => {return transformToMap(cart.value)})
 
         //actions
         function onProductAddedToCart (product: ProductModel) {
@@ -22,16 +24,18 @@ export const useCartStore = defineStore('cart', () => {
             console.warn(cartItems)
         }
 
-  // ✅ Watch Effect (this will actually work)
-  watchEffect(() => {
-    console.log('Cart items updated:', cartItems.value)
-  })
-
-
-  return { cart, cartTotal,cartItems, onProductAddedToCart }
+  return { cart, cartMap, cartTotal,cartItems,cartTotalItems, onProductAddedToCart }
 })
 
-
+function transformToMap(products: ProductModel[]): Map<ProductModel, number> {
+    const uniqueProducts = new Set<ProductModel>();
+    products.forEach(p => uniqueProducts.add(p));
+    const result = new Map();
+    for(const product of uniqueProducts){
+        result.set(product, countNeedleInHayStack(product, products))
+    }
+    return result;
+}
 function countNeedleInHayStack(needle: ProductModel, haystack: ProductModel[]){
     return haystack.filter(hay => hay.barcode === needle.barcode).length;
 }

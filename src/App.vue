@@ -1,25 +1,44 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-// import CatalogView from "./components"
+import ProductInCart from './components/ProductInCart.vue';
+import { useCartStore } from './stores/cart';
+import { ref } from 'vue';
+import CartOverview from "./components/CartOverview.vue";
+const cartStore = useCartStore();
+const showCartContents = ref(false);
+function onHideCartContents() {
+  showCartContents.value = false;
+}
+  function onShowCartContents() {
+  showCartContents.value = true;
+}
+
 </script>
 
 <template>
-  <!-- <div class="app-wrap"> -->
   <header>
-    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 
-    <div class="wrapper">
 
       <nav>
+        <div class="flex">
         <RouterLink to="/">Shop</RouterLink>
         <RouterLink to="/cart">Cart</RouterLink>
+          <RouterLink to="/portfolio">My other projects</RouterLink>
+        </div> 
+        
+        <div class="cart-contents">
+                <div class="flex" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
+          <a>Cart Contents</a><ProductInCart :cart-color="'#FF00FF'" :amount="cartStore.cartTotalItems"/>
+         </div>
+          <Transition>
+            <div   v-if="showCartContents" class="cart-overview-section">
+            <CartOverview :items="cartStore.cartMap"/>
+            </div>
+          </Transition>
+        </div>
       </nav>
-    </div>
   </header>
-
   <RouterView />
-  <!-- </div> -->
 </template>
 
 <style scoped>
@@ -27,19 +46,59 @@ import HelloWorld from './components/HelloWorld.vue'
 header {
   line-height: 1.5;
   max-height: 100vh;
+  width:100%;
+ 
 }
 
+.items-in-cart-overview {
+  list-style: none;
+}
+
+.wrapper {
+  width: 100%;
+  background-color: yellow;
+}
+
+.cart-overview-section {
+  position: absolute;
+  bottom: 3px;
+  transform: translate(-50%, 100%);
+  z-index: 999;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 .logo {
   display: block;
   margin: 0 auto 2rem;
 }
+  .flex {
+  display: flex;
+  align-items: center;
+}
 
+.cart-contents {
+  justify-self: end;;
+  position: relative;
+
+}
 nav {
     display: flex;
+    flex-grow: 1;;
+    justify-content: space-between;
   width: 100%;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
+
+
 }
 
 nav a.router-link-exact-active {
@@ -62,7 +121,7 @@ nav a:first-of-type {
   border: 0;
 }
 
-@media (min-width: 1024px) {
+ @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
@@ -73,7 +132,7 @@ nav a:first-of-type {
     margin: 0 2rem 0 0;
   }
 
-  header .wrapper {
+  header  {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
@@ -86,6 +145,6 @@ nav a:first-of-type {
 
     padding: 1rem 0;
     margin-top: 1rem;
-  }
-}
+  } 
+ } 
 </style>
