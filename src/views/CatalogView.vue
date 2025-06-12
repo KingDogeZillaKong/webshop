@@ -13,6 +13,8 @@ import { useCartStore } from '@/stores/cart';
 </script>
 
 <template>
+      <h1>What I got to offer</h1>
+      <h2>Projects I've worked on before. </h2>
   <main class="wrapper" :if="products.length">
     <div v-for="product in products" :key="product?.barcode" class="product-container">     
       <CatalogItem :item="product" :amountInCart="cartStore.cartItems.get(product.barcode)" @addProductToCart="onProductAddedToCart(product)"/>

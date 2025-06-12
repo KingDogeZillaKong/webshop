@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
- import { capitalize } from 'vue';
+ import { capitalize, ref } from 'vue';
 import { ALL_PRODUCTS } from '@/catalog';
 import { PORTFOLIO_ASSIGNMENTS } from '@/components/database';
 import PortfolioAssignment from '@/components/PortfolioAssignment.vue';
 import {onLaunchApp,onOpenGithub,onOpenFrameworkInfo } from "../mixins";
-import type { Tech } from '@/portfolio-assignment';
+import type { PortfolioAssignmentModel, Tech } from '@/portfolio-assignment';
 import java from "@/assets/java.svg"
 import react from "@/assets/react.svg";
 import next from "@/assets/next.svg";
@@ -22,18 +22,25 @@ interface SkillModel {
     function getSkill(name: Tech, iconSrc: string){
         return {name, iconSrc};
     }
+        const SKILLS : SkillModel[]= [ getSkill("angular", angular),  getSkill("react", react),  getSkill("next", next), getSkill("vue", vue), getSkill("java", java), getSkill("python", python), getSkill("mongodb", mongo), getSkill("postgresql", postgres), getSkill("mysql", mysql)];
+
     const router = useRoute();
    const {params} = router;
    const selectedSkill = params["skill"] as string || ""
-
-   const matchingAssignments = PORTFOLIO_ASSIGNMENTS.filter(ass => ass.tech.map(t => t.toLocaleLowerCase()).includes(selectedSkill.toLocaleLowerCase()))    
-    const SKILLS : SkillModel[]= [ getSkill("angular", angular),  getSkill("react", react),  getSkill("next", next), getSkill("vue", vue), getSkill("java", java), getSkill("python", python), getSkill("mongodb", mongo), getSkill("postgresql", postgres), getSkill("mysql", mysql)];
+   const scope = ref<Tech | undefined>(selectedSkill as Tech);
+   const visibleAssignments = ref<PortfolioAssignmentModel[]>([]);
+const onSkillClicked = (skill: Tech) => {
+    scope.value = skill;
+    visibleAssignments.value =  PORTFOLIO_ASSIGNMENTS.filter(ass => ass.tech.map(t => t.toLocaleLowerCase()).includes(skill.toLocaleLowerCase()))    
+}
+ 
+//    const matchingAssignments = PORTFOLIO_ASSIGNMENTS.filter(ass => ass.tech.map(t => t.toLocaleLowerCase()).includes(selectedSkill.toLocaleLowerCase()))    
 </script>
 <template>
 <div class="skill-page-wrapper">
     <div>
     <ul class="skill-variants">
-        <li v-for="skill in SKILLS">
+        <li v-for="skill in SKILLS" @click="onSkillClicked(skill.name)">
             <div class="tech-icon-wrapper">
                 <img :src="skill.iconSrc" class="tech-icon" :alt="skill.name"/>
                      <span class="skill-name">{{ skill.name }}</span> 
@@ -42,11 +49,11 @@ interface SkillModel {
         </li>
     </ul>
     </div>
-  <div v-if="selectedSkill" class="skill">
-    <h1>{{ matchingAssignments.length ? capitalize(selectedSkill) :  'No skill found'}}</h1>
-    <h2>I worked on {{  matchingAssignments.length }} {{ selectedSkill }} {{matchingAssignments.length > 1 ? 'projects' : 'project'}}.</h2>
+  <div v-if="scope" class="skill">
+    <h1>{{ visibleAssignments.length ? capitalize(scope) :  'No skill found'}}</h1>
+    <h2>I worked on {{  visibleAssignments.length }} {{ scope }} {{visibleAssignments.length > 1 ? 'projects' : 'project'}}.</h2>
     <ul>
-        <li v-for="assignment of matchingAssignments">
+        <li v-for="assignment of visibleAssignments">
             <PortfolioAssignment :assignment="assignment" @launchApp="onLaunchApp(assignment)" @openFrameworkInfo="onOpenFrameworkInfo(assignment.tech[0])" @openGithub="onOpenGithub(assignment)"/>
         </li>
     </ul>
@@ -68,6 +75,7 @@ interface SkillModel {
     background-color: rgba(255,255, 255,.21);
     width: 100%;
     border-radius: 6px;;
+    overflow-x: auto;
   }
   .skill {
        height: 100%;
