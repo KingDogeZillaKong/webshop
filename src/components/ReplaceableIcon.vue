@@ -5,8 +5,11 @@
 import { ref } from 'vue';
 import IconFile from "@/components/icons/IconFile.vue"
 import IconApp from "@/components/icons/IconApp.vue"
-     const props =  defineProps<{imageSrc:string, type: string}>();  //TODO make type a type
-const {imageSrc, type} = props;
+import IconCode from './icons/IconCode.vue';
+     const props =  defineProps<{imageSrc:string, type: string, shape?: 'circle' | 'square'}>();  //TODO make type a type
+        const {imageSrc, type, shape} = props;
+     const shapeRef = ref<'circle' | 'square'>(shape || 'square')
+
     const overlayIsVisible = ref(false);
     const onMouseOverSelf = () => {
         overlayIsVisible.value = true;
@@ -20,10 +23,11 @@ const {imageSrc, type} = props;
     <div class="icon-wrapper" @mouseover="onMouseOverSelf" @mouseleave="onMouseLeaveSelf">
         <Transition>
         <div v-if="overlayIsVisible.valueOf()" class="overlay">
-        <IconFile v-if="type === 'code'" :foregroundColor="'#FFFFFF'" title="Go to code"/>
+        <IconCode v-if="type === 'code'" :foregroundColor="'#FFFFFF'" title="Go to code"/>
+        <IconFile v-if="type === 'text'" :foregroundColor="'#FFFFFF'" title="Go to blog"/>
          <IconApp v-if="type === 'app'" :foregroundColor="'#FFFFFF'"  title="Go to app"/></div>
         </Transition>
-        <img class="orignal-image" :src="imageSrc" :alt="'orignal image'"/>
+        <img :class="['original-image',  {'circle' : shapeRef === 'circle'}]" :src="imageSrc" :alt="'orignal image'"/>
     </div>
 
 </template>
@@ -49,7 +53,7 @@ img {
                 opacity: 1;
             }
 
-            .orignal-image {
+            .original-image {
                 opacity: 0.11;
                   background-color: rgba(0,0,0,0.12);
             }
@@ -71,9 +75,13 @@ img {
 
       
     }
-       .orignal-image {
+       .original-image {
 
                 opacity: 1;
                         transition: opacity ease-in-out .3s;
+
+                        &.circle {
+                            border-radius: 100%;;
+                        }
             }
 </style>

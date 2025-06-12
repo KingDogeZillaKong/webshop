@@ -4,14 +4,15 @@ import PortfolioAssignment from '@/components/PortfolioAssignment.vue';
 import vue from "@/assets/logo.svg"
 import angular from "@/assets/angular.svg"
 import next from "@/assets/next.svg";
-    const getPortfolioAssignment = (title: string, date: string | number | Date, thumbnail: string) => {
-        return {title, date: new Date(date), thumbnail}
+import lucadexlogo from "@/assets/lucadexlogo.svg"
+    const getPortfolioAssignment = (title: string, date: string | number | Date, thumbnail: string, techstackLogo: string) => {
+        return {title, date: new Date(date), thumbnail, techstackLogo}
     }
 
-const ASTON_MARTIN_VUE_WEBSHOP = getPortfolioAssignment("Vue Dashboard", new Date(), vue);
-const NIKKICHANEL = getPortfolioAssignment("Nikkichanel.nl", new Date("02/12/2023"), angular);
-const LUCADEX = getPortfolioAssignment("Lucadex.com", new Date("02/12/2024"), next);
-const POKERDEX = getPortfolioAssignment("Pokerdex.io", new Date("05/14/2025"), angular);
+const ASTON_MARTIN_VUE_WEBSHOP = getPortfolioAssignment("Vue Dashboard", new Date(),vue,  vue);
+const NIKKICHANEL = getPortfolioAssignment("Nikkichanel.nl", new Date("02/12/2023"), lucadexlogo, angular);
+const LUCADEX = getPortfolioAssignment("Lucadex.com", new Date("02/12/2024"), lucadexlogo, next);
+const POKERDEX = getPortfolioAssignment("Pokerdex.io", new Date("05/14/2025"),lucadexlogo, angular);
 
     const PORTFOLIO_ASSIGNMENTS:PortfolioAssignmentModel [] = [ASTON_MARTIN_VUE_WEBSHOP, NIKKICHANEL, LUCADEX, POKERDEX];
 </script>

@@ -2,6 +2,8 @@
 import type { PortfolioAssignmentModel } from '@/portfolio-assignment';
 import ReplaceableIcon from './ReplaceableIcon.vue';
 import vue from "@/assets/logo.svg"
+import github from "@/assets/github.svg"
+import code from "@/assets/code.svg"
 const props = defineProps<{assignment: PortfolioAssignmentModel}>();
 const {assignment}= props;
 </script>
@@ -9,7 +11,7 @@ const {assignment}= props;
 <template>
     <div class="portfolio-assignment-wrapper">
         <div class="portfolio-assignment-thumbnail">
-             <ReplaceableIcon :imageSrc="assignment.thumbnail" :type="'code'"/>
+                         <ReplaceableIcon :imageSrc="assignment.thumbnail" :type="'text'" />
         </div>
        
         <div class="details-section">
@@ -21,14 +23,12 @@ const {assignment}= props;
        
         <div class="links">
                         <div class="portfolio-assignment-thumbnail">
-             <ReplaceableIcon :imageSrc="assignment.thumbnail" :type="'code'"/>
+             <ReplaceableIcon :imageSrc="assignment.techstackLogo" :type="'app'"/>
         </div>
            <div class="portfolio-assignment-thumbnail">
-             <ReplaceableIcon :imageSrc="assignment.thumbnail" :type="'code'"/>
+             <ReplaceableIcon :imageSrc="github" :type="'code'" />
         </div>
-           <div class="portfolio-assignment-thumbnail">
-             <ReplaceableIcon :imageSrc="assignment.thumbnail" :type="'code'"/>
-        </div>
+   
     
         </div>
     </div>
@@ -37,18 +37,23 @@ const {assignment}= props;
 <style scoped>
 .portfolio-assignment-wrapper {
     display: grid;
-    grid-template-columns: 120px auto  auto;
+    grid-template-columns: 120px auto auto ;
     gap: .33em;
     background-color: blue;
     width: 100%;
+    overflow: hidden;
     /* width: 100%; */
     place-items: start;
     /* place-items: center; */
     .portfolio-assignment-thumbnail {
         display: flex;
         width: 120px;
+        background-size:auto;
+        background-position: center;
+        height: auto;
         aspect-ratio: 1/1;
         overflow: hidden;
+        padding: .15em;
         background-color: orange;
     }
     .details-section {
