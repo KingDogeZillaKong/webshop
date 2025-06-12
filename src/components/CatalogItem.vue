@@ -22,8 +22,13 @@ import ProductInCart from "./ProductInCart.vue"
     display: flex;
     place-items: center;
     flex-direction: column;
+    gap: 1.5em;
+    padding: 1em .33em;
     /* aspect-ratio: 17/22; */
     color: white;;
+    border-radius: 6% 6% 0 0;
+    background-color: rgba(0, 0, 0, .24);
+    /* background-color: aquamarine; */
 
     .is-in-cart {
         position: absolute;
@@ -35,7 +40,9 @@ import ProductInCart from "./ProductInCart.vue"
     }
 
     &:hover {
-        background-color: blue;
+        background-color: rgba(255, 255, 255, .15);
+        border-bottom : 1px solid whitesmoke;
+
         cursor: pointer;;
     }
 
@@ -59,14 +66,15 @@ letter-spacing: .1em;
         cursor: pointer;
         border-radius: 100vw;
         margin: 6px;
-        padding: 4px 8px;
-        background-color: rgba(255, 255, 255, .45);
+        padding: .66em .99em;
+        background-color: rgba(0, 0, 0, .45);
         border: none;
         outline: 1px solid gold;
         transition: background-color ease-in-out .15s;
+        color: whitesmoke;
 
         &:hover {
-            background-color: rgba(255, 255, 255, .87);
+            background-color: rgba(33, 33, 33, .66);
         }
     }
 }

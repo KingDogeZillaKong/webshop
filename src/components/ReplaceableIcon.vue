@@ -2,6 +2,7 @@
 
 <script setup lang="ts">
 //TODO rename to ICON
+// TODO let users pay with Smeckels for my skills. Remove car brands and stuff. Let people buy Super Advanced things
 import { ref } from 'vue';
 import IconFile from "@/components/icons/IconFile.vue"
 import IconApp from "@/components/icons/IconApp.vue"
@@ -27,6 +28,7 @@ import IconCode from './icons/IconCode.vue';
         <IconFile v-if="type === 'text'" :foregroundColor="'#FFFFFF'" title="Go to blog"/>
          <IconApp v-if="type === 'app'" :foregroundColor="'#FFFFFF'"  title="Go to app"/></div>
         </Transition>
+        
         <img :class="['original-image',  {'circle' : shapeRef === 'circle'}]" :src="imageSrc" :alt="'orignal image'"/>
     </div>
 

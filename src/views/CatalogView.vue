@@ -27,7 +27,7 @@ import { useCartStore } from '@/stores/cart';
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: .15em;
-    background-color: orange;
+    /* background-color: orange; */
 
   }
   /* Medium devices (tablets, 768px and up) */
@@ -60,7 +60,7 @@ import { useCartStore } from '@/stores/cart';
 
   .product-container {
     position: relative;
-    background-color: crimson;
+    /* background-color: crimson; */
  
   }
 

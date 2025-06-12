@@ -1,25 +1,12 @@
 <script setup lang="ts">
-import type { PortfolioAssignmentModel } from '@/portfolio-assignment';
+import { PORTFOLIO_ASSIGNMENTS } from '@/components/database';
 import PortfolioAssignment from '@/components/PortfolioAssignment.vue';
-import vue from "@/assets/logo.svg"
-import angular from "@/assets/angular.svg"
-import next from "@/assets/next.svg";
-import lucadexlogo from "@/assets/lucadexlogo.svg"
-    const getPortfolioAssignment = (title: string, date: string | number | Date, thumbnail: string, techstackLogo: string) => {
-        return {title, date: new Date(date), thumbnail, techstackLogo}
-    }
-
-const ASTON_MARTIN_VUE_WEBSHOP = getPortfolioAssignment("Vue Dashboard", new Date(),vue,  vue);
-const NIKKICHANEL = getPortfolioAssignment("Nikkichanel.nl", new Date("02/12/2023"), lucadexlogo, angular);
-const LUCADEX = getPortfolioAssignment("Lucadex.com", new Date("02/12/2024"), lucadexlogo, next);
-const POKERDEX = getPortfolioAssignment("Pokerdex.io", new Date("05/14/2025"),lucadexlogo, angular);
-
-    const PORTFOLIO_ASSIGNMENTS:PortfolioAssignmentModel [] = [ASTON_MARTIN_VUE_WEBSHOP, NIKKICHANEL, LUCADEX, POKERDEX];
+import {onLaunchApp,onOpenGithub,onOpenFrameworkInfo } from "../mixins";
 </script>
 <template>
   <div class="portfolio">
     <ul class="project-list" v-for="assignment in PORTFOLIO_ASSIGNMENTS">
-        <li class="project-list-item"><PortfolioAssignment :assignment="assignment"/>
+        <li class="project-list-item"><PortfolioAssignment :assignment="assignment" @launchApp="onLaunchApp(assignment)" @openFrameworkInfo="onOpenFrameworkInfo(assignment.tech[0])" @openGithub="onOpenGithub(assignment)"/>
             </li>
     </ul>
   </div>
@@ -32,9 +19,8 @@ const POKERDEX = getPortfolioAssignment("Pokerdex.io", new Date("05/14/2025"),lu
 
   }
   .project-list {
-    list-style: none;
     height: 100%;
-    background-color: orange;
+    /* background-color: orange; */
     overflow-y: auto;;
         padding-left: 0;;
     .project-list-item {
@@ -43,11 +29,14 @@ const POKERDEX = getPortfolioAssignment("Pokerdex.io", new Date("05/14/2025"),lu
         place-items: start;
     background-color: rgba(255, 255, 255, .12);
     transition: background-color .33s ease-in-out;
-    cursor: pointer;
+
         &:hover {
             background-color: rgba(255, 255, 255, .33);
         }
         
+    }
+    .project-list-item {
+            cursor: pointer;
     }
   }
 }

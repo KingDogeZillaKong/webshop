@@ -1,7 +1,12 @@
 export interface PortfolioAssignmentModel {
-     title: string;
+    title: string;
     date: Date;
     thumbnail: string;
     techstackLogo: string;
-    href?: string;
+    abstract: string;
+    href: string;
+    tech: Tech[];
+    gitRepoUrl: string;
 }
+
+export type Tech = "angular" | "vue" | "react" | "next" | "java" | "python" | "node.js" | "mysql" | "postgresql" | "mongodb";

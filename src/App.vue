@@ -23,12 +23,13 @@ function onHideCartContents() {
         <div class="flex">
         <RouterLink to="/">Shop</RouterLink>
         <RouterLink to="/cart">Cart</RouterLink>
-          <RouterLink to="/portfolio">My other projects</RouterLink>
+          <RouterLink to="/portfolio">My work</RouterLink>
+               <RouterLink to="/skills">My skills</RouterLink>
         </div> 
         
         <div class="cart-contents">
                 <div class="flex" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
-          <a>Cart Contents</a><ProductInCart :cart-color="'#FF00FF'" :amount="cartStore.cartTotalItems"/>
+          <a><ProductInCart :cart-color="'#FFFFFF'" :amount="cartStore.cartTotalItems"/></a>
          </div>
           <Transition>
             <div   v-if="showCartContents" class="cart-overview-section">
@@ -47,7 +48,7 @@ header {
   line-height: 1.5;
   max-height: 100vh;
   width:100%;
- 
+  border-bottom: 1px solid whitesmoke;
 }
 
 .items-in-cart-overview {
@@ -56,7 +57,11 @@ header {
 
 .wrapper {
   width: 100%;
-  background-color: yellow;
+
+  border-bottom: 1px solid whitesmoke;
+
+  padding: .66em 0;
+  /* background-color: yellow; */
 }
 
 .cart-overview-section {
@@ -125,7 +130,6 @@ nav a:first-of-type {
   header {
     display: flex;
     place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
   }
 
   .logo {
