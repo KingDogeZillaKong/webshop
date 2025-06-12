@@ -1,3 +1,5 @@
+import type { SkillModel } from "./skill-model";
+
 export interface PortfolioAssignmentModel {
     title: string;
     date: Date;
@@ -5,7 +7,7 @@ export interface PortfolioAssignmentModel {
     techstackLogo: string;
     abstract: string;
     href: string;
-    tech: Tech[];
+    tech: SkillModel[];
     gitRepoUrl: string;
 }
 

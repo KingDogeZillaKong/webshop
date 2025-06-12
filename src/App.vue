@@ -24,7 +24,7 @@ function onHideCartContents() {
         <RouterLink to="/">Shop</RouterLink>
         <RouterLink to="/cart">Cart</RouterLink>
           <RouterLink to="/portfolio">My work</RouterLink>
-               <RouterLink to="/skills">My skills</RouterLink>
+               <RouterLink to="/skills">My Coding Adventures</RouterLink>
         </div> 
         
         <div class="cart-contents">

@@ -1,15 +1,23 @@
 <script setup lang="ts">
-import type { PortfolioAssignmentModel } from '@/portfolio-assignment';
+import type { PortfolioAssignmentModel, Tech } from '@/portfolio-assignment';
 import ReplaceableIcon from './ReplaceableIcon.vue';
 import vue from "@/assets/logo.svg"
 import github from "@/assets/github.svg"
 import code from "@/assets/code.svg"
+// import {SKILLS} from "../skills"
+// import FlexList from './FlexList.vue';
+import FlexList from '@/components/FlexList.vue';
+
 const props = defineProps<{assignment: PortfolioAssignmentModel}>();
 const {assignment}= props;
+
+const onSkillClicked =  (tech: Tech) => {
+    window.open(`/skills/${tech}`);
+}
 </script>
 
-<template>
-    <div class="portfolio-assignment-wrapper" :title="assignment.abstract">
+<template >
+    <div class="portfolio-assignment-wrapper" :title="assignment.abstract" :key="assignment.title">
         <div class="portfolio-assignment-thumbnail">
                          <ReplaceableIcon :imageSrc="assignment.thumbnail" :type="'app'" @click="$emit('launchApp')" />
         </div>
@@ -18,6 +26,10 @@ const {assignment}= props;
             <div>
             <h2>{{ assignment.title }}</h2>
             <h3>{{ assignment.abstract }}</h3>
+                     <details>
+  <summary>See More</summary>
+  <FlexList :items="assignment.tech" :selected="undefined" @skill-clicked="(tech: Tech) => onSkillClicked(tech)"/>
+</details>
             </div>
                   <span class="publication-date">{{ assignment.date.toDateString() }}</span>
 
@@ -30,15 +42,21 @@ const {assignment}= props;
            <div class="portfolio-assignment-thumbnail">
              <ReplaceableIcon :imageSrc="github" :type="'code'" @click="$emit('openGithub')"/>
         </div>
+       
         <!-- Als een gebruiker klikt op de techstack, leidt hem naar een pagina waar nogmaals een overzicht gegeven wordt van
          alle projecten die ik daar mee gedaan heb. Ook leuk is het om een algemeen verhaal te vertellen over wat ik van de techstack vind
          -->
     
         </div>
+
     </div>
 </template>
 
 <style scoped>
+summary {
+    cursor: pointer;
+    text-decoration: underline 1px solid whitesmoke;
+}
 .portfolio-assignment-wrapper {
     display: grid;
     grid-template-columns: 120px 1fr auto ;

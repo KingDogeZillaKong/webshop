@@ -35,9 +35,7 @@ import {onLaunchApp,onOpenGithub,onOpenFrameworkInfo } from "../mixins";
         }
         
     }
-    .project-list-item {
-            cursor: pointer;
-    }
+ 
   }
 }
 </style>
