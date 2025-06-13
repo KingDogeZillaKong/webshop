@@ -30,7 +30,7 @@ function onHideCartContents() {
           <a><ProductInCart :cart-color="'#FFFFFF'" :amount="cartStore.cartTotalItems"/></a>
          </div>
             <div   :class="['cart-overview-section', {'visible': showCartContents}]" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
-            <CartOverview :items="cartStore.cartMap" />
+            <CartOverview  />
             </div>
         </div>
       </nav>

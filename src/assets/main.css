@@ -72,6 +72,7 @@ html {
       font-weight: bold;
       flex-direction: row;
       gap: .66em;
+      /* text-align: right; */
       /* background-color: orange; */
     }
     i {

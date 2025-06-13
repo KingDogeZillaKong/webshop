@@ -5,8 +5,8 @@ import CartListItem from './CartListItem.vue';
 // import {IconCoffee} from "@/components/icons/IconCoffee.vue";
 import IconCoffee from "./icons/IconCoffee.vue";
 import { computed } from 'vue';
-const props =  defineProps<{items:Map<ProductModel, number>}>(); 
-    const {items} = props;
+// const props =  defineProps<{items:Map<ProductModel, number>}>(); 
+//     const {items} = props;
 
     const cartStore = useCartStore();
     
@@ -54,10 +54,11 @@ const props =  defineProps<{items:Map<ProductModel, number>}>();
         display: block;
         padding: 24px;;
         /* min-height: 80vh; */
-        border: 1px solid black;
+        /* border: 1px solid black; */
         border-radius: 12px;;
-        box-shadow: 1px 1px 2px 2px rgba(0,0,0,.66);;
-        background: rgb(122, 122, 122);
+        box-shadow: 2px 3px 6px 12px rgba(203, 202, 202, 0.21);;
+        background: rgba(122, 122, 122, .21);
+        backdrop-filter: blur(6px);
         /* color: white; */
     }
     .cart-overview-wrapper {

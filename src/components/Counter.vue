@@ -4,7 +4,7 @@ import IconMinus from "@/components/icons/IconMinus.vue"
 import IconPlus from "@/components/icons/IconPlus.vue"
 const {amount} = defineProps<{amount: number}>();
     const emit = defineEmits(['counterChanged'])
-    const counter = ref(amount);
+    const counter = ref(amount) || 1;
 
     onUpdated(() => {
         counter.value =  amount;
@@ -21,12 +21,13 @@ const {amount} = defineProps<{amount: number}>();
 </script>
 <template>
     <div class="counter-wrapper">
-        <label for="counter-inp" class="the-button" @click="$emit('counterChanged', -1)">
+        <label  class="the-button" @click="$emit('counterChanged', -1)">
         <IconMinus :foreground-color="'white'"/>
         </label>
        <input disabled id="counter-inp" min="1" max="99" class="invisible-input" type="text" :value="counter"/>
-               <label for="counter-inp" class="the-button" @click="$emit('counterChanged', 1)">
-     <IconPlus :foreground-color="'white'"/></label>    </div>
+               <label class="the-button" @click="$emit('counterChanged', 1)">
+     <IconPlus :foreground-color="'white'"/></label>    
+     </div>
 </template>
 <style scoped>
 .invisible-input {
@@ -61,6 +62,7 @@ border-bottom: 1px solid black;
     cursor: pointer;
     width: 24px;
     aspect-ratio: 1/1;
+    z-index: 99;
     transition: all .24s ease-out;
     border-bottom: 1px solid transparent;
     &:hover {

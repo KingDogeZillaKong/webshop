@@ -3,19 +3,26 @@
  import CatalogItem from '@/components/CatalogItem.vue';
 import type { ProductModel } from '@/product-model';
 import { useCartStore } from '@/stores/cart';
+import { ref } from 'vue';
  const products = ALL_PRODUCTS;
    const cartStore =  useCartStore();
-
+  const catalogSection = ref<HTMLElement | null>(null)
  const onProductAddedToCart = (product: ProductModel) => {
   cartStore.onProductAddedToCart(product);
+ }
+
+ const scrollToCatalogSection =() =>{
+  catalogSection.value?.scrollIntoView({ behavior: 'smooth' })
  }
 
 </script>
 
 <template>
+
       <h1>Life is an Experience</h1>
-      <h2>Explore my adventures in development</h2>
-  <main class="wrapper" :if="products.length">
+      <h2 class="underline" @click="scrollToCatalogSection">Explore my adventures in development</h2>
+                                                
+  <main ref="catalogSection"  class="wrapper">
     <div v-for="product in products" :key="product?.barcode" class="product-container">     
       <CatalogItem :item="product" :amountInCart="cartStore.cartItems.get(product.barcode)" @addProductToCart="onProductAddedToCart(product)"/>
     </div>
@@ -24,6 +31,17 @@ import { useCartStore } from '@/stores/cart';
 </template>
 
 <style scoped>
+.underline {
+  cursor: pointer;
+  text-decoration: underline 1px solid white;
+  text-underline-offset: .33em;
+  margin-bottom :1em;
+  transition: color .33s ease-out;
+
+  &:hover {
+    color: silver;
+  }
+}
   h1, h2 {
     text-align: center;
   }

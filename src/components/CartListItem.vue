@@ -17,7 +17,7 @@ import IconCoffee from "../components/icons/IconCoffee.vue"
   const store = useCartStore();
     const onAmountUpdatedInShoppingCart = (item: ProductModel, diff: number) => {
         if(diff > 0){
-            store.increaseNumberOfItemsInCart(item);
+            store.onProductAddedToCart(item);
             // quantityRef.value = quantityRef.value -1;
         }
         else if(diff < 0){
