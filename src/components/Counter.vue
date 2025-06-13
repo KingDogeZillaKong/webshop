@@ -45,6 +45,7 @@ const {amount} = defineProps<{amount: number}>();
   box-sizing: border-box;
     width: 3ch;
     text-align: center;
+    font-weight: bold;
 border-bottom: 1px solid black;
 }
 .counter-wrapper {

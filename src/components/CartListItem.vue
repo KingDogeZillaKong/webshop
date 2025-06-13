@@ -28,7 +28,7 @@ import IconCoffee from "../components/icons/IconCoffee.vue"
     }   
 </script>
 <template>
-    <li class="list-item">
+    <div class="list-item">
                  <img :alt="'Image of ' + item.description" :src="item.preview" class="product-image"/>
 <span  class="clickable" @click="$emit('itemClicked')">{{item.title}}</span>
       
@@ -41,7 +41,7 @@ import IconCoffee from "../components/icons/IconCoffee.vue"
 
 
 
-        <span class="flex-row">{{item.price}}<i><IconCoffee/></i></span>
+        <span class="flex-row"><span class="quantity-in-cart">{{item.price}}</span><i><IconCoffee/></i></span>
         <div class="counter-compontent">
         <Counter :amount="quantityRef" @counterChanged="(count) => onAmountUpdatedInShoppingCart(item, count)"/>
  </div>
@@ -49,7 +49,7 @@ import IconCoffee from "../components/icons/IconCoffee.vue"
           <!-- <div class="delete">Delete</div> -->
         <!-- navigate to product -->
              <!-- <div>Change the amount of products</div> -->
-    </li>
+</div>
 </template>
 
     <style scoped>
@@ -61,12 +61,15 @@ import IconCoffee from "../components/icons/IconCoffee.vue"
         place-items: start;
         align-items: center;
         gap:.33em;
+        padding: 1.5em;
         border-bottom: 1px solid whitesmoke;
-        padding: .33em 1em;
-        margin-bottom: .33em;
+         /* padding: .33em 1.2em; */
+        /* margin-bottom: .33em; */ 
         /* border: 1px solid black; */
         /* background-color: orange; */
         width:100%;
+        height: 100%;
+        /* min-height: 1.2em; */
         /* background-color: aquamarine; */
         .product-image {
             aspect-ratio: 1/1;
@@ -98,15 +101,23 @@ import IconCoffee from "../components/icons/IconCoffee.vue"
             width: 100;
             text-align: left;
             border-bottom: transparent 1px solid;
+            padding: .33em .15em;
+            transition: border-color .21s ease-in-out;
             
         }
         .clickable:hover {
-            border-bottom: white 1px solid;
+            border-bottom-color: white;
             cursor: pointer;
+            background-color: rgba(255, 255, 255, .21);
         }
 
         .counter-compontent {
             justify-self: end;
+        }
+        .quantity-in-cart {
+            width: 3ch;
+            font-weight: bold;
+            text-align: right;
         }
     }
 

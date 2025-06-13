@@ -37,7 +37,7 @@ const onSkillClicked = (skill: Tech) => {
 </script>
 <template>
 <div class="skill-page-wrapper">
-    <div>
+    <div class="flex-full">
         <FlexList :items="SKILLS" :selected="scope" @skill-clicked="(tech: Tech) => onSkillClicked(tech)"/>
     </div>
   <div v-if="visibleAssignments" class="skill">
@@ -55,8 +55,17 @@ const onSkillClicked = (skill: Tech) => {
 <style scoped>
 .skills-page-wrapper {
     min-height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .flex-full {
+    padding-top: 2.1em;
+    width:100%;
+    margin: auto auto;
+    display: flex;
+    flex: 1;
+    /* background-color: orange; */
   }
 </style>

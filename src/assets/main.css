@@ -5,6 +5,8 @@
   padding: 2rem;
   font-weight: normal;
   margin: auto 0;
+  width: 100vw;;
+  overflow: hidden;
 }
 
 ul {
@@ -27,6 +29,8 @@ a,
 }
 
 html {
+  width: 100vw;
+  height: 100vh;
   padding: 0;
   margin: 0;
 }

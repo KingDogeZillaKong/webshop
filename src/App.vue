@@ -53,7 +53,7 @@ header {
 
 .wrapper {
   width: 100%;
-
+  height: 100%;;
   border-bottom: 1px solid whitesmoke;
 
   padding: .66em 0;
@@ -62,7 +62,7 @@ header {
 .cart-overview-section {
   position: absolute;
   bottom: 3px;
-  transform: translate(-100%, 75%);
+  transform: translate(-100%, 90%);
   z-index: 999;
   display: none;
   opacity: 0;
@@ -116,26 +116,6 @@ nav a {
   border-left: 1px solid var(--color-border);
 }
 
-nav a:first-of-type {
-  border: 0;
-}
-
- @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header  {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
   nav {
     text-align: left;
     margin-left: -1rem;
@@ -144,5 +124,21 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   } 
- } 
+nav a:first-of-type {
+  border: 0;
+}
+  header {
+    display: flex;
+    place-items: center;
+
+
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  
+  }
+    .logo {
+    margin: 0 2rem 0 0;
+  }
+
 </style>

@@ -4,7 +4,7 @@ import { useCartStore } from '@/stores/cart';
 import CartListItem from './CartListItem.vue';
 // import {IconCoffee} from "@/components/icons/IconCoffee.vue";
 import IconCoffee from "./icons/IconCoffee.vue";
-import { computed } from 'vue';
+
 // const props =  defineProps<{items:Map<ProductModel, number>}>(); 
 //     const {items} = props;
 
@@ -56,22 +56,22 @@ import { computed } from 'vue';
         /* min-height: 80vh; */
         /* border: 1px solid black; */
         border-radius: 12px;;
-        box-shadow: 2px 3px 6px 12px rgba(203, 202, 202, 0.21);;
+        box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);;
         background: rgba(122, 122, 122, .21);
-        backdrop-filter: blur(6px);
+        backdrop-filter: blur(9px);
         /* color: white; */
     }
     .cart-overview-wrapper {
         position: relative;
         display: block;
         padding: 1em;
-        border: 1px solid black;
         box-shadow: 1px 1px 2px 2px rgba(0,0,0,.66);;
-        background: black;
         color: white;
        
     }
     .expanded-cart {
+        /* max-height: 480px; or whatever height fits your layout */
+
       padding: 1em .33em 1em .33em;
     }
     .total-damage {
@@ -80,8 +80,19 @@ import { computed } from 'vue';
       /* background-color: orange; */
     }
     .items-in-cart-overview {
-      /* height: 100px; */
-      /* background-color: orange; */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  border-top: 1px solid whitesmoke;
+
+
+ li {
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 
     }
    
