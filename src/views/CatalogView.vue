@@ -13,8 +13,8 @@ import { useCartStore } from '@/stores/cart';
 </script>
 
 <template>
-      <h1>What I got to offer</h1>
-      <h2>Projects I've worked on before. </h2>
+      <h1>Life is an Experience</h1>
+      <h2>Explore my adventures in development</h2>
   <main class="wrapper" :if="products.length">
     <div v-for="product in products" :key="product?.barcode" class="product-container">     
       <CatalogItem :item="product" :amountInCart="cartStore.cartItems.get(product.barcode)" @addProductToCart="onProductAddedToCart(product)"/>
@@ -24,11 +24,14 @@ import { useCartStore } from '@/stores/cart';
 </template>
 
 <style scoped>
-
+  h1, h2 {
+    text-align: center;
+  }
   .wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: .15em;
+    /* width: 100%;; */
     /* background-color: orange; */
 
   }
@@ -62,6 +65,7 @@ import { useCartStore } from '@/stores/cart';
 
   .product-container {
     position: relative;
+    /* width: 100%; */
     /* background-color: crimson; */
  
   }

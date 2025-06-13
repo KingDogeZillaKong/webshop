@@ -20,7 +20,7 @@ const emit = defineEmits(['skillClicked'])
         <li v-for="skill in items" :class="['tech-item', {'selected':skill.name === selectedItem }]"  @click="onItemClicked(skill)">
             <div class="tech-icon-wrapper">
                 <img :src="skill.iconSrc" class="tech-icon" :alt="skill.name"/>
-                     <span class="skill-name">{{ capitalize(skill.name) }}</span> 
+                     <span>{{ skill.name === "UIUX"  ?"UI/UX" : capitalize(skill.name) }}</span> 
             </div>
        
         </li>

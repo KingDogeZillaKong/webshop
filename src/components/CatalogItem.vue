@@ -2,17 +2,17 @@
 
 import { ProductModel } from '../product-model';
 import ProductInCart from "./ProductInCart.vue"
-
+import IconCoffee from "../components/icons/IconCoffee.vue";
       const props =  defineProps<{item: ProductModel, amountInCart: number | undefined }>(); //({barcode: -1, title: "Undefined", price: 0.00, preview: "logo.svg"});
 
 </script>
 <template>
     <div  class="item">
-         <div v-if="props.amountInCart" class="is-in-cart"><ProductInCart :cart-color="'#000000'" :amount="props.amountInCart"/></div>
+         <div v-if="props.amountInCart" class="is-in-cart"><ProductInCart :cart-color="'rgba(0,0,0,.63)'" :amount="props.amountInCart"/></div>
             <img alt="Product image" class="product-image" :src="props.item.preview" width="125" height="125" />
         <div class="flex">
-      <h3>{{props.item?.title }}</h3><h3 class="price">${{ props.item.price }}</h3>
-        </div>
+     <div > <span class="flex-row" > <h3>{{props.item?.title }}</h3><span>|</span><h3 class="price">{{ props.item.price }}<i><IconCoffee/></i></h3></span>
+        </div></div>
         <button @click="$emit('addProductToCart')">Add to cart</button>
     </div>
 </template>
@@ -26,6 +26,7 @@ import ProductInCart from "./ProductInCart.vue"
     padding: 1em .33em;
     /* aspect-ratio: 17/22; */
     color: white;;
+    /* flex-grow: 1; */
     border-radius: 6% 6% 0 0;
     background: linear-gradient(234deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .27));
     /* background-color: rgba(0, 0, 0, .24); */
@@ -52,12 +53,16 @@ import ProductInCart from "./ProductInCart.vue"
         justify-content: space-around;
         flex-grow: 1;
         width: 100%;
+        gap: .33em;
 
         h3 {
 letter-spacing: .1em;
         }
         
         .price {
+            display: flex;
+            gap: .15em;
+            /* background-color: orange; */
             font-weight: bold;
    
         }

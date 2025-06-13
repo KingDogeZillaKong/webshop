@@ -17,8 +17,6 @@ function onHideCartContents() {
 
 <template>
   <header>
-
-
       <nav>
         <div class="flex">
         <RouterLink to="/">Shop</RouterLink>
@@ -26,16 +24,14 @@ function onHideCartContents() {
           <RouterLink to="/portfolio">My work</RouterLink>
                <RouterLink to="/skills">My Coding Adventures</RouterLink>
         </div> 
-        
+          
         <div class="cart-contents">
                 <div class="flex" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
           <a><ProductInCart :cart-color="'#FFFFFF'" :amount="cartStore.cartTotalItems"/></a>
          </div>
-          <Transition>
-            <div   v-if="showCartContents" class="cart-overview-section">
-            <CartOverview :items="cartStore.cartMap"/>
+            <div   :class="['cart-overview-section', {'visible': showCartContents}]" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
+            <CartOverview :items="cartStore.cartMap" />
             </div>
-          </Transition>
         </div>
       </nav>
   </header>
@@ -61,25 +57,23 @@ header {
   border-bottom: 1px solid whitesmoke;
 
   padding: .66em 0;
-  /* background-color: yellow; */
 }
 
 .cart-overview-section {
   position: absolute;
   bottom: 3px;
-  transform: translate(-50%, 100%);
+  transform: translate(-100%, 75%);
   z-index: 999;
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
+  display: none;
   opacity: 0;
+  transition: opacity .33s ease-out;
+
+  &.visible {
+    display: block;
+    opacity: 1;
+  }
 }
+
 .logo {
   display: block;
   margin: 0 auto 2rem;

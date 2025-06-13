@@ -11,4 +11,4 @@ export interface PortfolioAssignmentModel {
     gitRepoUrl: string;
 }
 
-export type Tech = "angular" | "vue" | "react" | "next" | "java" | "python" | "node.js" | "mysql" | "postgresql" | "mongodb";
+export type Tech = "angular" | "vue" | "react" | "next" | "java" | "python" | "node.js" | "mysql" | "postgresql" | "mongodb" | "UIUX";

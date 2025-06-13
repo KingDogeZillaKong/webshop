@@ -41,8 +41,8 @@ const onSkillClicked = (skill: Tech) => {
         <FlexList :items="SKILLS" :selected="scope" @skill-clicked="(tech: Tech) => onSkillClicked(tech)"/>
     </div>
   <div v-if="visibleAssignments" class="skill">
-    <h1>{{ visibleAssignments.length  ? capitalize(scope || "undefined") :  `I have not got a story about ${capitalize(scope || "undefined")}`}}</h1>
-    <h2>I worked on {{  visibleAssignments.length }} {{ scope }} {{visibleAssignments.length > 1 ? 'projects' : 'project'}}.</h2>
+    <h1>{{ visibleAssignments.length && scope && scope == "UIUX" ? 'UI/UX' : scope ? capitalize(scope)  : '' }}</h1>
+    <h2>I worked on {{  visibleAssignments.length }}  {{ scope === "UIUX" ? "UI/UX" : scope }} {{visibleAssignments.length > 1 ? 'projects' : 'project'}}.</h2>
     <ul>
         <li v-for="assignment of visibleAssignments" :key="assignment.abstract">
             <PortfolioAssignment :assignment="assignment" @launchApp="onLaunchApp(assignment)" @openFrameworkInfo="onOpenFrameworkInfo(assignment.tech[0])" @openGithub="onOpenGithub(assignment)"/>

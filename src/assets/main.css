@@ -1,10 +1,10 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
+  /* max-width: 1280px; */
   padding: 2rem;
   font-weight: normal;
+  margin: auto 0;
 }
 
 ul {
@@ -24,6 +24,11 @@ a,
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
+}
+
+html {
+  padding: 0;
+  margin: 0;
 }
 
 .skill-variants {
@@ -58,8 +63,25 @@ a,
         height: auto;
         aspect-ratio:1/1;
     }
-
-    .skill-name {
-        /* align-self:end; */
-    }
   }
+
+   .flex-row {
+      display: flex;
+      justify-content: end;
+      padding: .75em;
+      font-weight: bold;
+      flex-direction: row;
+      gap: .66em;
+      /* background-color: orange; */
+    }
+    i {
+      /* font-size: 1em; */
+      height: 1.5em;
+      width: 1.5em;
+      display: flex;
+      flex-direction: row;
+      place-items: center;
+      /* background-color: orange; */
+
+    
+    }

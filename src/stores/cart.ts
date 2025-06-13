@@ -24,8 +24,21 @@ export const useCartStore = defineStore('cart', () => {
             console.warn(cartItems)
         }
 
-  return { cart, cartMap, cartTotal,cartItems,cartTotalItems, onProductAddedToCart }
+        function increaseNumberOfItemsInCart(item: ProductModel){
+        
+            cart.value = [...cart.value, item];
+        }
+
+        function decreaseNumberOfItemsInCart(item: ProductModel){
+            const indexToRemove = cart.value.indexOf(item);
+            cart.value = cart.value.filter((el: ProductModel, index: number) => index !== indexToRemove);
+           
+}
+
+  return { cart, cartMap, cartTotal,cartItems,cartTotalItems, onProductAddedToCart ,decreaseNumberOfItemsInCart,increaseNumberOfItemsInCart}
 })
+
+
 
 function transformToMap(products: ProductModel[]): Map<ProductModel, number> {
     const uniqueProducts = new Set<ProductModel>();

@@ -24,7 +24,7 @@ import IconCode from './icons/IconCode.vue';
 <template>
     <div class="icon-wrapper" @mouseover="onMouseOverSelf" @mouseleave="onMouseLeaveSelf">
         <Transition>
-        <div v-if="overlayIsVisible.valueOf()" class="overlay">
+        <div v-if="overlayIsVisible.valueOf()" class="overlay" >
         <IconCode v-if="type === 'code'" :foregroundColor="'#FFFFFF'" title="Go to code"/>
         <IconFile v-if="type === 'text'" :foregroundColor="'#FFFFFF'" title="Go to blog"/>
          <IconApp v-if="type === 'app'" :foregroundColor="'#FFFFFF'"  title="Go to app"/></div>
