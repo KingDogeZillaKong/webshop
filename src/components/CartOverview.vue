@@ -27,7 +27,8 @@ import IconCoffee from "./icons/IconCoffee.vue";
     <div class="cart-overview-wrapper">
 
 
-          <div class="expanded-cart">{{ cartStore.cart.length === 0 ? 'No contents in cart' : 'Cart Contents ' + cartStore.cart.length }} 
+          <div class="expanded-cart">
+            <h1>{{ cartStore.cart.length === 0 ? 'No contents in cart' : `Cart Contents (${cartStore.cart.length} item${cartStore.cart.length > 1 ? 's' : ''})` }} </h1>
             <ul class="items-in-cart-overview">
                 <!-- <li v-for="x of cartStore.cartItems">Barcode: {{x[0]  }} | Aantal: {{  x[1]}}</li> -->
               <li v-for="x in cartStore.cartMap" :key="x[0].barcode">
@@ -35,12 +36,12 @@ import IconCoffee from "./icons/IconCoffee.vue";
               </li>
      
             </ul>
-         <div class="flex-row">
-                                                    <span class="total-damage">Total: {{cartStore.cartTotal.toFixed(2) }}  <i><IconCoffee/></i></span>
-                                                    </div>
+
 
           </div>
-
+         <div class="flex-row">
+                                                    <span class="total-damage">Total:</span> <span>{{cartStore.cartTotal.toFixed(2) }}</span><span> <i><IconCoffee/></i></span>
+                                                    </div>
      
 
     </div>
@@ -53,6 +54,7 @@ import IconCoffee from "./icons/IconCoffee.vue";
         position: relative;
         display: block;
         padding: 24px;;
+        min-width: 300px;
         /* min-height: 80vh; */
         /* border: 1px solid black; */
         border-radius: 12px;;

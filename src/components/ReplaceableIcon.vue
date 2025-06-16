@@ -8,9 +8,10 @@ import { ref } from 'vue';
 import IconFile from "@/components/icons/IconFile.vue"
 import IconApp from "@/components/icons/IconApp.vue"
 import IconCode from './icons/IconCode.vue';
-     const props =  defineProps<{imageSrc:string, type: string, shape?: 'circle' | 'square'}>();  //TODO make type a type
+import type { Shape } from '@/shape-model';
+     const props =  defineProps<{imageSrc:string, type: string, shape?: Shape}>();  //TODO make type a type
         const {imageSrc, type, shape} = props;
-     const shapeRef = ref<'circle' | 'square'>(shape || 'square')
+     const shapeRef = ref<Shape>(shape || 'square')
 
     const overlayIsVisible = ref(false);
     const onMouseOverSelf = () => {

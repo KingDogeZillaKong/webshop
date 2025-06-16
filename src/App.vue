@@ -3,8 +3,11 @@ import { RouterLink, RouterView } from 'vue-router'
 import ProductInCart from './components/ProductInCart.vue';
 import { useCartStore } from './stores/cart';
 import { ref } from 'vue';
+import router from '@/router';
 import CartOverview from "./components/CartOverview.vue";
+import Navigation from "@/components/Navigation.vue"
 const cartStore = useCartStore();
+
 const showCartContents = ref(false);
 function onHideCartContents() {
   showCartContents.value = false;
@@ -12,34 +15,41 @@ function onHideCartContents() {
   function onShowCartContents() {
   showCartContents.value = true;
 }
-
+const navigateToCart = () => {
+  router.push({path: "/cart"})
+}
 </script>
 
 <template>
-  <header>
-      <nav>
+  <header id="navnav">
+    <Navigation />
+
+
+      <!-- <nav>
         <div class="flex">
         <RouterLink to="/">Shop</RouterLink>
         <RouterLink to="/cart">Cart</RouterLink>
-          <RouterLink to="/portfolio">My work</RouterLink>
+          <RouterLink to="/portfolio">My portfolio</RouterLink>
                <RouterLink to="/skills">My Coding Adventures</RouterLink>
         </div> 
           
         <div class="cart-contents">
-                <div class="flex" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
+                <div class="flex" @click="navigateToCart" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
           <a><ProductInCart :cart-color="'#FFFFFF'" :amount="cartStore.cartTotalItems"/></a>
          </div>
             <div   :class="['cart-overview-section', {'visible': showCartContents}]" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
             <CartOverview  />
             </div>
         </div>
-      </nav>
+      </nav> -->
   </header>
   <RouterView />
 </template>
 
 <style scoped>
-
+#navnav {
+  position: relative;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -62,7 +72,7 @@ header {
 .cart-overview-section {
   position: absolute;
   bottom: 3px;
-  transform: translate(-100%, 90%);
+  transform: translate(-100%, 50%);
   z-index: 999;
   display: none;
   opacity: 0;
@@ -81,6 +91,7 @@ header {
   .flex {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .cart-contents {
@@ -88,45 +99,7 @@ header {
   position: relative;
 
 }
-nav {
-    display: flex;
-    flex-grow: 1;;
-    justify-content: space-between;
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
 
-
-}
-
-nav a.router-link-exact-active {
-  color: hsla(160, 100%, 37%, 1);
-
-
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  } 
-nav a:first-of-type {
-  border: 0;
-}
   header {
     display: flex;
     place-items: center;

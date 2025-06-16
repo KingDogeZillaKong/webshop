@@ -24,7 +24,7 @@ const onSkillClicked =  (tech: Tech) => {
        
         <div class="details-section">
             <div>
-            <h2>{{ assignment.title }}</h2>
+            <h2 class="project-title"  @click="$emit('launchApp')">{{ assignment.title }}</h2>
             <h3>{{ assignment.abstract }}</h3>
                      <details>
   <summary>See More</summary>
@@ -39,6 +39,7 @@ const onSkillClicked =  (tech: Tech) => {
                         <div class="portfolio-assignment-thumbnail">
              <ReplaceableIcon :imageSrc="assignment.techstackLogo" :type="'text'" @click="$emit('openFrameworkInfo')"/>
         </div>
+        
            <div class="portfolio-assignment-thumbnail">
              <ReplaceableIcon :imageSrc="github" :type="'code'" @click="$emit('openGithub')"/>
         </div>
@@ -56,6 +57,10 @@ const onSkillClicked =  (tech: Tech) => {
 summary {
     cursor: pointer;
     text-decoration: underline 1px solid whitesmoke;
+}
+.project-title{
+    cursor: pointer;
+    text-decoration: underline 1px solid whitesmoke;;
 }
 .portfolio-assignment-wrapper {
     display: grid;
@@ -77,6 +82,7 @@ summary {
         aspect-ratio: 1/1;
         overflow: hidden;
         padding: .15em;
+        cursor: pointer;
         /* background-color: orange; */
     }
     .details-section {
@@ -100,6 +106,7 @@ summary {
             grid-column: 2;
             justify-self: end;
             align-self: center;
+            
             /* width: 100%; */
          }
     }

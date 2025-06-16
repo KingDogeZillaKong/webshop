@@ -41,7 +41,7 @@ import IconCoffee from "../components/icons/IconCoffee.vue"
 
 
 
-        <span class="flex-row"><span class="quantity-in-cart">{{item.price}}</span><i><IconCoffee/></i></span>
+        <span class="flex"><span class="quantity-in-cart">{{item.price}}</span><i><IconCoffee/></i></span>
         <div class="counter-compontent">
         <Counter :amount="quantityRef" @counterChanged="(count) => onAmountUpdatedInShoppingCart(item, count)"/>
  </div>
@@ -78,7 +78,14 @@ import IconCoffee from "../components/icons/IconCoffee.vue"
             /* grid-column: 1;; */
         }
 
-   
+        .flex {
+                  display: flex;
+      justify-content: end;
+      padding: .75em;
+      font-weight: bold;
+      flex-direction: row;
+      /* gap: .66em; */
+        }
         .description {
 
             /* grid-row: 2; */
@@ -117,7 +124,7 @@ import IconCoffee from "../components/icons/IconCoffee.vue"
         .quantity-in-cart {
             width: 3ch;
             font-weight: bold;
-            text-align: right;
+            text-align: left;
         }
     }
 

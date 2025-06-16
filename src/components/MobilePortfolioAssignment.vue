@@ -12,23 +12,26 @@ const onSkillClicked =  (tech: Tech) => {
 
 <template >
     <div class="portfolio-assignment-wrapper" :title="assignment.abstract" :key="assignment.title">
+                                 <span class="publication-date">{{ assignment.date.toDateString() }}</span>
+
+        <div class="full-row-wrapper">
         <div class="portfolio-assignment-thumbnail">
                          <ReplaceableIcon :imageSrc="assignment.thumbnail" :type="'app'" @click="$emit('launchApp')" />
         </div>
-       
-        <div class="details-section">
-            <div>
-            <h2>{{ assignment.title }}</h2>
-            <h3>{{ assignment.abstract }}</h3>
-                     <details>
-  <summary>See More</summary>
-  <FlexList :items="assignment.tech" :selected="undefined" @skill-clicked="(tech: Tech) => onSkillClicked(tech)"/>
-</details>
+                 <h2 @click="$emit('launchApp')">{{ assignment.title }}</h2>
+      
             </div>
-                  <span class="publication-date">{{ assignment.date.toDateString() }}</span>
+   <h3 class="portfolio-description">{{ assignment.abstract }}</h3>
 
-        </div>
+              <!-- <div class="details-section"> -->
+          
+         
        
+ <!-- </div> -->
+
+
+ 
+
         <div class="links">
                         <div class="portfolio-assignment-thumbnail">
              <ReplaceableIcon :imageSrc="assignment.techstackLogo" :type="'text'" @click="$emit('openFrameworkInfo')"/>
@@ -42,6 +45,10 @@ const onSkillClicked =  (tech: Tech) => {
          -->
     
         </div>
+                             <details>
+  <summary>See More</summary>
+  <FlexList :items="assignment.tech" :selected="undefined" @skill-clicked="(tech: Tech) => onSkillClicked(tech)"/>
+</details>
 
     </div>
 </template>
@@ -51,10 +58,19 @@ summary {
     cursor: pointer;
     text-decoration: underline 1px solid whitesmoke;
 }
+.portfolio-description {
+    grid-row: 3;
+    grid-column: 1/-1;
+
+}
 .portfolio-assignment-wrapper {
+    border: 1px solid transparent;
+    border-bottom-color: whitesmoke;
+    /* background-color: orange; */
+    /* border-top-color: whitesmoke; */
     display: grid;
-    grid-template-columns: 120px 1fr ;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: auto 2fr 1fr 2fr auto;
     gap: .33em;
     /* background-color: blue; */
     width: 100%;
@@ -63,6 +79,7 @@ summary {
     /* width: 100%; */
     /* justify-content: start; */
     align-items: center;
+    padding: .66em .33em;
     .portfolio-assignment-thumbnail {
         display: flex;
         width: 120px;
@@ -73,51 +90,61 @@ summary {
         overflow: hidden;
         padding: .15em;
         /* background-color: orange; */
+        /* background-color: orange; */
     }
-    .details-section {
-        display: grid;
-        grid-template-columns: 2fr 1fr;;
-        grid-template-rows: 1fr;
+  
         
-        /* justify-items: start;
-        align-items: center; */
-        /* justify-self: start; */
-        /* text-align: left; */
-        /* align-content: space-between; */
-        padding: 6px;
-        /* width: 100%; */
-        /* h2,span {
-            margin: 0;
-            padding: 0;
-        } */
-         .publication-date {
+    }
+
+     .publication-date {
             grid-row: 1;
-            grid-column: 2;
-            justify-self: end;
-            align-self: center;
-            /* width: 100%; */
+            grid-column: 1/-1;
+            place-self: end;
+
+ background: rgba(193, 193, 193, 0.624);
+
+
+            padding: 0  .66em;
+            border-radius: 3px;
+
          }
+    .full-row-wrapper {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        /* background-color: orange; */
+        align-items: center;
+        justify-content: start;
+        grid-row: 2;
+        grid-column: 1/-1;
+        gap: 1em;
+        text-decoration: underline 1px solid white;
     }
     .links {
-        grid-row: 2;
+        grid-row: 4;
         grid-column: 1/-1;
         /* place-self: end; */
             /* align-items: center; */
         display: flex;
-        justify-content: space-around;
-    background: linear-gradient(0deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .27));
+        justify-content: center;
+        gap: 1em;
+    /* background: linear-gradient(0deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .27)); */
                 backdrop-filter: blur(9px);   
     > * {
             height: 64px;
             justify-content: center;
-                background-color: rgba(255, 255, 255, .27);
-                    background: linear-gradient(0deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .27));
-            backdrop-filter: blur(6px);
+
+            /* background: linear-gradient(0deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .27)); */
+                /* background-color: rgba(255, 255, 255, .27); */
+                    /* background: linear-gradient(0deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .27)); */
+            /* backdrop-filter: blur(6px); */
 
         }
         /* display: inline-block; */
         /* gap: .33em; */
         /* justify-self:end */
     }
-}
+    details {
+        grid-column: 1/-1;
+    }
+
 </style>

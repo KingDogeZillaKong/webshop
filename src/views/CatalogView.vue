@@ -12,15 +12,15 @@ import { ref } from 'vue';
  }
 
  const scrollToCatalogSection =() =>{
-  catalogSection.value?.scrollIntoView({ behavior: 'smooth' })
+  catalogSection.value?.scrollIntoView({ behavior: 'smooth' , block: 'nearest', inline: 'start' })
  }
 
 </script>
 
 <template>
 
-      <h1>Life is an Experience</h1>
-      <h2 class="underline" @click="scrollToCatalogSection">Explore my adventures in development</h2>
+      <h1>Welcome on my website</h1>
+      <h2 class="underline" @click="scrollToCatalogSection">Explore my development adventures</h2>
                                                 
   <main ref="catalogSection"  class="wrapper">
     <div v-for="product in products" :key="product?.barcode" class="product-container">     

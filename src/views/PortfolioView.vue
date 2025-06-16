@@ -51,21 +51,28 @@ import MobilePortfolioAssignment from '@/components/MobilePortfolioAssignment.vu
 }
 .project-list {
   display: grid;
-   background-color: red;
+
+  .project-list-item {  
+    margin: .5em 0 .5em 0;
+  }
+   /* background-color: red; */
 
 }
+
+
 
 }
 
 @media (orientation: portrait) {
 .project-list-mobile{
   display: grid;
-   background-color: green;
+   /* background-color: green; */
 
 
 }
 .project-list {
   display: none;
+    gap: 3em;
 }
 
 }

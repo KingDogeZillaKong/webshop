@@ -1,3 +1,4 @@
+import type { Shape } from "./shape-model";
 import type { SkillModel } from "./skill-model";
 
 export interface PortfolioAssignmentModel {
@@ -9,7 +10,7 @@ export interface PortfolioAssignmentModel {
     href: string;
     tech: SkillModel[];
     gitRepoUrl: string;
-    logoShape?: "sqaure" | "circle";
+    logoShape: Shape;
 }
 
-export type Tech = "angular" | "vue" | "react" | "next" | "java" | "python" | "node.js" | "mysql" | "postgresql" | "mongodb" | "UIUX";
+export type Tech = "angular" | "vue" | "react" | "next" | "java" | "python" | "node.js" | "mysql" | "postgresql" | "mongodb" | "uiux";
