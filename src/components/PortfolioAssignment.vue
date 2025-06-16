@@ -19,7 +19,7 @@ const onSkillClicked =  (tech: Tech) => {
 <template >
     <div class="portfolio-assignment-wrapper" :title="assignment.abstract" :key="assignment.title">
         <div class="portfolio-assignment-thumbnail">
-                         <ReplaceableIcon :imageSrc="assignment.thumbnail" :type="'app'" @click="$emit('launchApp')" />
+                         <ReplaceableIcon :imageSrc="assignment.thumbnail" :type="'app'" @click="$emit('launchApp')" :shape="assignment.logoShape ? assignment.logoShape : 'square'" />
         </div>
        
         <div class="details-section">

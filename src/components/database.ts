@@ -11,11 +11,13 @@ import postgres from "@/assets/postgres.svg";
 import mysql from "@/assets/mysql.svg"
 import python from "@/assets/python.svg"
 import uiux from "@/assets/uiux.svg";
+import nikkichanel from "@/assets/nikkichanel.svg";
+import pokerdex from "@/assets/pokerdex.svg";
 import type { SkillModel } from "@/skill-model";
 
   
-  const getPortfolioAssignment = (tech: SkillModel[], title: string, abstract: string, date: string | number | Date, thumbnail: string, techstackLogo: string, websiteUrl: string, gitRepoUrl: string) => {
-        return {tech, title,abstract, date: new Date(date), thumbnail, techstackLogo, href: websiteUrl, gitRepoUrl}
+  const getPortfolioAssignment = (tech: SkillModel[], title: string, abstract: string, date: string | number | Date, thumbnail: string, techstackLogo: string, websiteUrl: string, gitRepoUrl: string, logoShape?: "sqaure" | "circle") => {
+        return {tech, title,abstract, date: new Date(date), thumbnail, techstackLogo, href: websiteUrl, gitRepoUrl, logoShape: logoShape ? logoShape : "sqaure"}
     }
 
 
@@ -27,8 +29,8 @@ import type { SkillModel } from "@/skill-model";
 
 
 const ASTON_MARTIN_VUE_WEBSHOP = getPortfolioAssignment(SKILLS.filter(skill => ["vue", "UIUX"].includes(skill.name)) , "Vue Dashboard", "Een dashboard gemaakt in Vue voor Aston Martin's Formule-1 team.", new Date(),vue,  vue, "/", "/");
-const NIKKICHANEL = getPortfolioAssignment(SKILLS.filter(skill => ["angular","UIUX"].includes(skill.name)), "Nikkichanel.nl", "Een website gemaakt voor mijn zus die fotograaf en videograaf is.", new Date("02/12/2023"), lucadexlogo, angular, "https://www.nikkichanel.nl", "https://github.com/luukcollin/nikkichanel");
-const LUCADEX = getPortfolioAssignment(SKILLS.filter(skill => ["next", "mongodb","UIUX"].includes(skill.name)) , "Lucadex.com", "Een portaal dat ik gemaakt voor developers om gemakkelijk kennis op te doen over handige ontwikkelaarstools", new Date("02/12/2024"), lucadexlogo, next, "https://www.lucadex.com", "https://github.com/luukcollin/-testhub");
-const POKERDEX = getPortfolioAssignment(SKILLS.filter(skill => ["angular", "java", "postgresql","UIUX"].includes(skill.name)) , "Pokerdex.io", "Een portaal dat ik gemaakt heb voor pokerspelers die keuzes willen maken op basis van feiten", new Date("05/14/2025"),lucadexlogo, angular, "https://www.pokerdex.io", "https://github.com/luukcollin/pokerdex-fe");
+const NIKKICHANEL = getPortfolioAssignment(SKILLS.filter(skill => ["angular","UIUX"].includes(skill.name)), "Nikkichanel.nl", "Een website gemaakt voor mijn zus die fotograaf en videograaf is.", new Date("02/12/2023"), nikkichanel, angular, "https://www.nikkichanel.nl", "https://github.com/luukcollin/nikkichanel");
+const LUCADEX = getPortfolioAssignment(SKILLS.filter(skill => ["next", "mongodb","UIUX"].includes(skill.name)) , "Lucadex.com", "Een portaal dat ik gemaakt voor developers om gemakkelijk kennis op te doen over handige ontwikkelaarstools", new Date("02/12/2024"), lucadexlogo, next, "https://www.lucadex.com", "https://github.com/luukcollin/-testhub", "circle");
+const POKERDEX = getPortfolioAssignment(SKILLS.filter(skill => ["angular", "java", "postgresql","UIUX"].includes(skill.name)) , "Pokerdex.io", "Een portaal dat ik gemaakt heb voor pokerspelers die keuzes willen maken op basis van feiten", new Date("05/14/2025"),pokerdex, angular, "https://www.pokerdex.io", "https://github.com/luukcollin/pokerdex-fe", "circle");
 
     export const PORTFOLIO_ASSIGNMENTS:PortfolioAssignmentModel [] = [ASTON_MARTIN_VUE_WEBSHOP, NIKKICHANEL, LUCADEX, POKERDEX];

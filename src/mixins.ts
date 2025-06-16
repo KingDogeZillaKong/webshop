@@ -5,7 +5,7 @@ import type { SkillModel } from "./skill-model";
         window.open(assignment.href)
     } 
     export const onOpenFrameworkInfo = (tech: SkillModel) => {
-        window.open(`/skills?scope=${tech.name}`);
+        window.open(`/skills/${tech.name}`);
     } 
 
   export const onOpenGithub = (assignment: PortfolioAssignmentModel) => {

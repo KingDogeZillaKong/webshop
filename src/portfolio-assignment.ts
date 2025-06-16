@@ -9,6 +9,7 @@ export interface PortfolioAssignmentModel {
     href: string;
     tech: SkillModel[];
     gitRepoUrl: string;
+    logoShape?: "sqaure" | "circle";
 }
 
 export type Tech = "angular" | "vue" | "react" | "next" | "java" | "python" | "node.js" | "mysql" | "postgresql" | "mongodb" | "UIUX";
