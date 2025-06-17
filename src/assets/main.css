@@ -5,7 +5,7 @@
   padding: 2rem;
   font-weight: normal;
   margin: auto 0;
-  width: 100vw;;
+  width: 100vw;
   overflow: hidden;
 }
 
@@ -17,7 +17,7 @@ ul {
 a,
 .green {
   text-decoration: none;
-  color: var(--color-text) ;
+  color: var(--color-text);
   transition: 0.4s;
   padding: 3px;
 }
@@ -36,57 +36,55 @@ html {
 }
 
 .skill-variants {
-    display: flex;
-    gap: .15em;
-    padding: 4px 2px;
-    background-color: rgba(255,255, 255,.21);
-    width: 100%;
-    border-radius: 6px;;
-    overflow-x: auto;
-  }
-  .skill {
-       height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .tech-icon-wrapper {
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    /* flex-grow: 1; */
-    /* height: 100vw;; */
-    padding: 2px 4px;
-    border-radius: 4px;;
-    cursor: pointer;
-    /* &:hover {
+  display: flex;
+  gap: 0.15em;
+  padding: 4px 2px;
+  background-color: rgba(255, 255, 255, 0.21);
+  width: 100%;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+.skill {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tech-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  /* flex-grow: 1; */
+  /* height: 100vw;; */
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  /* &:hover {
         background-color: rgba(255, 255, 255, .18);
     } */
-    .tech-icon {
-        width: 48px;
-        height: auto;
-        aspect-ratio:1/1;
-    }
+  .tech-icon {
+    width: 48px;
+    height: auto;
+    aspect-ratio: 1/1;
   }
+}
 
-   .flex-row {
-      display: flex;
-      justify-content: end;
-      padding: .75em;
-      font-weight: bold;
-      flex-direction: row;
-      gap: .66em;
-      /* text-align: right; */
-      /* background-color: orange; */
-    }
-    i {
-      /* font-size: 1em; */
-      height: 1.5em;
-      width: 1.5em;
-      display: flex;
-      flex-direction: row;
-      place-items: center;
-      /* background-color: orange; */
-
-    
-    }
+.flex-row {
+  display: flex;
+  justify-content: end;
+  padding: 0.75em;
+  font-weight: bold;
+  flex-direction: row;
+  gap: 0.66em;
+  /* text-align: right; */
+  /* background-color: orange; */
+}
+i {
+  /* font-size: 1em; */
+  height: 1.5em;
+  width: 1.5em;
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  /* background-color: orange; */
+}

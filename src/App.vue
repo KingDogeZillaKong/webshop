@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import ProductInCart from './components/ProductInCart.vue';
-import { useCartStore } from './stores/cart';
-import { ref } from 'vue';
-import router from '@/router';
-import CartOverview from "./components/CartOverview.vue";
-import Navigation from "@/components/Navigation.vue"
-const cartStore = useCartStore();
+import ProductInCart from './components/ProductInCart.vue'
+import { useCartStore } from './stores/cart'
+import { ref } from 'vue'
+import router from '@/router'
+import CartOverview from './components/CartOverview.vue'
+import Navigation from '@/components/Navigation.vue'
+const cartStore = useCartStore()
 
-const showCartContents = ref(false);
+const showCartContents = ref(false)
 function onHideCartContents() {
-  showCartContents.value = false;
+  showCartContents.value = false
 }
-  function onShowCartContents() {
-  showCartContents.value = true;
+function onShowCartContents() {
+  showCartContents.value = true
 }
 const navigateToCart = () => {
-  router.push({path: "/cart"})
+  router.push({ path: '/cart' })
 }
 </script>
 
@@ -24,15 +24,24 @@ const navigateToCart = () => {
   <header id="navnav">
     <Navigation />
 
-   <div class="cart-contents">
-                <div class="flex" @click="navigateToCart" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
-          <a><ProductInCart :cart-color="'#FFFFFF'" :amount="cartStore.cartTotalItems"/></a>
-         </div>
-            <div   :class="['cart-overview-section', {'visible': showCartContents}]" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
-            <CartOverview  />
-            </div>
-        </div>
-      <!-- <nav>
+    <div class="cart-contents">
+      <div
+        class="flex"
+        @click="navigateToCart"
+        @mouseover="onShowCartContents"
+        @mouseleave="onHideCartContents"
+      >
+        <a><ProductInCart :cart-color="'#FFFFFF'" :amount="cartStore.cartTotalItems" /></a>
+      </div>
+      <div
+        :class="['cart-overview-section', { visible: showCartContents }]"
+        @mouseover="onShowCartContents"
+        @mouseleave="onHideCartContents"
+      >
+        <CartOverview />
+      </div>
+    </div>
+    <!-- <nav>
         <div class="flex">
         <RouterLink to="/">Shop</RouterLink>
         <RouterLink to="/cart">Cart</RouterLink>
@@ -56,7 +65,7 @@ const navigateToCart = () => {
 header {
   line-height: 1.5;
   max-height: 100vh;
-  width:100%;
+  width: 100%;
   border-bottom: 1px solid whitesmoke;
 }
 
@@ -66,10 +75,10 @@ header {
 
 .wrapper {
   width: 100%;
-  height: 100%;;
+  height: 100%;
   border-bottom: 1px solid whitesmoke;
 
-  padding: .66em 0;
+  padding: 0.66em 0;
 }
 
 .cart-overview-section {
@@ -79,7 +88,7 @@ header {
   z-index: 999;
   display: none;
   opacity: 0;
-  transition: opacity .33s ease-out;
+  transition: opacity 0.33s ease-out;
 
   &.visible {
     display: block;
@@ -91,30 +100,26 @@ header {
   display: block;
   margin: 0 auto 2rem;
 }
-  .flex {
+.flex {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
 .cart-contents {
-  justify-self: end;;
+  justify-self: end;
   position: relative;
-
 }
 
-  header {
-    display: flex;
-    place-items: center;
+header {
+  display: flex;
+  place-items: center;
 
-
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  
-  }
-    .logo {
-    margin: 0 2rem 0 0;
-  }
-
+  display: flex;
+  place-items: flex-start;
+  flex-wrap: wrap;
+}
+.logo {
+  margin: 0 2rem 0 0;
+}
 </style>

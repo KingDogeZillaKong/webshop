@@ -1,7 +1,7 @@
-import type { Tech } from "./portfolio-assignment";
+import type { Tech } from './portfolio-assignment'
 
 export interface SkillModel {
-    iconSrc: string;
-    tech: Tech;
-    displayName: string;
+  iconSrc: string
+  tech: Tech
+  displayName: string
 }

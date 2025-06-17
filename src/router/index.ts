@@ -12,16 +12,16 @@ const router = createRouter({
       name: 'Catalog',
       component: CatalogView,
     },
-    {path: '/portfolio', name: "Portfolio", component: PortfolioView},
-       {path: '/skills', name: "Skills", component: SkillsView},
-    {path: '/skills/:skill', name: "Skill Details", component: SkillsView},
-     {
+    { path: '/portfolio', name: 'Portfolio', component: PortfolioView },
+    { path: '/skills', name: 'Skills', component: SkillsView },
+    { path: '/skills/:skill', name: 'Skill Details', component: SkillsView },
+    {
       path: '/cart',
       name: 'Cart',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: CartOverview
+      component: CartOverview,
     },
     {
       path: '/about',

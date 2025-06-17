@@ -1,1 +1,1 @@
-export type Shape = "circle" | "square";
+export type Shape = 'circle' | 'square'

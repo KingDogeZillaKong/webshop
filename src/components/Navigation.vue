@@ -1,127 +1,124 @@
-<script setup lang ="ts">
-import menu from "@/assets/menu.svg";
+<script setup lang="ts">
+import menu from '@/assets/menu.svg'
 
-import expandedMenu from "@/assets/expanded-menu.svg"
-import { ref } from "vue";
+import expandedMenu from '@/assets/expanded-menu.svg'
+import { ref } from 'vue'
 
 interface RouterLinkModel {
-    path: string;
-    name: string;
+  path: string
+  name: string
 }
 
-const isExpanded = ref(false);
+const isExpanded = ref(false)
 
 const toggleMenu = () => {
-    isExpanded.value = !isExpanded.value
-}   
+  isExpanded.value = !isExpanded.value
+}
 
 const closeMenu = () => {
-    isExpanded.value = false;
+  isExpanded.value = false
 }
 
-const getRouterLink = (path: string, name: string): RouterLinkModel  =>  {
-    return ({path, name})
+const getRouterLink = (path: string, name: string): RouterLinkModel => {
+  return { path, name }
 }
 
-const navMenuConfig = [getRouterLink("/", "Shop"), getRouterLink("/cart", "Cart"), getRouterLink("/portfolio", "Portfolio"), getRouterLink("/skills", "My coding adventures"), getRouterLink("/about","About me")]
-
-
+const navMenuConfig = [
+  getRouterLink('/', 'Shop'),
+  getRouterLink('/cart', 'Cart'),
+  getRouterLink('/skills', 'My coding adventures'),
+  getRouterLink('/about', 'About me'),
+]
 </script>
 
 <template>
-
-    <div class="menu-wrapper">
-       <div class="menu-icon-wrapper"> 
-        <img v-if="!isExpanded" :src="menu" @click="toggleMenu"/>
-        <img v-if="isExpanded" :src="expandedMenu" @click="toggleMenu"/>
-       </div>
-           <nav class="desktop-nav">
-            <div v-for="link of navMenuConfig">
-            <RouterLink   class="navigation-item" :to="link.path" @click="closeMenu" :key="link.path">{{ link.name }}</RouterLink>
-            </div>
-        <!-- <RouterLink to="/">Shop</RouterLink>
+  <div class="menu-wrapper">
+    <div class="menu-icon-wrapper">
+      <img v-if="!isExpanded" :src="menu" @click="toggleMenu" />
+      <img v-if="isExpanded" :src="expandedMenu" @click="toggleMenu" />
+    </div>
+    <nav class="desktop-nav">
+      <div v-for="link of navMenuConfig">
+        <RouterLink class="navigation-item" :to="link.path" @click="closeMenu" :key="link.path">{{
+          link.name
+        }}</RouterLink>
+      </div>
+      <!-- <RouterLink to="/">Shop</RouterLink>
         <RouterLink to="/cart">Cart</RouterLink>
           <RouterLink to="/portfolio">Portfolio</RouterLink>
                <RouterLink to="/skills">My Coding Adventures</RouterLink> -->
-
     </nav>
     <div class="fancy-nav-wrapper-mobile" v-if="isExpanded">
-    <nav class="mobile-nav">
-           <div  v-for="link of navMenuConfig" class="navigation-item">
-            <RouterLink   :to="link.path" @click="closeMenu" :key="link.path">{{ link.name }}</RouterLink>
-           </div>
+      <nav class="mobile-nav">
+        <div v-for="link of navMenuConfig" class="navigation-item">
+          <RouterLink :to="link.path" @click="closeMenu" :key="link.path">{{
+            link.name
+          }}</RouterLink>
+        </div>
 
         <!-- <RouterLink to="/">Shop</RouterLink>
         <RouterLink to="/cart">Cart</RouterLink>
           <RouterLink to="/portfolio">My work</RouterLink>
                <RouterLink to="/skills">My Coding Adventures</RouterLink> -->
-
-    </nav>
+      </nav>
     </div>
-    </div>
+  </div>
 </template>
 
 <style scoped>
 .navigation-item {
-    padding: 1em 2em;
-    font-size: 1.5em;
-    font-weight: bold;
-    width: 100%;
-cursor: pointer;
-    &:hover {
-        background-color: rgba(255, 255, 255, .33);
-    }
+  padding: 1em 2em;
+  font-size: 1.5em;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.33);
+  }
 }
- a {
+a {
   display: inline-block;
   /* padding: 1rem 1rem; */
   border-left: 1px solid var(--color-border);
 }
 
- a.router-link-exact-active:hover {
+a.router-link-exact-active:hover {
   background-color: transparent;
 }
 
-
- a.router-link-exact-active {
-    position: relative;
+a.router-link-exact-active {
+  position: relative;
   color: hsla(160, 100%, 37%, 1);
 
   &::before {
     content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translate(-100%, -50%);
-  width: 6px;
-  height: 1.5em;
-  background-color: whitesmoke;
-  border-radius: 2px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    width: 6px;
+    height: 1.5em;
+    background-color: whitesmoke;
+    border-radius: 2px;
   }
-
-
-
- }
- a.router-link-exact-active:hover {
+}
+a.router-link-exact-active:hover {
   background-color: transparent;
 }
 .mobile-nav {
-
-    
-
-    grid-row:2;
-             position: relative;
-        /* z-index: 9999; */
-        /* position: relative  ;; */
-            display: flex;
-            flex-direction: column;
-            /* justify-items: center; */
-            /* justify-content: center; */
-            align-items: start;
-    /* flex-grow: 1;; */
-    /* justify-content: space-between; */
+  grid-row: 2;
+  position: relative;
+  /* z-index: 9999; */
+  /* position: relative  ;; */
+  display: flex;
+  flex-direction: column;
+  /* justify-items: center; */
+  /* justify-content: center; */
+  align-items: start;
+  /* flex-grow: 1;; */
+  /* justify-content: space-between; */
   width: 100%;
-  height: 100%;;
+  height: 100%;
   font-size: 12px;
   text-align: left;
   transition: transform 1s ease-in;
@@ -129,133 +126,107 @@ cursor: pointer;
   /* background-color: orange; */
   /* margin-top: 2rem; */
 
-
-
   a.router-link-exact-active {
-  color: hsla(160, 100%, 37%, 1);
+    color: hsla(160, 100%, 37%, 1);
+  }
+
+  a {
+    display: inline-block;
+    padding: 0 1rem;
+    border-left: 1px solid var(--color-border);
+  }
 }
 
-
-
-
-
- a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-}
-
- 
-
- /* .menu-wrapper {
+/* .menu-wrapper {
         display: block;
 
     } */
-        .menu-icon-wrapper{
-
-            z-index: 9999;
-        width: 60px;
-        height: 60px;
-        padding: .66em;
-        background-color: rgba(255, 255, 255, .48);
-        border: 1px solid whitesmoke;
-        border-radius: 1em;
-  
-        
-            
-    }
-    .desktop-nav {
-        display: none;
-
-    }
-    .fancy-nav-wrapper-mobile {
-        display: grid;
-        position: fixed;
-        grid-template-rows: 120px auto;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100svh;
-        z-index: -1;
-        background: rgba(0,0,0,.54);
-        backdrop-filter: blur(18px);
-
-
-
-      
-
-        /* background-color: blue  ; */
-        /* backdrop-filter: blur(12px); */
-    }
-
-        .menu-wrapper {
-            /* background-color: black; */
-            display: block;
-            z-index: 999;
-            /* grid-template-rows: 90px auto; */
-            
-            
-         }
-
-         .mobile-nav {
-            display: flex;
-            flex-direction: column;
-      
-         }
-
-
-@media(orientation: landscape){
-     a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-  text-wrap: nowrap;
+.menu-icon-wrapper {
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  padding: 0.66em;
+  background-color: rgba(255, 255, 255, 0.48);
+  border: 1px solid whitesmoke;
+  border-radius: 1em;
 }
-    .fancy-nav-wrapper-mobile {
-        display: none;
-    }
-    .mobile-nav {
-        display: none;
-    }
+.desktop-nav {
+  display: none;
+}
+.fancy-nav-wrapper-mobile {
+  display: grid;
+  position: fixed;
+  grid-template-rows: 120px auto;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.54);
+  backdrop-filter: blur(18px);
 
-    .menu-wrapper {
-   
-        display: flex;
-        place-items: center;
-        gap: 1em;
+  /* background-color: blue  ; */
+  /* backdrop-filter: blur(12px); */
+}
 
-        .menu-icon-wrapper{
-            display: none;
-        }
+.menu-wrapper {
+  /* background-color: black; */
+  display: block;
+  z-index: 999;
+  /* grid-template-rows: 90px auto; */
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (orientation: landscape) {
+  a {
+    display: inline-block;
+    padding: 0 1rem;
+    border-left: 1px solid var(--color-border);
+    text-wrap: nowrap;
+  }
+  .fancy-nav-wrapper-mobile {
+    display: none;
+  }
+  .mobile-nav {
+    display: none;
+  }
+
+  .menu-wrapper {
+    display: flex;
+    place-items: center;
+    gap: 1em;
+
+    .menu-icon-wrapper {
+      display: none;
     }
-        .desktop-nav {
-            position: relative;
-            
-        /* display: none; */
-            display: flex;
+  }
+  .desktop-nav {
+    position: relative;
+
+    /* display: none; */
+    display: flex;
     /* flex-direction: column; */
     /* flex-grow: 1;; */
     /* justify-content: space-between; */
     place-items: center;
-  /* width: 100%; */
-  font-size: 12px;
-  text-align: left;
+    /* width: 100%; */
+    font-size: 12px;
+    text-align: left;
     position: relative;
-        /* background-color: orange; */
-            display: flex;
-            width: unset;
-            flex-direction: row;
+    /* background-color: orange; */
+    display: flex;
+    width: unset;
+    flex-direction: row;
     /* flex-grow: 1;; */
     /* justify-content: space-between; */
-  /* width: 100%; */
-  font-size: 12px;
-  text-align: center;
-  /* margin-top: 2rem; */
-    }
-   
-   
-
-
+    /* width: 100%; */
+    font-size: 12px;
+    text-align: center;
+    /* margin-top: 2rem; */
+  }
 }
 </style>
