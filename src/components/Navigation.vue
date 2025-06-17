@@ -88,7 +88,7 @@ a.router-link-exact-active:hover {
 
 a.router-link-exact-active {
   position: relative;
-  color: hsla(160, 100%, 37%, 1);
+  color: var(--highlight-color);
 
   &::before {
     content: '';
@@ -127,7 +127,7 @@ a.router-link-exact-active:hover {
   /* margin-top: 2rem; */
 
   a.router-link-exact-active {
-    color: hsla(160, 100%, 37%, 1);
+    color:  var(--highlight-color)
   }
 
   a {

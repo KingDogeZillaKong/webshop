@@ -24,7 +24,9 @@ const props = defineProps<{ amount: number; cartColor: string }>()
   position: absolute;
   top: 0.15em;
   right: 0.09em;
-  background-color: green;
+  background-color: var(--primary-color);
+  font-weight: bold;
+  border: 1px solid var(--highlight-color);
   aspect-ratio: 1/1;
   width: 24px;
   height: 24px;
@@ -34,6 +36,6 @@ const props = defineProps<{ amount: number; cartColor: string }>()
   justify-content: center;
   align-items: center;
   border-radius: 100%;
-  color: whitesmoke;
+  color:whitesmoke
 }
 </style>
