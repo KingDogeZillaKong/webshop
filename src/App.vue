@@ -24,7 +24,14 @@ const navigateToCart = () => {
   <header id="navnav">
     <Navigation />
 
-
+   <div class="cart-contents">
+                <div class="flex" @click="navigateToCart" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
+          <a><ProductInCart :cart-color="'#FFFFFF'" :amount="cartStore.cartTotalItems"/></a>
+         </div>
+            <div   :class="['cart-overview-section', {'visible': showCartContents}]" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
+            <CartOverview  />
+            </div>
+        </div>
       <!-- <nav>
         <div class="flex">
         <RouterLink to="/">Shop</RouterLink>
@@ -33,14 +40,7 @@ const navigateToCart = () => {
                <RouterLink to="/skills">My Coding Adventures</RouterLink>
         </div> 
           
-        <div class="cart-contents">
-                <div class="flex" @click="navigateToCart" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
-          <a><ProductInCart :cart-color="'#FFFFFF'" :amount="cartStore.cartTotalItems"/></a>
-         </div>
-            <div   :class="['cart-overview-section', {'visible': showCartContents}]" @mouseover="onShowCartContents" @mouseleave="onHideCartContents">
-            <CartOverview  />
-            </div>
-        </div>
+     
       </nav> -->
   </header>
   <RouterView />
@@ -49,6 +49,9 @@ const navigateToCart = () => {
 <style scoped>
 #navnav {
   position: relative;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
 }
 header {
   line-height: 1.5;
