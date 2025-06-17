@@ -19,7 +19,7 @@ import { ref } from 'vue';
 
 <template>
 
-      <h1>Welcome on my website</h1>
+      <h1>Welcome my website</h1>
       <h2 class="underline" @click="scrollToCatalogSection">Explore my development adventures</h2>
                                                 
   <main ref="catalogSection"  class="wrapper">

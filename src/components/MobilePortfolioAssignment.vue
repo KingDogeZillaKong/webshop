@@ -3,11 +3,10 @@ import type { PortfolioAssignmentModel, Tech } from '@/portfolio-assignment';
 import ReplaceableIcon from "@/components/ReplaceableIcon.vue"
 import github from "@/assets/github.svg"
 import FlexList from '@/components//FlexList.vue';
+import { onOpenFrameworkInfo } from '@/mixins';
 const props = defineProps<{assignment: PortfolioAssignmentModel}>();
 const {assignment}= props;
-const onSkillClicked =  (tech: Tech) => {
-    window.open(`/skills/${tech}`);
-}
+
 </script>
 
 <template >
@@ -47,7 +46,7 @@ const onSkillClicked =  (tech: Tech) => {
         </div>
                              <details>
   <summary>See More</summary>
-  <FlexList :items="assignment.tech" :selected="undefined" @skill-clicked="(tech: Tech) => onSkillClicked(tech)"/>
+  <FlexList :items="assignment.tech" :selected="undefined" @skill-clicked="(tech: Tech) => onOpenFrameworkInfo(tech)"/>
 </details>
 
     </div>

@@ -7,6 +7,7 @@ import code from "@/assets/code.svg"
 // import {SKILLS} from "../skills"
 // import FlexList from './FlexList.vue';
 import FlexList from '@/components/FlexList.vue';
+import { onOpenFrameworkInfo } from '@/mixins';
 
 const props = defineProps<{assignment: PortfolioAssignmentModel}>();
 const {assignment}= props;
@@ -28,7 +29,7 @@ const onSkillClicked =  (tech: Tech) => {
             <h3>{{ assignment.abstract }}</h3>
                      <details>
   <summary>See More</summary>
-  <FlexList :items="assignment.tech" :selected="undefined" @skill-clicked="(tech: Tech) => onSkillClicked(tech)"/>
+  <FlexList :items="assignment.tech" :selected="undefined" @skill-clicked="(tech: Tech) => onOpenFrameworkInfo(tech)"/>
 </details>
             </div>
                   <span class="publication-date">{{ assignment.date.toDateString() }}</span>

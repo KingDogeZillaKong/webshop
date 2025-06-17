@@ -36,6 +36,7 @@ const emit = defineEmits(['skillClicked'])
        background: rgba(255, 255, 255, .11);;
        display: flex;
        flex-grow: 1;
+       padding: .1em .24em .1em .24em;
        place-content: center;
     border-bottom: 1px solid transparent;
 

@@ -23,7 +23,7 @@ const getRouterLink = (path: string, name: string): RouterLinkModel  =>  {
     return ({path, name})
 }
 
-const navMenuConfig = [getRouterLink("/", "Shop"), getRouterLink("/cart", "Cart"), getRouterLink("/portfolio", "Portfolio"), getRouterLink("/skills", "My coding adventures")]
+const navMenuConfig = [getRouterLink("/", "Shop"), getRouterLink("/cart", "Cart"), getRouterLink("/portfolio", "Portfolio"), getRouterLink("/skills", "My coding adventures"), getRouterLink("/about","About me")]
 
 
 </script>
@@ -36,8 +36,8 @@ const navMenuConfig = [getRouterLink("/", "Shop"), getRouterLink("/cart", "Cart"
         <img v-if="isExpanded" :src="expandedMenu" @click="toggleMenu"/>
        </div>
            <nav class="desktop-nav">
-            <div v-for="link of navMenuConfig" class="navigation-item">
-            <RouterLink   :to="link.path" @click="closeMenu" :key="link.path">{{ link.name }}</RouterLink>
+            <div v-for="link of navMenuConfig">
+            <RouterLink   class="navigation-item" :to="link.path" @click="closeMenu" :key="link.path">{{ link.name }}</RouterLink>
             </div>
         <!-- <RouterLink to="/">Shop</RouterLink>
         <RouterLink to="/cart">Cart</RouterLink>
@@ -47,8 +47,8 @@ const navMenuConfig = [getRouterLink("/", "Shop"), getRouterLink("/cart", "Cart"
     </nav>
     <div class="fancy-nav-wrapper-mobile" v-if="isExpanded">
     <nav class="mobile-nav">
-                      <div v-for="link of navMenuConfig" class="navigation-item">
-            <RouterLink   :to="link.path" @click="closeMenu" :key="link.path">{{ link.name }}</RouterLink>
+                      <div v-for="link of navMenuConfig"  >
+            <RouterLink  class="navigation-item" :to="link.path" @click="closeMenu" :key="link.path">{{ link.name }}</RouterLink>
             </div>
 
         <!-- <RouterLink to="/">Shop</RouterLink>
@@ -74,7 +74,7 @@ cursor: pointer;
 }
  a {
   display: inline-block;
-  padding: 1rem 1rem;
+  /* padding: 1rem 1rem; */
   border-left: 1px solid var(--color-border);
 }
 
@@ -201,6 +201,7 @@ cursor: pointer;
   display: inline-block;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
+  text-wrap: nowrap;
 }
     .fancy-nav-wrapper-mobile {
         display: none;

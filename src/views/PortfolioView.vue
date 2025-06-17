@@ -7,17 +7,17 @@ import MobilePortfolioAssignment from '@/components/MobilePortfolioAssignment.vu
 <template>
   <div class="portfolio">
      <ul class="project-list-mobile" v-for="assignment in PORTFOLIO_ASSIGNMENTS">
-        <li class="project-list-item"><MobilePortfolioAssignment :assignment="assignment" @launchApp="onLaunchApp(assignment)" @openFrameworkInfo="onOpenFrameworkInfo(assignment.tech[0])" @openGithub="onOpenGithub(assignment)"/>
+        <li class="project-list-item"><MobilePortfolioAssignment :assignment="assignment" @launchApp="onLaunchApp(assignment)" @openFrameworkInfo="onOpenFrameworkInfo(assignment.tech[0].tech)" @openGithub="onOpenGithub(assignment)"/>
             </li>
     </ul>
     <ul class="project-list" v-for="assignment in PORTFOLIO_ASSIGNMENTS">
-        <li class="project-list-item"><PortfolioAssignment :assignment="assignment" @launchApp="onLaunchApp(assignment)" @openFrameworkInfo="onOpenFrameworkInfo(assignment.tech[0])" @openGithub="onOpenGithub(assignment)"/>
+        <li class="project-list-item"><PortfolioAssignment :assignment="assignment" @launchApp="onLaunchApp(assignment)" @openFrameworkInfo="onOpenFrameworkInfo(assignment.tech[0].tech)" @openGithub="onOpenGithub(assignment)"/>
             </li>
     </ul>
   </div>
 </template>
 
-<style>
+<style scoped>
 .project-list {
     height: 100%;
     /* background-color: orange; */

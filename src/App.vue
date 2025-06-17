@@ -75,7 +75,7 @@ header {
 .cart-overview-section {
   position: absolute;
   bottom: 3px;
-  transform: translate(-100%, 50%);
+  transform: translate(-100%, 75%);
   z-index: 999;
   display: none;
   opacity: 0;
