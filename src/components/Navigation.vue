@@ -47,9 +47,9 @@ const navMenuConfig = [getRouterLink("/", "Shop"), getRouterLink("/cart", "Cart"
     </nav>
     <div class="fancy-nav-wrapper-mobile" v-if="isExpanded">
     <nav class="mobile-nav">
-                      <div v-for="link of navMenuConfig"  >
-            <RouterLink  class="navigation-item" :to="link.path" @click="closeMenu" :key="link.path">{{ link.name }}</RouterLink>
-            </div>
+           <div  v-for="link of navMenuConfig" class="navigation-item">
+            <RouterLink   :to="link.path" @click="closeMenu" :key="link.path">{{ link.name }}</RouterLink>
+           </div>
 
         <!-- <RouterLink to="/">Shop</RouterLink>
         <RouterLink to="/cart">Cart</RouterLink>
@@ -87,12 +87,28 @@ cursor: pointer;
     position: relative;
   color: hsla(160, 100%, 37%, 1);
 
+  &::before {
+    content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-100%, -50%);
+  width: 6px;
+  height: 1.5em;
+  background-color: whitesmoke;
+  border-radius: 2px;
+  }
+
+
 
  }
  a.router-link-exact-active:hover {
   background-color: transparent;
 }
 .mobile-nav {
+
+    
+
     grid-row:2;
              position: relative;
         /* z-index: 9999; */
@@ -165,17 +181,10 @@ cursor: pointer;
         background: rgba(0,0,0,.54);
         backdrop-filter: blur(18px);
 
-         &::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translate(-100%, -50%);
-  width: 4px;
-  height: 1.5em;
-  background-color: whitesmoke;
-  border-radius: 2px;
-}
+
+
+      
+
         /* background-color: blue  ; */
         /* backdrop-filter: blur(12px); */
     }
