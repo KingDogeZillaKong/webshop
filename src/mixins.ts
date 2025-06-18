@@ -12,3 +12,11 @@ export const onOpenFrameworkInfo = (tech: Tech) => {
 export const onOpenGithub = (assignment: PortfolioAssignmentModel) => {
   window.open(assignment.gitRepoUrl)
 }
+
+export const navigateToLinkedIn = () => {
+  window.open("https://www.linkedin.nl/in/luuk-goedhart")
+}
+
+export const navigateToSopraWebsite = () => {
+    window.open("https://www.soprasteria.fr")
+}

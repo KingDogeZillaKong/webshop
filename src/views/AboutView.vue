@@ -5,6 +5,11 @@ import { transform } from "typescript";
 import { ref, toValue } from "vue";
 import sopra from "@/assets/sopra.svg";
 import router from "@/router"
+import java from "@/assets/java.svg";
+import postgres from "@/assets/postgres.svg"
+import angular from "@/assets/angular.svg";
+import IDCard from "@/components/IDCard.vue"
+import {navigateToLinkedIn, navigateToSopraWebsite} from "@/mixins"
 const THRESHOLD_DEGREE = 2;
   const rotation = ref<undefined | number>(undefined);
   const thresholdDeg = ref(THRESHOLD_DEGREE)
@@ -13,7 +18,7 @@ const THRESHOLD_DEGREE = 2;
   const borderColor = ref('transparent')
   const onMouseDown = () => { 
     skew.value = '3deg';
-    borderColor.value =  'whitesmoke';
+    borderColor.value =  'var(--highlight-color)';
        scale.value =0.96;
     thresholdDeg.value = THRESHOLD_DEGREE;
     if(rotation.value === undefined) rotation.value = setInterval(rotate, 150);
@@ -37,21 +42,49 @@ const THRESHOLD_DEGREE = 2;
 </script>
 <template>
   <div class="about-me-wrapper">
-    <h1>Luuk Goedhart</h1>
+    <!-- <IDCard/> -->
     <div class="card">
-<div id="bubbles">  <img  :src="luuk"  :style="{transform: `rotate(${rotation}deg)  scale(${scale})`, borderColor: `${borderColor}`}" id="luuk-img" alt="luuk foto"/><div id="links-to-socials"  >
-   
-              <TextBubble text="10+ jaar informatica" @mousedown="onMouseDown" @mouseleave="stopRotation"/>
-               <TextBubble text="LinkedIn"/>
 
-      </div>  
-      <div class="current-job-section">
-                     <span class="employed-at-label">Employeed at:</span>
+
+<div id="bubbles"> <div class="card-top-rule"><img  :src="luuk"  :style="{transform: `rotate(${rotation}deg)  scale(${scale})`, borderColor: `${borderColor}`}" id="luuk-img" alt="luuk foto"/>
+            <div><h1>Luuk Goedhart</h1>
+              <span class="quote">I turn coffee into code. </span>
+              </div>
+</div>
+<!-- <h3 class="organization-label">Organization</h3> -->
+      <div class="current-job-section" @click="navigateToSopraWebsite">
+        
                <img class="company-img" :src="sopra"/> 
                </div> 
+  <div id="links-to-socials"  >
+   <div class="tech-item">
+              <TextBubble text="10+ jaar informatica" @mousedown="onMouseDown" @mouseleave="stopRotation"/>
+              </div>
+                <div class="tech-item">
+               <TextBubble  text="LinkedIn" @click="navigateToLinkedIn"/>
+</div>
+      </div> 
+                   
+</div>
+<div class="favourite-stack">
+  <h2>My favourite stack</h2>
+  <div class="tech-list">
+    <div class="tech-item">
+                    <TextBubble text="Angular" :background-color="'transparent'" :img="angular" @mousedown="onMouseDown" @mouseleave="stopRotation"/>
+
+    </div>
+
+    <div class="tech-item">
+                    <TextBubble text="Java" :background-color="'transparent'" :img="java" @mousedown="onMouseDown" @mouseleave="stopRotation"/>
+
+    </div>
+    <div class="tech-item">
+                    <TextBubble text="PostgreSQL" :background-color="'transparent'" :img="postgres" @mousedown="onMouseDown" @mouseleave="stopRotation"/>
+    </div>
+  
+  </div>
 </div>
 </div>
-    <span class="quote">I turn coffee into code. </span>
   
 
         <div class="text-section">
@@ -122,93 +155,93 @@ const THRESHOLD_DEGREE = 2;
 </template>
 
 <style scoped>
-.current-job-section {
-  display: grid;;
-  grid-template-columns: 1fr 3fr;
-  width :100%;
-  place-items: center;
-}
-.company-img {
-  background-size: contain;
 
-}
-.employed-at-label{
-  text-wrap: nowrap;
-}
-h1 {
-  grid-row: 1;
-  grid-column: 1/-1;
-}
-#luuk-img {
-  grid-row: 2;
-  grid-column: 3;
-  justify-self: center;
-  border-radius: 100%;
-  display: flex;
-  flex-grow: 1;
-
-  max-width: 20vw;
-  aspect-ratio: 1/1;
-  border: transparent 3px dashed;
-  transition: all .21s linear;
-
-
-  &:hover {
-    border-color: var(--highlight-color) ;
-
-  }
-
-
-}
-  @keyframes border-loop {
-    0% {
-      border-color: transparent;
-    }
-    15% {
-      border-color: var(--secondary-color);
-    }
-
-    85% {
-      border-color: var(--highlight-color);
-    }
-    100% {
-      border-color: transparent;
-    }
-   
-  }
-
-  .card {
-  grid-row: 3;
-  grid-column:5;
-  padding: 2em 1em;
-  border-radius: 24px;
-  background-color: gray;
-  }
-
-#links-to-socials {
-
-
-  display: flex;
-  justify-content: space-between;
-  gap: 3em;
+.favourite-stack {
   text-align: center;
+  /* background-color: #f9f9f9; */
+  padding: 20px;
+  border-radius: 10px;
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+  /* max-width: 500px; */
+  margin: 50px auto;
+  width: 100%;
+  border-radius: 100vw;;
+  /* outline: 3px solid whitesmoke; */
+}
+
+/* Heading styling */
+.favourite-stack h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: 2rem;
+  /* color: #333; */
+
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* List container for the tech items */
+.tech-list {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Styling for each tech item */
+.tech-item {
+  text-align: center;
+}
+
+.tech-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.tech-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Tech name styling */
+.tech-name {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #444;
+}
+.card-top-rule {
+  display: flex;
   border-radius: 100vw;
-  
-  background: linear-gradient(45deg, var(--primary-color), rgba(0, 0, 0, 1));
+  gap: 1.5em;
 
-      border:  6px solid transparent;
-      transition: all .33s ease-in-out;
+  /* outline: 3px solid whitesmoke; */
 
-
-
-  &:hover {
-
-       
-        animation-name: border-loop;
-    animation-duration:2s;
-animation-iteration-count:infinite;
+  > * {
+    width:100%;
+    text-wrap: nowrap;
+    place-self: center;
   }
 
+}
+#bubbles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  gap: 3em;
+  /* width: 100%; */
+  /* background-color: ; */
+}
+@media (orientation: landscape) {
+  
+  .text-section {
+  /* grid-row: 4/6; */
+    grid-row: 3;
+    grid-column: 1/2;
+
+  /* background-color: blue; */
+  /* width: 100%; */
 
 
 }
@@ -216,18 +249,51 @@ animation-iteration-count:infinite;
   display: grid;
   width: 100%;
   overflow: hidden;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(3, auto);
   /* grid-template-rows: repeat( 6, 1fr); */
 }
-p {
-    font-size: 1.5em;
-    padding: 0.3em 0.9em 0.3em 0.6em;
-    margin: 1.2em 0 1.2em;;
-    line-height: 2em;
-    width: 100%;
+  #luuk-img {
+  /* grid-row: 2; */
+  /* grid-column: 3; */
+  justify-self: center;
+  border-radius: 100%;
+  /* display: flex; */
+  max-width: 30%;
+  /* flex-grow: 1; */
+  
+  /* max-width: 20vw; */
+  aspect-ratio: 1/1;
+  border: transparent 3px dashed;
+
+  transition: all .21s linear;
+
+  &:hover {
+    border-color: var(--highlight-color) ;
+
+  }
+  
+
+
+
 }
-@media (min-width: 1024px) {
-  .about {
+  .card {
+  grid-row: 3;
+  grid-column: 3/4;
+
+  width: 100%;
+  overflow: hidden;
+  padding: 2em 1em;
+  border-radius: 24px;
+  /* background-color: var(--primary-color); */
+  border: 3px solid var(--highlight-color);
+  display: flex;
+  flex-direction: column;
+
+  /* aspect-ratio: 17/22; */
+  }
+
+.about {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -242,6 +308,99 @@ p {
   }
 }
 
+.current-job-section {
+  cursor: pointer;
+  display: flex;;
+  flex-direction: column;
+  /* grid-template-columns: 1fr 3fr; */
+  width :100%;
+  place-items: center;
+        border-radius: 100vw;
+  /* background-color: orange; */
+          background-color: white;
+
+
+
+}
+.company-img {
+
+  height: auto;
+  width: inherit;
+
+
+        padding: 2rem 1rem;
+
+
+}
+.organisation-label{
+  text-wrap: nowrap;
+ 
+}
+h1 {
+  grid-row: 1;
+  grid-column: 1/-1;
+}
+
+  @keyframes border-loop {
+    0% {
+      outline-color: transparent;
+    }
+    15% {
+      outline-color: var(--secondary-color);
+    }
+
+    85% {
+      outline-color: var(--highlight-color);
+    }
+    100% {
+      outline-color: transparent;
+    }
+   
+  }
+
+  
+
+#links-to-socials {
+
+  > * {
+    cursor: pointer;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  gap: 3em;
+  text-align: center;
+  border-radius: 100vw;
+  
+  background: linear-gradient(45deg, var(--primary-color), gray);
+  padding: 6px;
+  
+      outline:  3px solid transparent;
+      transition: all .33s ease-in-out;
+
+
+
+  &:hover {
+    /* outline-color: ; */
+       
+        animation-name: border-loop;
+    animation-duration:2s;
+animation-iteration-count:infinite;
+  }
+
+
+
+}
+
+p {
+    font-size: 1.5em;
+    padding: 0.3em 0.9em 0.3em 0.6em;
+    margin: 1.2em 0 1.2em;;
+    line-height: 2em;
+    width: 100%;
+
+}
+
 .quote {
   grid-row: 2;
   grid-column: 1/2;
@@ -250,13 +409,13 @@ p {
   text-wrap:nowrap;
      font-style: italic;
       color: whitesmoke;
-      font-size: 3em;
+      font-size: 2.4em;
       place-self: center;
       /* background-color: orange; */
   &::before {
       content: open-quote;
       /* font-size: 100px; */
-       color: var(  --highlight-color);
+       color: var(--primary-color);
       font-weight: bold;
 
      
@@ -266,7 +425,7 @@ p {
 
   &::after {content: close-quote;
       /* font-size: 100px; */
-         color: var(  --highlight-color);
+         color: var(--primary-color);
       font-style: italic;
       font-weight: bold;
 
@@ -278,7 +437,7 @@ p {
 .text-section {
   /* grid-row: 4/6; */
 
-  grid-column: 1/-1;
+  /* grid-column: 1/-1; */
   /* background-color: blue; */
   width: 100%;
 

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-const props = defineProps<{text: string}>();
+const {text, borderColor, backgroundColor, img} = defineProps<{text: string,borderColor?: string, backgroundColor?: string, img?: string}>();
 
 </script><template>
-    <div>
-        {{ props.text }}
+    <div :style="{borderColor: borderColor ? borderColor : 'var(--highlight-color)', backgroundColor: backgroundColor ? backgroundColor : 'black'}">
+        <img v-if="img" :src="img" />
+        {{ text }}
     </div>
 </template>
 <style scoped>
@@ -11,16 +12,74 @@ const props = defineProps<{text: string}>();
         border-radius: 100%;
         aspect-ratio: 1/1;
         display: flex;
+        flex-grow: 1;;
         justify-content: center;
         align-items: center;
-        /* width: 100%; */
-        height: 150px;
-        width: 150px;
+        flex-direction: column;
+        min-width: inherit;
+        height: 210px;
+        width: 210px;
+        /* width: 6em; */
+
+        /* width: 150px; */
         /* padding: px; */
-        background-color: black;
+        padding: .9em;
         text-wrap: wrap;
         font-size: 1.5em;
-        border: 3px solid var(--highlight-color);
+        border: 3px solid transparent;
+        transition: border-color .33s ease-in-out;
+
+
+        background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 20px 10px rgba(255, 255, 255, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    ::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+}
+  }
+
+&&::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8),
+    transparent,
+    rgba(255, 255, 255, 0.3)
+  );
+}
+
+    }
+    img {
+        /* margin: auto auto; */
+        aspect-ratio: 1/1;
+        width: 50%;
     }
 
 </style>
