@@ -24,10 +24,11 @@ const getRouterLink = (path: string, name: string): RouterLinkModel => {
 }
 
 const navMenuConfig = [
-  getRouterLink('/', 'Shop'),
+    getRouterLink('/about', 'About me'),
+  getRouterLink('/', 'Personal Experiences'),
   getRouterLink('/cart', 'Cart'),
-  getRouterLink('/skills', 'My coding adventures'),
-  getRouterLink('/about', 'About me'),
+  getRouterLink('/skills', 'Portfolio'),
+
 ]
 </script>
 

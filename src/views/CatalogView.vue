@@ -17,7 +17,8 @@ const scrollToCatalogSection = () => {
 </script>
 
 <template>
-  <h1>Welcome my website</h1>
+  <h1>Development Adventures</h1>
+    <h2 class="funnyness">Here, we don’t measure experience in years. We measure it in the amount of coffee it takes to explain every thought, decision, and vision that went into it.</h2>
   <h2 class="underline" @click="scrollToCatalogSection">Explore my development adventures</h2>
 
   <main ref="catalogSection" class="wrapper">
@@ -32,6 +33,12 @@ const scrollToCatalogSection = () => {
 </template>
 
 <style scoped>
+.funnyness {
+  width: 75%;
+  text-wrap: wrap;
+  margin: auto;
+  /* font-style: italic; */
+}
 .underline {
   cursor: pointer;
   text-decoration: underline 1px solid white;

@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import luuk from "@/assets/luuk.jpg"
+import TextBubble from "@/components/TextBubble.vue";
+import { transform } from "typescript";
 import { ref, toValue } from "vue";
-
+import sopra from "@/assets/sopra.svg";
+import router from "@/router"
 const THRESHOLD_DEGREE = 2;
   const rotation = ref<undefined | number>(undefined);
   const thresholdDeg = ref(THRESHOLD_DEGREE)
   const skew  = ref("0");
   const scale = ref(1.00);
+  const borderColor = ref('transparent')
   const onMouseDown = () => { 
     skew.value = '3deg';
+    borderColor.value =  'whitesmoke';
        scale.value =0.96;
     thresholdDeg.value = THRESHOLD_DEGREE;
     if(rotation.value === undefined) rotation.value = setInterval(rotate, 150);
@@ -20,24 +25,34 @@ const THRESHOLD_DEGREE = 2;
     }
 
     const stopRotation = () => {
+      borderColor.value ='transparent';
       scale.value =1.00;
           skew.value = '0';
       thresholdDeg.value = 0;
     }
 
-
+    const navigateToExperiences =() => {
+      router.push({path: "/"})
+    }
 </script>
 <template>
   <div class="about-me-wrapper">
     <h1>Luuk Goedhart</h1>
+    <div class="card">
+<div id="bubbles">  <img  :src="luuk"  :style="{transform: `rotate(${rotation}deg)  scale(${scale})`, borderColor: `${borderColor}`}" id="luuk-img" alt="luuk foto"/><div id="links-to-socials"  >
+   
+              <TextBubble text="10+ jaar informatica" @mousedown="onMouseDown" @mouseleave="stopRotation"/>
+               <TextBubble text="LinkedIn"/>
 
-    <img  :src="luuk" @mousedown="onMouseDown" @mouseleave="stopRotation" :style="{transform: `rotate(${rotation}deg)  scale(${scale})`}" id="luuk-img" alt="luuk foto"/>
-       
-      <div class="links-to-socials">
-        linkedin
-        etc.
-      </div>
+      </div>  
+      <div class="current-job-section">
+                     <span class="employed-at-label">Employeed at:</span>
+               <img class="company-img" :src="sopra"/> 
+               </div> 
+</div>
+</div>
     <span class="quote">I turn coffee into code. </span>
+  
 
         <div class="text-section">
     <h2>Wie ben ik?</h2>
@@ -107,25 +122,34 @@ const THRESHOLD_DEGREE = 2;
 </template>
 
 <style scoped>
+.current-job-section {
+  display: grid;;
+  grid-template-columns: 1fr 3fr;
+  width :100%;
+  place-items: center;
+}
+.company-img {
+  background-size: contain;
 
+}
+.employed-at-label{
+  text-wrap: nowrap;
+}
 h1 {
   grid-row: 1;
   grid-column: 1/-1;
 }
 #luuk-img {
   grid-row: 2;
-  grid-column: 2/-1;
-  justify-self: end;
+  grid-column: 3;
+  justify-self: center;
   border-radius: 100%;
   display: flex;
-  /* background-color: orange; */
-  /* flex-grow: 1; */
-  /* min-width: 100%;
-  min-height: 100%; */
-  max-height: 256px;;
-  /* max-width: 128px;  */
+  flex-grow: 1;
+
+  max-width: 20vw;
   aspect-ratio: 1/1;
-  border: transparent 3px solid;
+  border: transparent 3px dashed;
   transition: all .21s linear;
 
 
@@ -133,22 +157,66 @@ h1 {
     border-color: var(--highlight-color) ;
 
   }
-  /* &:active {
-    transform: ;
-  } */
+
 
 }
+  @keyframes border-loop {
+    0% {
+      border-color: transparent;
+    }
+    15% {
+      border-color: var(--secondary-color);
+    }
 
-.links-to-socials {
-  grid-row: 2;
-  grid-column: 1/2;
-  place-items: center;
+    85% {
+      border-color: var(--highlight-color);
+    }
+    100% {
+      border-color: transparent;
+    }
+   
+  }
+
+  .card {
+  grid-row: 3;
+  grid-column:5;
+  padding: 2em 1em;
+  border-radius: 24px;
+  background-color: gray;
+  }
+
+#links-to-socials {
+
+
+  display: flex;
+  justify-content: space-between;
+  gap: 3em;
+  text-align: center;
+  border-radius: 100vw;
+  
+  background: linear-gradient(45deg, var(--primary-color), rgba(0, 0, 0, 1));
+
+      border:  6px solid transparent;
+      transition: all .33s ease-in-out;
+
+
+
+  &:hover {
+
+       
+        animation-name: border-loop;
+    animation-duration:2s;
+animation-iteration-count:infinite;
+  }
+
+
+
 }
 .about-me-wrapper {
   display: grid;
   width: 100%;
   overflow: hidden;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   /* grid-template-rows: repeat( 6, 1fr); */
 }
 p {
@@ -165,13 +233,26 @@ p {
     flex-direction: column;
     align-items: center;
   }
+  .links-to-socials {
+    grid-column: 1/2;
+  }
+  .quote {
+      grid-row: 3;
+  grid-column: 1/2;
+  }
 }
 
 .quote {
   grid-row: 2;
-  grid-column: 1;
+  grid-column: 1/2;
+  width: 100%;
+  max-lines: 2;
+  text-wrap:nowrap;
      font-style: italic;
       color: whitesmoke;
+      font-size: 3em;
+      place-self: center;
+      /* background-color: orange; */
   &::before {
       content: open-quote;
       /* font-size: 100px; */

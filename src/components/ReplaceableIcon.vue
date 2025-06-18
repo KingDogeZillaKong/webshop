@@ -1,7 +1,6 @@
 <script setup lang="ts">
 //TODO rename to ICON
 // TODO hover elementen voor een portfolioassignment component moeten echt aangepast worden om op de icons alleen de kunne hoveren
-// TODO let users pay with Smeckels for my skills. Remove car brands and stuff. Let people buy Super Advanced things
 import { ref } from 'vue'
 import IconFile from '@/components/icons/IconFile.vue'
 import IconApp from '@/components/icons/IconApp.vue'

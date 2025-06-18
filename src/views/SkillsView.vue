@@ -15,6 +15,11 @@ import type { SkillModel } from '@/skill-model'
 const route = useRoute()
 
 const { params } = route
+const techUsedAtAssignments: Tech[] = PORTFOLIO_ASSIGNMENTS.map(ass => ass.tech.map(skill => skill.tech)).flat();
+const SET_OF_USED_TECHS : SkillModel[] =  SKILLS.filter(skill => techUsedAtAssignments.includes(skill.tech) )
+
+
+// const VISIBLE_SKILLS: Tech[] = ref(result());
 
 function getSelectedSkillFromRouteParams(params: RouteParamsGeneric): string | undefined {
   return Boolean(params['skill']) ? (params['skill'] as string) : undefined
@@ -56,7 +61,7 @@ const onSkillClicked = (skill: Tech) => {
   <div class="skill-page-wrapper">
     <div class="flex-full">
       <FlexList
-        :items="SKILLS"
+        :items="SET_OF_USED_TECHS"
         :selected="scope"
         @skill-clicked="(tech: Tech) => onSkillClicked(tech)"
       />
