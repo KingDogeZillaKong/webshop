@@ -9,14 +9,7 @@ const counter = ref(amount) || 1
 onUpdated(() => {
   counter.value = amount
 })
-// const onMinusClicked = () => {
-//     if(counter.value === 1) return;
-//     counter.value = counter.value - 1;
-// }
-//  const onPlusClicked = () => {
-//         if(counter.value === 99) return;
-//     counter.value = counter.value + 1;
-// }
+
 </script>
 <template>
   <div class="counter-wrapper">
@@ -63,8 +56,6 @@ onUpdated(() => {
   place-items: center;
 }
 .the-button {
-  /* background-color: gainsboro; */
-  /* margin: auto; */
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -75,7 +66,6 @@ onUpdated(() => {
   transition: all 0.24s ease-out;
   border-bottom: 1px solid transparent;
   &:hover {
-    /* transform: scale(1.1); */
     border-color: black;
   }
 }

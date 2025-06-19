@@ -18,10 +18,8 @@ const store = useCartStore()
 const onAmountUpdatedInShoppingCart = (item: ProductModel, diff: number) => {
   if (diff > 0) {
     store.onProductAddedToCart(item)
-    // quantityRef.value = quantityRef.value -1;
   } else if (diff < 0) {
     store.decreaseNumberOfItemsInCart(item)
-    // quantityRef.value = quantityRef.value +1;
   }
 }
 </script>
@@ -42,10 +40,6 @@ const onAmountUpdatedInShoppingCart = (item: ProductModel, diff: number) => {
         @counterChanged="(count) => onAmountUpdatedInShoppingCart(item, count)"
       />
     </div>
-
-    <!-- <div class="delete">Delete</div> -->
-    <!-- navigate to product -->
-    <!-- <div>Change the amount of products</div> -->
   </div>
 </template>
 
@@ -59,19 +53,12 @@ const onAmountUpdatedInShoppingCart = (item: ProductModel, diff: number) => {
   gap: 0.33em;
   padding: 1.5em;
   border-bottom: 1px solid whitesmoke;
-  /* padding: .33em 1.2em; */
-  /* margin-bottom: .33em; */
-  /* border: 1px solid black; */
-  /* background-color: orange; */
   width: 100%;
   height: 100%;
-  /* min-height: 1.2em; */
-  /* background-color: aquamarine; */
   .product-image {
     aspect-ratio: 1/1;
     width: 48px;
-    /* grid-row: 1/-1; */
-    /* grid-column: 1;; */
+
   }
 
   .flex {
@@ -80,23 +67,11 @@ const onAmountUpdatedInShoppingCart = (item: ProductModel, diff: number) => {
     padding: 0.75em;
     font-weight: bold;
     flex-direction: row;
-    /* gap: .66em; */
   }
   .description {
-    /* grid-row: 2; */
-    /* grid-column: 2/-2; */
     font-style: italic;
   }
 
-  .delete {
-    /* grid-column: -1; */
-    /* grid-row: 1/-1; */
-  }
-
-  /* .price {
-            grid-row: 2;
-            grid-column: -1;
-        } */
   .clickable {
     display: flex;
     flex-grow: 1;

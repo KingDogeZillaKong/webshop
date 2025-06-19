@@ -1,6 +1,6 @@
 <script setup lang="ts">
 //TODO rename to ICON
-// TODO hover elementen voor een portfolioassignment component moeten echt aangepast worden om op de icons alleen de kunne hoveren
+
 import { ref } from 'vue'
 import IconFile from '@/components/icons/IconFile.vue'
 import IconApp from '@/components/icons/IconApp.vue'
@@ -61,9 +61,10 @@ const onMouseLeaveSelf = () => {
       background-color: rgba(0, 0, 0, 0.12);
     }
   }
+
 }
 
-.overlay {
+  .overlay {
   position: absolute;
   display: block;
   width: 100%;
@@ -71,8 +72,10 @@ const onMouseLeaveSelf = () => {
   aspect-ratio: 1/1;
   background-color: rgba(0, 0, 0, 0.12);
   opacity: 0;
+
   transition: opacity ease-in-out 0.3s;
 }
+
 .original-image {
   opacity: 1;
   transition: opacity ease-in-out 0.3s;

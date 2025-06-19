@@ -15,10 +15,6 @@ const props = defineProps<{ amount: number; cartColor: string }>()
   width: 64px;
   height: 64px;
   place-content: center;
-
-  /* > svg {
-    fill: cartColor;
-   } */
 }
 .circle {
   position: absolute;

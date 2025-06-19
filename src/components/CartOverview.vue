@@ -2,11 +2,8 @@
 import type { ProductModel } from '@/product-model'
 import { useCartStore } from '@/stores/cart'
 import CartListItem from './CartListItem.vue'
-// import {IconCoffee} from "@/components/icons/IconCoffee.vue";
 import IconCoffee from './icons/IconCoffee.vue'
 
-// const props =  defineProps<{items:Map<ProductModel, number>}>();
-//     const {items} = props;
 
 const cartStore = useCartStore()
 
@@ -31,7 +28,6 @@ function findProduct(barcode: number) {
           }}
         </h1>
         <ul class="items-in-cart-overview">
-          <!-- <li v-for="x of cartStore.cartItems">Barcode: {{x[0]  }} | Aantal: {{  x[1]}}</li> -->
           <li v-for="x in cartStore.cartMap" :key="x[0].barcode">
             <CartListItem
               :item="findProduct(x[0].barcode)"
@@ -57,13 +53,10 @@ function findProduct(barcode: number) {
   display: block;
   padding: 24px;
   min-width: 300px;
-  /* min-height: 80vh; */
-  /* border: 1px solid black; */
   border-radius: 12px;
   box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
   background: rgba(122, 122, 122, 0.21);
   backdrop-filter: blur(9px);
-  /* color: white; */
 }
 .cart-overview-wrapper {
   position: relative;
@@ -73,14 +66,12 @@ function findProduct(barcode: number) {
   color: white;
 }
 .expanded-cart {
-  /* max-height: 480px; or whatever height fits your layout */
 
   padding: 1em 0.33em 1em 0.33em;
 }
 .total-damage {
   display: flex;
   float: right;
-  /* background-color: orange; */
 }
 .items-in-cart-overview {
   display: flex;

@@ -24,9 +24,6 @@ const { assignment } = props
     </div>
     <h3 class="portfolio-description">{{ assignment.abstract }}</h3>
 
-    <!-- <div class="details-section"> -->
-
-    <!-- </div> -->
 
     <div class="links">
       <div class="portfolio-assignment-thumbnail">
@@ -40,9 +37,6 @@ const { assignment } = props
         <ReplaceableIcon :imageSrc="github" :type="'code'" @click="$emit('openGithub')" />
       </div>
 
-      <!-- Als een gebruiker klikt op de techstack, leidt hem naar een pagina waar nogmaals een overzicht gegeven wordt van
-         alle projecten die ik daar mee gedaan heb. Ook leuk is het om een algemeen verhaal te vertellen over wat ik van de techstack vind
-         -->
     </div>
     <details>
       <summary>See More</summary>
@@ -67,18 +61,13 @@ summary {
 .portfolio-assignment-wrapper {
   border: 1px solid transparent;
   border-bottom-color: whitesmoke;
-  /* background-color: orange; */
-  /* border-top-color: whitesmoke; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 2fr 1fr 2fr auto;
   gap: 0.33em;
-  /* background-color: blue; */
   width: 100%;
   height: 100%;
   overflow: hidden;
-  /* width: 100%; */
-  /* justify-content: start; */
   align-items: center;
   padding: 0.66em 0.33em;
   .portfolio-assignment-thumbnail {
@@ -90,8 +79,6 @@ summary {
     aspect-ratio: 1/1;
     overflow: hidden;
     padding: 0.15em;
-    /* background-color: orange; */
-    /* background-color: orange; */
   }
 }
 
@@ -108,7 +95,6 @@ summary {
 .full-row-wrapper {
   display: grid;
   grid-template-columns: 120px 1fr;
-  /* background-color: orange; */
   align-items: center;
   justify-content: start;
   grid-row: 2;
@@ -119,25 +105,16 @@ summary {
 .links {
   grid-row: 4;
   grid-column: 1/-1;
-  /* place-self: end; */
-  /* align-items: center; */
   display: flex;
   justify-content: center;
   gap: 1em;
-  /* background: linear-gradient(0deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .27)); */
   backdrop-filter: blur(9px);
   > * {
     height: 64px;
     justify-content: center;
 
-    /* background: linear-gradient(0deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .27)); */
-    /* background-color: rgba(255, 255, 255, .27); */
-    /* background: linear-gradient(0deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .27)); */
-    /* backdrop-filter: blur(6px); */
   }
-  /* display: inline-block; */
-  /* gap: .33em; */
-  /* justify-self:end */
+
 }
 details {
   grid-column: 1/-1;

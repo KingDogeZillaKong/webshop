@@ -19,10 +19,8 @@ const {text, borderColor, backgroundColor, img} = defineProps<{text: string,bord
         min-width: inherit;
         height: 120px;
         width: 120px;
-        /* width: 6em; */
         color: gray;
-        /* width: 150px; */
-        /* padding: px; */
+
         padding: .9em;
         text-wrap: wrap;
         font-size: 1.5em;

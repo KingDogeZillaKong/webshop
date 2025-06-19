@@ -44,10 +44,7 @@ const navMenuConfig = [
           link.name
         }}</RouterLink>
       </div>
-      <!-- <RouterLink to="/">Shop</RouterLink>
-        <RouterLink to="/cart">Cart</RouterLink>
-          <RouterLink to="/portfolio">Portfolio</RouterLink>
-               <RouterLink to="/skills">My Coding Adventures</RouterLink> -->
+     
     </nav>
     <div class="fancy-nav-wrapper-mobile" v-if="isExpanded">
       <nav class="mobile-nav">
@@ -57,10 +54,6 @@ const navMenuConfig = [
           }}</RouterLink>
         </div>
 
-        <!-- <RouterLink to="/">Shop</RouterLink>
-        <RouterLink to="/cart">Cart</RouterLink>
-          <RouterLink to="/portfolio">My work</RouterLink>
-               <RouterLink to="/skills">My Coding Adventures</RouterLink> -->
       </nav>
     </div>
   </div>
@@ -79,7 +72,6 @@ const navMenuConfig = [
 }
 a {
   display: inline-block;
-  /* padding: 1rem 1rem; */
   border-left: 1px solid var(--color-border);
 }
 
@@ -109,23 +101,15 @@ a.router-link-exact-active:hover {
 .mobile-nav {
   grid-row: 2;
   position: relative;
-  /* z-index: 9999; */
-  /* position: relative  ;; */
   display: flex;
   flex-direction: column;
-  /* justify-items: center; */
-  /* justify-content: center; */
   align-items: start;
-  /* flex-grow: 1;; */
-  /* justify-content: space-between; */
   width: 100%;
   height: 100%;
   font-size: 12px;
   text-align: left;
   transition: transform 1s ease-in;
-  /* transform: translateY(100svh); */
-  /* background-color: orange; */
-  /* margin-top: 2rem; */
+
 
   a.router-link-exact-active {
     color:  var(--highlight-color)
@@ -138,10 +122,6 @@ a.router-link-exact-active:hover {
   }
 }
 
-/* .menu-wrapper {
-        display: block;
-
-    } */
 .menu-icon-wrapper {
   z-index: 9999;
   width: 60px;
@@ -165,16 +145,11 @@ a.router-link-exact-active:hover {
   z-index: -1;
   background: rgba(0, 0, 0, 0.54);
   backdrop-filter: blur(18px);
-
-  /* background-color: blue  ; */
-  /* backdrop-filter: blur(12px); */
 }
 
 .menu-wrapper {
-  /* background-color: black; */
   display: block;
   z-index: 999;
-  /* grid-template-rows: 90px auto; */
 }
 
 .mobile-nav {
@@ -208,26 +183,18 @@ a.router-link-exact-active:hover {
   .desktop-nav {
     position: relative;
 
-    /* display: none; */
     display: flex;
-    /* flex-direction: column; */
-    /* flex-grow: 1;; */
-    /* justify-content: space-between; */
+   
     place-items: center;
-    /* width: 100%; */
     font-size: 12px;
     text-align: left;
     position: relative;
-    /* background-color: orange; */
     display: flex;
     width: unset;
     flex-direction: row;
-    /* flex-grow: 1;; */
-    /* justify-content: space-between; */
-    /* width: 100%; */
+
     font-size: 12px;
     text-align: center;
-    /* margin-top: 2rem; */
   }
 }
 </style>
