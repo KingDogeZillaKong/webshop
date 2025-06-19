@@ -20,7 +20,7 @@ const navigateToCart = () => {
 }
 </script>
 
-<template>
+<template >
   <header id="navnav">
     <Navigation />
 
@@ -56,10 +56,14 @@ const navigateToCart = () => {
 </template>
 
 <style scoped>
+.template {
+  background: orange !important;
+}
 #navnav {
   position: relative;
   z-index: 9999;
   display: flex;
+  margin-bottom:2.1rem;
   justify-content: space-between;
 }
 header {

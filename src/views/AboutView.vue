@@ -1,95 +1,31 @@
 <script setup lang="ts">
-import luuk from "@/assets/luuk.jpg"
-import TextBubble from "@/components/TextBubble.vue";
-import { transform } from "typescript";
-import { ref, toValue } from "vue";
-import sopra from "@/assets/sopra.svg";
-import router from "@/router"
-import java from "@/assets/java.svg";
-import postgres from "@/assets/postgres.svg"
-import angular from "@/assets/angular.svg";
-import linkedin from "@/assets/linkedin.svg"
-import IDCard from "@/components/IDCard.vue"
-import {navigateToLinkedIn, navigateToSopraWebsite} from "@/mixins"
-const THRESHOLD_DEGREE = 2;
-  const rotation = ref<undefined | number>(undefined);
-  const thresholdDeg = ref(THRESHOLD_DEGREE)
-  const skew  = ref("0");
-  const underlineColor = ref('transparent');
-  const scale = ref(1.00);
-  const borderColor = ref('transparent')
-  const onMouseDown = () => { 
-    skew.value = '3deg';
-    borderColor.value =  'var(--primary-color)';
-       scale.value =0.96;
-    thresholdDeg.value = THRESHOLD_DEGREE;
-    underlineColor.value = 'var(--highlight-color)'
-    if(rotation.value === undefined) rotation.value = setInterval(rotate, 150);
+import IDCard from '@/components/IDCard.vue';
+import { onBeforeUpdate, onMounted, ref, Transition } from 'vue';
   
-  }
+const spawn = ref(false)
 
-      function rotate  ()  {
-      rotation.value = thresholdDeg.value + (rotation.value || 20 );
-    }
+onMounted(() => {
+warnDisabled();
+})
 
-    const stopRotation = () => {
-      borderColor.value ='transparent';
-      scale.value =1.00;
-          skew.value = '0';
-      thresholdDeg.value = 0;
-          underlineColor.value = 'transparent'
-    }
+function warnDisabled() {
+  spawn.value = false
+  setTimeout(() => {
+    spawn.value = true
+  }, 1500)
+}
 
-    const navigateToExperiences =() => {
-      router.push({path: "/"})
-    }
+    // const navigateToExperiences =() => {
+    //   router.push({path: "/"})
+    // }
 </script>
 <template>
   <div class="about-me-wrapper">
-    <!-- <IDCard/> -->
-    <div class="card">
+    <!-- Text on the left side-->
+     <!-- Card on the right side-->
+      <!-- residu van de tekst onder, maar over de hele breedte-->
 
-
-<div id="bubbles"> <div class="card-top-rule"><img  :src="luuk"  :style="{transform: `rotate(${rotation}deg)  scale(${scale})`, borderColor: `${borderColor}`}" id="luuk-img" alt="luuk foto"/>
-            <div><h1>Luuk Goedhart</h1>
-              <span class="quote">I <span class="turn" :style="{textDecorationColor: `${underlineColor}`}">turn</span>  coffee into code. </span>
-              </div>
-</div>
-<!-- <h3 class="organization-label">Organization</h3> -->
-      <div class="current-job-section" @click="navigateToSopraWebsite">
-        
-               <img class="company-img" :src="sopra"/> 
-               </div> 
-  <div id="links-to-socials"  >
-   <div class="tech-item">
-              <TextBubble text="10+ jaar ICT" @mousedown="onMouseDown" @mouseleave="stopRotation" background-color="white" />
-              </div>
-                <div class="tech-item">
-               <TextBubble  text="LinkedIn" :img="linkedin" @click="navigateToLinkedIn" background-color="white"/>
-</div>
-      </div> 
-                   
-</div>
-<div class="favourite-stack">
-  <h2>My favourite stack</h2>
-  <div class="tech-list">
-    <div class="tech-item">
-                    <TextBubble text="Angular" :background-color="'transparent'" :img="angular"/>
-
-    </div>
-
-    <div class="tech-item">
-                    <TextBubble text="Java" :background-color="'transparent'" :img="java" />
-
-    </div>
-    <div class="tech-item">
-                    <TextBubble text="Postgres" :background-color="'transparent'" :img="postgres"  />
-    </div>
-  
-  </div>
-</div>
-</div>
-  
+   
 
         <div class="text-section">
     <h2>Wie ben ik?</h2>
@@ -114,7 +50,7 @@ const THRESHOLD_DEGREE = 2;
       duingebied in Castricum.
     </p>
   </div>
-<div class="text-section2">
+<!-- <div class="text-section2">
     <h2>Wat wil ik?</h2>
     <p>
       Door mijn expertise in web-development wil ik deze kennis graag in de praktijk verder
@@ -157,11 +93,32 @@ const THRESHOLD_DEGREE = 2;
       zelfstandig en neem verantwoordelijkheid voor mijn eigen taken, zoals te zien is aan mijn
       zelfgemaakte webapplicaties.
     </p>
+    </div> -->
+    <Transition>
+     <div :style="{       transform: spawn ? 'translateX(0%)' : 'translateX(100%)'}" class="card">
+
+    <IDCard/>
     </div>
+  </Transition>
+  
   </div>
 </template>
 
 <style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: transform 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  transform:
+}
+h2 {
+  font-weight: bold;
+  font-size: 2rem;
+  padding-left: .5em;
+}
 .turn {
   transition: all 1s ease-in-out;
   text-underline-offset: 3px;
@@ -203,16 +160,7 @@ const THRESHOLD_DEGREE = 2;
   text-align: center;
 }
 
-.tech-logo {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 10px;
-  transition: transform 0.3s ease;
-}
 
-.tech-logo:hover {
-  transform: scale(1.1);
-}
 
 /* Tech name styling */
 .tech-name {
@@ -221,163 +169,58 @@ const THRESHOLD_DEGREE = 2;
   font-weight: bold;
   color: #444;
 }
-.card-top-rule {
-  display: flex;
-  border-radius: 100vw;
-  gap: 1.5em;
 
-  /* outline: 3px solid whitesmoke; */
 
-  > * {
-    width:100%;
-    text-wrap: nowrap;
-    place-self: center;
-  }
-
-}
-#bubbles {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: space-between;
-  gap: 3em;
-  /* width: 100%; */
-  /* background-color: ; */
-}
 @media (orientation: landscape) {
   .text-section3 {
   grid-row: 3;
-  grid-column: 1/-1;
+  grid-column: 3/-1;
 }
   .text-section {
     grid-row: 1;
-    grid-column: 1/2;
+    grid-column: 3/-1;
 }
 
   .text-section2 {
   /* grid-row: 4/6; */
     grid-row: 2;
-    grid-column: 1/2;
+    grid-column: 3/-1;
   }
 .about-me-wrapper {
   display: grid;
   width: 100%;
+  grid-column-gap: 1.5em;
   overflow: hidden;
   /* background-color: orange; */
     grid-template-rows: repeat(4, auto);
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(5, auto);
+
+  background: var(--primary-color);
+  border-radius: 24px;
 
   /* grid-template-rows: repeat( 6, 1fr); */
 }
-  #luuk-img {
-  /* grid-row: 2; */
-  /* grid-column: 3; */
-  justify-self: center;
-  border-radius: 100%;
-  /* display: flex; */
-  max-width: 30%;
-  /* flex-grow: 1; */
-  
-  /* max-width: 20vw; */
-  aspect-ratio: 1/1;
-  border: transparent 3px dashed;
-    outline: 2px solid var(--primary-color);
-  transition: all .21s linear;
-
-  &:hover {
-    border-color: var(--highlight-color) ;
-
-  }
-  
-
-
-
-}
-  .card {
-    background: whitesmoke;
-    color: black;
-  grid-row: 1;
-  grid-column: 3/4;
-
-  /* width: 100%; */
-  overflow: hidden;
-  padding: 2em 1em;
-  border-radius: 24px;
-  /* background-color: var(--primary-color); */
-  border: 3px solid var(--secondary-color);
-  display: flex;
-  flex-direction: column;
-
-  /* aspect-ratio: 17/22; */
-  }
-
-.about {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .links-to-socials {
-    grid-column: 1/2;
-  }
-  .quote {
-      grid-row: 3;
-  grid-column: 1/2;
-  }
-}
-
-.current-job-section {
-  cursor: pointer;
-  display: flex;;
-  flex-direction: column;
-  /* grid-template-columns: 1fr 3fr; */
-  width :100%;
-  place-items: center;
-        border-radius: 100vw;
-        /* border: 1px solid var(--highlight-color); */
-  /* background-color: orange; */
-          /* background-color: white; */
-
-
-
-}
-.company-img {
-
-  height: auto;
-  width: inherit;
-
-
-        padding: 2rem 1rem;
-
-
-}
-.organisation-label{
-  text-wrap: nowrap;
  
-}
-h1 {
+  .card {
+    /* background: whitesmoke;
+    color: black; */
   grid-row: 1;
-  grid-column: 1/-1;
+  grid-column:1/3;
+  overflow: hidden;
+  display: flex;
+      box-shadow:  10px 0px 12px 7px rgba(0,0,0.2);
+    width: 100%;
+    background-color: black;;
+transform: translateX(100%);
+ 
+
+    transition: transform 1.5s ease-in;
+
+
+  }
 }
 
-  @keyframes border-loop {
-    0% {
-      outline-color: transparent;
-    }
-    15% {
-      outline-color: var(--secondary-color);
-    }
 
-    85% {
-      outline-color: var(--highlight-color);
-    }
-    100% {
-      outline-color: transparent;
-    }
-   
-  }
-
-  
 
 #links-to-socials {
 
@@ -386,7 +229,7 @@ h1 {
   }
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 3em;
   text-align: center;
   border-radius: 100vw;
@@ -420,40 +263,7 @@ p {
 
 }
 
-.quote {
-  grid-row: 2;
-  grid-column: 1/2;
-  width: 100%;
-  max-lines: 2;
-  text-wrap:wrap;
-  text-align: center;
-     font-style: italic;
-      color: gray;
-      font-size: 2.4em;
-      /* place-self: end; */
-      /* background-color: orange; */
-  &::before {
-      content: open-quote;
-      /* font-size: 100px; */
-       color: var(--primary-color);
-      font-weight: bold;
 
-     
-
-      vertical-align: middle;
-}
-
-  &::after {content: close-quote;
-      /* font-size: 100px; */
-         color: var(--primary-color);
-      font-style: italic;
-      font-weight: bold;
-
-
-         vertical-align: middle;
-}
-
-}
 .text-section {
   /* grid-row: 4/6; */
 

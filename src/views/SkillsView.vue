@@ -160,7 +160,7 @@ const onSkillClicked = (skill: Tech) => {
   align-items: center;
 }
 .flex-full {
-  padding-top: 2.1em;
+
   width: 100%;
   margin: auto auto;
   display: flex;

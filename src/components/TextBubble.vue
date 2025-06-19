@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const {text, borderColor, backgroundColor, img} = defineProps<{text: string,borderColor?: string, backgroundColor?: string, img?: string}>();
+const {text, borderColor, backgroundColor, img} = defineProps<{text?: string,borderColor?: string, backgroundColor?: string, img?: string}>();
 
 </script><template>
     <div :style="{borderColor: borderColor ? borderColor : 'var(--primary-color)', backgroundColor: backgroundColor ? backgroundColor : 'black'}">
         <img v-if="img" :src="img" />
-        {{ text }}
+        <span v-if="text">{{ text }}</span>
     </div>
 </template>
 <style scoped>
@@ -17,8 +17,9 @@ const {text, borderColor, backgroundColor, img} = defineProps<{text: string,bord
         align-items: center;
         flex-direction: column;
         min-width: inherit;
-        height: 120px;
-        width: 120px;
+        
+        width:  min(120px, 25vw);
+                  height:auto; 
         color: gray;
 
         padding: .9em;
