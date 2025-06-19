@@ -8,19 +8,22 @@ import router from "@/router"
 import java from "@/assets/java.svg";
 import postgres from "@/assets/postgres.svg"
 import angular from "@/assets/angular.svg";
+import linkedin from "@/assets/linkedin.svg"
 import IDCard from "@/components/IDCard.vue"
 import {navigateToLinkedIn, navigateToSopraWebsite} from "@/mixins"
 const THRESHOLD_DEGREE = 2;
   const rotation = ref<undefined | number>(undefined);
   const thresholdDeg = ref(THRESHOLD_DEGREE)
   const skew  = ref("0");
+  const underlineColor = ref('transparent');
   const scale = ref(1.00);
   const borderColor = ref('transparent')
   const onMouseDown = () => { 
     skew.value = '3deg';
-    borderColor.value =  'var(--highlight-color)';
+    borderColor.value =  'var(--primary-color)';
        scale.value =0.96;
     thresholdDeg.value = THRESHOLD_DEGREE;
+    underlineColor.value = 'var(--highlight-color)'
     if(rotation.value === undefined) rotation.value = setInterval(rotate, 150);
   
   }
@@ -34,6 +37,7 @@ const THRESHOLD_DEGREE = 2;
       scale.value =1.00;
           skew.value = '0';
       thresholdDeg.value = 0;
+          underlineColor.value = 'transparent'
     }
 
     const navigateToExperiences =() => {
@@ -48,7 +52,7 @@ const THRESHOLD_DEGREE = 2;
 
 <div id="bubbles"> <div class="card-top-rule"><img  :src="luuk"  :style="{transform: `rotate(${rotation}deg)  scale(${scale})`, borderColor: `${borderColor}`}" id="luuk-img" alt="luuk foto"/>
             <div><h1>Luuk Goedhart</h1>
-              <span class="quote">I turn coffee into code. </span>
+              <span class="quote">I <span class="turn" :style="{textDecorationColor: `${underlineColor}`}">turn</span>  coffee into code. </span>
               </div>
 </div>
 <!-- <h3 class="organization-label">Organization</h3> -->
@@ -58,10 +62,10 @@ const THRESHOLD_DEGREE = 2;
                </div> 
   <div id="links-to-socials"  >
    <div class="tech-item">
-              <TextBubble text="10+ jaar informatica" @mousedown="onMouseDown" @mouseleave="stopRotation"/>
+              <TextBubble text="10+ jaar ICT" @mousedown="onMouseDown" @mouseleave="stopRotation" background-color="white" />
               </div>
                 <div class="tech-item">
-               <TextBubble  text="LinkedIn" @click="navigateToLinkedIn"/>
+               <TextBubble  text="LinkedIn" :img="linkedin" @click="navigateToLinkedIn" background-color="white"/>
 </div>
       </div> 
                    
@@ -70,16 +74,16 @@ const THRESHOLD_DEGREE = 2;
   <h2>My favourite stack</h2>
   <div class="tech-list">
     <div class="tech-item">
-                    <TextBubble text="Angular" :background-color="'transparent'" :img="angular" @mousedown="onMouseDown" @mouseleave="stopRotation"/>
+                    <TextBubble text="Angular" :background-color="'transparent'" :img="angular"/>
 
     </div>
 
     <div class="tech-item">
-                    <TextBubble text="Java" :background-color="'transparent'" :img="java" @mousedown="onMouseDown" @mouseleave="stopRotation"/>
+                    <TextBubble text="Java" :background-color="'transparent'" :img="java" />
 
     </div>
     <div class="tech-item">
-                    <TextBubble text="PostgreSQL" :background-color="'transparent'" :img="postgres" @mousedown="onMouseDown" @mouseleave="stopRotation"/>
+                    <TextBubble text="Postgres" :background-color="'transparent'" :img="postgres"  />
     </div>
   
   </div>
@@ -109,7 +113,8 @@ const THRESHOLD_DEGREE = 2;
       fitness beoefen. Als het erg mooi weer is doe ik buiten calisthenics, of wandel ik door het
       duingebied in Castricum.
     </p>
-
+  </div>
+<div class="text-section2">
     <h2>Wat wil ik?</h2>
     <p>
       Door mijn expertise in web-development wil ik deze kennis graag in de praktijk verder
@@ -128,6 +133,8 @@ const THRESHOLD_DEGREE = 2;
       softwareoplossingen te realiseren. Zo heb ik erg veel voldoening gekregen tijdens mijn vorige
       werk als leerkracht in de IT.
     </p>
+    </div>
+    <div class="text-section3">
     <h2>Wat kan ik?</h2>
     <p>
       Ik ben een software engineer die gespecialiseerd is op het gebied van webapplicaties.
@@ -155,7 +162,11 @@ const THRESHOLD_DEGREE = 2;
 </template>
 
 <style scoped>
-
+.turn {
+  transition: all 1s ease-in-out;
+  text-underline-offset: 3px;
+  text-decoration: 2px underline solid;
+}
 .favourite-stack {
   text-align: center;
   /* background-color: #f9f9f9; */
@@ -234,23 +245,28 @@ const THRESHOLD_DEGREE = 2;
   /* background-color: ; */
 }
 @media (orientation: landscape) {
-  
-  .text-section {
-  /* grid-row: 4/6; */
-    grid-row: 3;
-    grid-column: 1/2;
-
-  /* background-color: blue; */
-  /* width: 100%; */
-
-
+  .text-section3 {
+  grid-row: 3;
+  grid-column: 1/-1;
 }
+  .text-section {
+    grid-row: 1;
+    grid-column: 1/2;
+}
+
+  .text-section2 {
+  /* grid-row: 4/6; */
+    grid-row: 2;
+    grid-column: 1/2;
+  }
 .about-me-wrapper {
   display: grid;
   width: 100%;
   overflow: hidden;
+  /* background-color: orange; */
+    grid-template-rows: repeat(4, auto);
   grid-template-columns: repeat(4, auto);
-  grid-template-rows: repeat(3, auto);
+
   /* grid-template-rows: repeat( 6, 1fr); */
 }
   #luuk-img {
@@ -265,7 +281,7 @@ const THRESHOLD_DEGREE = 2;
   /* max-width: 20vw; */
   aspect-ratio: 1/1;
   border: transparent 3px dashed;
-
+    outline: 2px solid var(--primary-color);
   transition: all .21s linear;
 
   &:hover {
@@ -278,15 +294,17 @@ const THRESHOLD_DEGREE = 2;
 
 }
   .card {
-  grid-row: 3;
+    background: whitesmoke;
+    color: black;
+  grid-row: 1;
   grid-column: 3/4;
 
-  width: 100%;
+  /* width: 100%; */
   overflow: hidden;
   padding: 2em 1em;
   border-radius: 24px;
   /* background-color: var(--primary-color); */
-  border: 3px solid var(--highlight-color);
+  border: 3px solid var(--secondary-color);
   display: flex;
   flex-direction: column;
 
@@ -316,8 +334,9 @@ const THRESHOLD_DEGREE = 2;
   width :100%;
   place-items: center;
         border-radius: 100vw;
+        /* border: 1px solid var(--highlight-color); */
   /* background-color: orange; */
-          background-color: white;
+          /* background-color: white; */
 
 
 
@@ -406,11 +425,12 @@ p {
   grid-column: 1/2;
   width: 100%;
   max-lines: 2;
-  text-wrap:nowrap;
+  text-wrap:wrap;
+  text-align: center;
      font-style: italic;
-      color: whitesmoke;
+      color: gray;
       font-size: 2.4em;
-      place-self: center;
+      /* place-self: end; */
       /* background-color: orange; */
   &::before {
       content: open-quote;

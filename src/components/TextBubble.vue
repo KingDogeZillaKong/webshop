@@ -2,7 +2,7 @@
 const {text, borderColor, backgroundColor, img} = defineProps<{text: string,borderColor?: string, backgroundColor?: string, img?: string}>();
 
 </script><template>
-    <div :style="{borderColor: borderColor ? borderColor : 'var(--highlight-color)', backgroundColor: backgroundColor ? backgroundColor : 'black'}">
+    <div :style="{borderColor: borderColor ? borderColor : 'var(--primary-color)', backgroundColor: backgroundColor ? backgroundColor : 'black'}">
         <img v-if="img" :src="img" />
         {{ text }}
     </div>
@@ -17,10 +17,10 @@ const {text, borderColor, backgroundColor, img} = defineProps<{text: string,bord
         align-items: center;
         flex-direction: column;
         min-width: inherit;
-        height: 210px;
-        width: 210px;
+        height: 120px;
+        width: 120px;
         /* width: 6em; */
-
+        color: gray;
         /* width: 150px; */
         /* padding: px; */
         padding: .9em;
