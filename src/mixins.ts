@@ -14,9 +14,9 @@ export const onOpenGithub = (assignment: PortfolioAssignmentModel) => {
 }
 
 export const navigateToLinkedIn = () => {
-  window.open("https://www.linkedin.nl/in/luuk-goedhart")
+  window.open('https://www.linkedin.nl/in/luuk-goedhart')
 }
 
 export const navigateToSopraWebsite = () => {
-    window.open("https://www.soprasteria.fr")
+  window.open('https://www.soprasteria.fr')
 }

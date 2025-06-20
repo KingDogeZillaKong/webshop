@@ -9,7 +9,6 @@ const counter = ref(amount) || 1
 onUpdated(() => {
   counter.value = amount
 })
-
 </script>
 <template>
   <div class="counter-wrapper">

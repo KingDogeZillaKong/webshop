@@ -58,7 +58,6 @@ const onAmountUpdatedInShoppingCart = (item: ProductModel, diff: number) => {
   .product-image {
     aspect-ratio: 1/1;
     width: 48px;
-
   }
 
   .flex {

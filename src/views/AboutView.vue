@@ -1,56 +1,125 @@
 <script setup lang="ts">
-import IDCard from '@/components/IDCard.vue';
-import { onBeforeUpdate, onMounted, ref, Transition } from 'vue';
-  
+import IDCard from '@/components/IDCard.vue'
+import { computed, nextTick, onBeforeUpdate, onMounted, onUnmounted, ref, Transition } from 'vue'
+import luuk from '@/assets/luuk.jpg'
+import angular from '@/assets/angular.svg'
 const spawn = ref(false)
+const dialogRef = ref<HTMLDialogElement | null>(null)
+const imageBigSrc = ref<string>(angular)
+const mediaWindow =  ref<Window & typeof globalThis>(window)
+const isLandscape = ref(window.matchMedia('(orientation: landscape)').matches)
+let mediaQuery: MediaQueryList
+const handleOrientationChange = (e: MediaQueryListEvent) => {
+      isLandscape.value = e.matches;
+    }
 
-onMounted(() => {
-warnDisabled();
+    const cardStyle = computed(() => {
+  if (!isLandscape.value) {
+    return {} // no animation on portrait
+  }
+  return {
+    transform: spawn.value ? 'translateX(0%)' : 'translateX(100%)',
+    transition: 'transform 0.3s ease'
+  }
 })
 
-function warnDisabled() {
+
+
+onMounted(() => {
+  spawnElements();
+
+  mediaQuery = window.matchMedia('(orientation: landscape)')
+
+  mediaQuery.addEventListener('change', handleOrientationChange)
+
+  isLandscape.value = mediaQuery.matches
+
+})
+
+onUnmounted(() => {
+  mediaQuery.removeEventListener('change', handleOrientationChange)
+})
+
+function spawnElements() {
   spawn.value = false
   setTimeout(() => {
     spawn.value = true
   }, 1500)
 }
 
-    // const navigateToExperiences =() => {
-    //   router.push({path: "/"})
-    // }
+function closeDialog() {
+  if (document.startViewTransition) {
+    document.startViewTransition(() => {
+      dialogRef.value?.close()
+    })
+  } else {
+    dialogRef.value?.close()
+  }
+}
+
+
+
+const openModal = async () => {
+  imageBigSrc.value = luuk
+  await nextTick()
+  dialogRef.value?.showModal()
+}
+// const navigateToExperiences =() => {
+//   router.push({path: "/"})
+// }
 </script>
 <template>
-  <div class="about-me-wrapper">
-    <!-- Text on the left side-->
-     <!-- Card on the right side-->
+  <div class="about-view-parent">
+    <dialog
+      ref="dialogRef"
+      @click.self="closeDialog"
+      :style="{ margin: 'auto', viewTransitionName: 'image-transition' }">
+      <img :src="imageBigSrc" :style="{ maxWidth: '80vw', maxHeight: '80vh' }" />
+    </dialog>
+
+    <div
+      class="about-me-wrapper"
+      :style="{ backgroundColor: spawn ? 'var(--primary-color)' : 'rgba(0,0,0, 0)' }"
+    >
+      <!-- Text on the left side-->
+      <!-- Card on the right side-->
       <!-- residu van de tekst onder, maar over de hele breedte-->
+      <div :style="{...cardStyle}" class="card">
+        <IDCard @clickImage="openModal" />
+      </div>
 
-   
+      <div
+        class="text-section"
+        :style="{
+          backgroundColor: spawn ? 'var(--primary-color)' : 'rgba(0,0,0, 0)',
+          transform: spawn ? 'translateX(0%)' : 'translateX(-10%)',
+          opacity: spawn ? '1' : '0',
+        }"
+      >
+        <h2>Wie ben ik?</h2>
+        <p>
+          Ik ben opgeleid als software engineer. Een software engineer is betrokken bij de
+          ontwikkeling van een project nog vóór de eerste regel code wordt geschreven. Ik vind het
+          bijzonder interessant om al in deze vroege fase mee te denken over de afwegingen en keuzes
+          die uiteindelijk leiden tot het eindproduct. Deze fase is in mijn ogen essentieel voor de
+          kwaliteit en relevantie van de oplossing die uiteindelijk wordt opgeleverd.
+        </p>
+        <p>
+          Ondertussen heb ik veel mooie projecten succesvol mogen afsluiten, waardoor ik niet bang
+          ben om opnieuw in het onbekende te stappen. Buiten mijn baan om houd ik me ook regelmatig
+          bezig met web development als hobby. Door mijn werkervaring bij snelgroeiende IT-bedrijven
+          heb ik het genoegen gehad om me te begeven tussen uiterst ervaren en getalenteerde
+          personen. Ik heb veel opgestoken van deze professionele dienstverbanden, waardoor ik hier
+          nog regelmatig met veel dankbaarheid en voldoening op terugblik.
+        </p>
+        <p>
+          Als ik eens niet met softwareontwikkeling bezig ben is de kans groot dat ik in de
+          sportschool fitness beoefen. Als het erg mooi weer is doe ik buiten calisthenics, of
+          wandel ik door het duingebied in Castricum.
+        </p>
+      </div>
 
-        <div class="text-section">
-    <h2>Wie ben ik?</h2>
-    <p>
-      Ik ben opgeleid als software engineer. Een software engineer is betrokken bij de ontwikkeling
-      van een project nog vóór de eerste regel code wordt geschreven. Ik vind het bijzonder
-      interessant om al in deze vroege fase mee te denken over de afwegingen en keuzes die
-      uiteindelijk leiden tot het eindproduct. Deze fase is in mijn ogen essentieel voor de
-      kwaliteit en relevantie van de oplossing die uiteindelijk wordt opgeleverd.
-    </p>
-    <p>
-      Ondertussen heb ik veel mooie projecten succesvol mogen afsluiten, waardoor ik niet bang ben
-      om opnieuw in het onbekende te stappen. Buiten mijn baan om houd ik me ook regelmatig bezig
-      met web development als hobby. Door mijn werkervaring bij snelgroeiende IT-bedrijven heb ik
-      het genoegen gehad om me te begeven tussen uiterst ervaren en getalenteerde personen. Ik heb
-      veel opgestoken van deze professionele dienstverbanden, waardoor ik hier nog regelmatig met
-      veel dankbaarheid en voldoening op terugblik.
-    </p>
-    <p>
-      Als ik eens niet met softwareontwikkeling bezig ben is de kans groot dat ik in de sportschool
-      fitness beoefen. Als het erg mooi weer is doe ik buiten calisthenics, of wandel ik door het
-      duingebied in Castricum.
-    </p>
-  </div>
-<!-- <div class="text-section2">
+      <!-- <div class="text-section2">
     <h2>Wat wil ik?</h2>
     <p>
       Door mijn expertise in web-development wil ik deze kennis graag in de praktijk verder
@@ -94,18 +163,16 @@ function warnDisabled() {
       zelfgemaakte webapplicaties.
     </p>
     </div> -->
-    <Transition>
-     <div :style="{       transform: spawn ? 'translateX(0%)' : 'translateX(100%)'}" class="card">
-
-    <IDCard/>
     </div>
-  </Transition>
-  
   </div>
+
 </template>
 
 <style scoped>
-.v-enter-active,
+.about-view-parent{
+
+}
+/* .v-enter-active,
 .v-leave-active {
   transition: transform 0.5s ease;
 }
@@ -113,17 +180,20 @@ function warnDisabled() {
 .v-enter-from,
 .v-leave-to {
   transform:
-}
+} */
+
 h2 {
   font-weight: bold;
   font-size: 2rem;
+  color: whitesmoke;
   padding-left: .5em;
+  margin-top: 1.5em;
 }
-.turn {
-  transition: all 1s ease-in-out;
-  text-underline-offset: 3px;
-  text-decoration: 2px underline solid;
-}
+
+p{
+  color: whitesmoke;
+  }
+
 .favourite-stack {
   text-align: center;
   /* background-color: #f9f9f9; */
@@ -179,6 +249,12 @@ h2 {
   .text-section {
     grid-row: 1;
     grid-column: 3/-1;
+    transform: translate(-100%);
+    opacity: 0;
+    /* margin: auto 0;. */
+    padding: 4rem 0rem;
+    transition: all 1.5s ease-in;
+    margin-top :1.5em;
 }
 
   .text-section2 {
@@ -189,37 +265,42 @@ h2 {
 .about-me-wrapper {
   display: grid;
   width: 100%;
-  grid-column-gap: 1.5em;
+  /* grid-column-gap: 1.5em; */
+  /* padding-right: -1.5rem; */
   overflow: hidden;
   /* background-color: orange; */
     grid-template-rows: repeat(4, auto);
   grid-template-columns: repeat(5, auto);
 
-  background: var(--primary-color);
+  background: transparent;
   border-radius: 24px;
-
+  transition: background-color 1s ease-out;
+    box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
   /* grid-template-rows: repeat( 6, 1fr); */
 }
- 
+
   .card {
     /* background: whitesmoke;
     color: black; */
+      box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
   grid-row: 1;
   grid-column:1/3;
+  z-index: 9;
   overflow: hidden;
   display: flex;
-      box-shadow:  10px 0px 12px 7px rgba(0,0,0.2);
+      /* box-shadow:  10px 0px 12px 7px rgba(0,0,0.2); */
     width: 100%;
     background-color: black;;
-transform: translateX(100%);
- 
+
+    border-radius: 24px;
 
     transition: transform 1.5s ease-in;
 
 
-  }
-}
 
+  }
+
+}
 
 
 #links-to-socials {
@@ -233,18 +314,17 @@ transform: translateX(100%);
   gap: 3em;
   text-align: center;
   border-radius: 100vw;
-  
+
   background: linear-gradient(45deg, var(--primary-color), gray);
   padding: 6px;
-  
-      outline:  3px solid transparent;
-      transition: all .33s ease-in-out;
+  outline: 3px solid transparent;
+  transition: all .33s ease-in-out;
 
 
 
   &:hover {
     /* outline-color: ; */
-       
+
         animation-name: border-loop;
     animation-duration:2s;
 animation-iteration-count:infinite;
@@ -273,6 +353,4 @@ p {
 
 
 }
-
-
 </style>

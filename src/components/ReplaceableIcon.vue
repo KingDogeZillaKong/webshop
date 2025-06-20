@@ -61,10 +61,9 @@ const onMouseLeaveSelf = () => {
       background-color: rgba(0, 0, 0, 0.12);
     }
   }
-
 }
 
-  .overlay {
+.overlay {
   position: absolute;
   display: block;
   width: 100%;

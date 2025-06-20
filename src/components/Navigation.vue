@@ -24,11 +24,10 @@ const getRouterLink = (path: string, name: string): RouterLinkModel => {
 }
 
 const navMenuConfig = [
-    getRouterLink('/about', 'About me'),
+  getRouterLink('/about', 'About me'),
   getRouterLink('/', 'Personal Experiences'),
   getRouterLink('/cart', 'Cart'),
   getRouterLink('/skills', 'Portfolio'),
-
 ]
 </script>
 
@@ -44,7 +43,6 @@ const navMenuConfig = [
           link.name
         }}</RouterLink>
       </div>
-     
     </nav>
     <div class="fancy-nav-wrapper-mobile" v-if="isExpanded">
       <nav class="mobile-nav">
@@ -53,7 +51,6 @@ const navMenuConfig = [
             link.name
           }}</RouterLink>
         </div>
-
       </nav>
     </div>
   </div>
@@ -110,9 +107,8 @@ a.router-link-exact-active:hover {
   text-align: left;
   transition: transform 1s ease-in;
 
-
   a.router-link-exact-active {
-    color:  var(--highlight-color)
+    color: var(--highlight-color);
   }
 
   a {
@@ -184,7 +180,7 @@ a.router-link-exact-active:hover {
     position: relative;
 
     display: flex;
-   
+
     place-items: center;
     font-size: 12px;
     text-align: left;

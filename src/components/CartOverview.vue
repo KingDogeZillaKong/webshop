@@ -4,7 +4,6 @@ import { useCartStore } from '@/stores/cart'
 import CartListItem from './CartListItem.vue'
 import IconCoffee from './icons/IconCoffee.vue'
 
-
 const cartStore = useCartStore()
 
 const onItemClicked = (barcode: number) => {
@@ -66,7 +65,6 @@ function findProduct(barcode: number) {
   color: white;
 }
 .expanded-cart {
-
   padding: 1em 0.33em 1em 0.33em;
 }
 .total-damage {

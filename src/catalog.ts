@@ -3,7 +3,7 @@ import logo from '@/assets/logo.svg'
 import react from '@/assets/react.svg'
 import angular from '@/assets/angular.svg'
 import next from '@/assets/next.svg'
-import python from "@/assets/python.svg"
+import python from '@/assets/python.svg'
 const DEFAULT_IMAGE = logo
 
 //getProduct(123, "Lada", 1500.97, angular)
@@ -16,7 +16,7 @@ export const ALL_PRODUCTS: ProductModel[] = [
   getProduct(890, 'Learning Management System', 5, next),
   getProduct(246, 'E-commerce', 3, DEFAULT_IMAGE),
   getProduct(249, 'Feedback Application', 2, react),
-  getProduct(423, "Python Hackathons", 5, python)
+  getProduct(423, 'Python Hackathons', 5, python),
 ]
 
 function getProduct(barcode: number, title: string, price: number, preview: string): ProductModel {

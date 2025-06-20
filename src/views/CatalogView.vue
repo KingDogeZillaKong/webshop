@@ -18,11 +18,18 @@ const scrollToCatalogSection = () => {
 
 <template>
   <h1>Development Adventures</h1>
-    <h2 class="underline" @click="scrollToCatalogSection">Explore my development adventures</h2>
+  <h2 class="underline" @click="scrollToCatalogSection">Explore my development adventures</h2>
 
-      <h2 class="funnyness">In my opinion, years of experience is an inaccurate measure of somebody's experience. I learn much more diving into something new, which is frigthening and challenging, than when I comfortably write simple and easy code I've written hundreds of times before.</h2>
+  <h2 class="funnyness">
+    In my opinion, years of experience is an inaccurate measure of somebody's experience. I learn
+    much more diving into something new, which is frigthening and challenging, than when I
+    comfortably write simple and easy code I've written hundreds of times before.
+  </h2>
 
-    <h2 class="funnyness">Therefore, I rather use the amount of cappucinos that I would've to drink during a conversation to cover the vision, thoughts, challenges, and decisions that went into it.</h2>
+  <h2 class="funnyness">
+    Therefore, I rather use the amount of cappucinos that I would've to drink during a conversation
+    to cover the vision, thoughts, challenges, and decisions that went into it.
+  </h2>
 
   <main ref="catalogSection" class="wrapper">
     <div v-for="product in products" :key="product?.barcode" class="product-container">

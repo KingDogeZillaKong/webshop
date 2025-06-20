@@ -24,7 +24,6 @@ const { assignment } = props
     </div>
     <h3 class="portfolio-description">{{ assignment.abstract }}</h3>
 
-
     <div class="links">
       <div class="portfolio-assignment-thumbnail">
         <ReplaceableIcon
@@ -36,7 +35,6 @@ const { assignment } = props
       <div class="portfolio-assignment-thumbnail">
         <ReplaceableIcon :imageSrc="github" :type="'code'" @click="$emit('openGithub')" />
       </div>
-
     </div>
     <details>
       <summary>See More</summary>
@@ -112,9 +110,7 @@ summary {
   > * {
     height: 64px;
     justify-content: center;
-
   }
-
 }
 details {
   grid-column: 1/-1;

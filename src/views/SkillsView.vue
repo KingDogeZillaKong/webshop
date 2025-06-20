@@ -15,9 +15,12 @@ import type { SkillModel } from '@/skill-model'
 const route = useRoute()
 
 const { params } = route
-const techUsedAtAssignments: Tech[] = PORTFOLIO_ASSIGNMENTS.map(ass => ass.tech.map(skill => skill.tech)).flat();
-const SET_OF_USED_TECHS : SkillModel[] =  SKILLS.filter(skill => techUsedAtAssignments.includes(skill.tech) )
-
+const techUsedAtAssignments: Tech[] = PORTFOLIO_ASSIGNMENTS.map((ass) =>
+  ass.tech.map((skill) => skill.tech),
+).flat()
+const SET_OF_USED_TECHS: SkillModel[] = SKILLS.filter((skill) =>
+  techUsedAtAssignments.includes(skill.tech),
+)
 
 // const VISIBLE_SKILLS: Tech[] = ref(result());
 
@@ -160,7 +163,6 @@ const onSkillClicked = (skill: Tech) => {
   align-items: center;
 }
 .flex-full {
-
   width: 100%;
   margin: auto auto;
   display: flex;

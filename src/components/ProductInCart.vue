@@ -32,6 +32,6 @@ const props = defineProps<{ amount: number; cartColor: string }>()
   justify-content: center;
   align-items: center;
   border-radius: 100%;
-  color:whitesmoke
+  color: whitesmoke;
 }
 </style>

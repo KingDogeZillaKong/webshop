@@ -61,7 +61,7 @@ function getSkill(tech: Tech, iconSrc: string, displayName?: string): SkillModel
 const ASTON_MARTIN_VUE_WEBSHOP = getPortfolioAssignment(
   SKILLS.filter((skill) => ['vue', 'uiux'].includes(skill.tech)),
   'Luukgoedhart.nl',
-  "Een dashboard gemaakt in Vue voor Aston Martin's Formule-1 team.",
+  "A dashboard built in Vue for Aston Martin's Formula 1 team.",
   new Date(),
   vue,
   vue,
@@ -71,7 +71,7 @@ const ASTON_MARTIN_VUE_WEBSHOP = getPortfolioAssignment(
 const NIKKICHANEL = getPortfolioAssignment(
   SKILLS.filter((skill) => ['angular', 'uiux'].includes(skill.tech)),
   'Nikkichanel.nl',
-  'Een website gemaakt voor mijn zus die fotograaf en videograaf is.',
+  'A website I made for a videographer and photographer.',
   new Date('02/12/2023'),
   nikkichanel,
   angular,
@@ -81,7 +81,7 @@ const NIKKICHANEL = getPortfolioAssignment(
 const LUCADEX = getPortfolioAssignment(
   SKILLS.filter((skill) => ['next', 'mongodb', 'uiux'].includes(skill.tech)),
   'Lucadex.com',
-  'Een portaal dat ik gemaakt voor developers om gemakkelijk kennis op te doen over handige ontwikkelaarstools',
+  'A portal I created for developers to easily gain knowledge about useful development tools.',
   new Date('02/12/2024'),
   lucadexlogo,
   next,
@@ -92,7 +92,7 @@ const LUCADEX = getPortfolioAssignment(
 const POKERDEX = getPortfolioAssignment(
   SKILLS.filter((skill) => ['angular', 'java', 'postgresql', 'uiux'].includes(skill.tech)),
   'Pokerdex.io',
-  'Een platform dat ik gemaakt heb voor pokerspelers die keuzes willen maken op basis van feiten',
+  'A platform I created for poker players who want to make decisions based on facts.',
   new Date('05/14/2025'),
   pokerdex,
   angular,
