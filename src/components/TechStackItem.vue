@@ -16,7 +16,7 @@ const { img, text } = defineProps<{ img: string; text: string  }>()
   display: flex;
   flex-direction: row;
   align-items: center;
-
+ 
   /* border-radius: 100vw; */
   /* border-top: 1px solid var(--primary-color); */
   padding: 1rem 1.2rem;
@@ -35,6 +35,7 @@ const { img, text } = defineProps<{ img: string; text: string  }>()
     /* background: orange; */
     font-size: 1.5em;
     width: 100%;
+
     /* text-align: left; */
     /* float: left; */
   }

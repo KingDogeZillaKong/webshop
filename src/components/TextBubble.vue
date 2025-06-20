@@ -30,7 +30,7 @@ div {
 
   width: min(120px, 25vw);
   height: auto;
-  color: gray;
+  color: var(--primary-color);
 
   padding: 0.9em;
   text-wrap: wrap;

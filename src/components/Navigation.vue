@@ -3,7 +3,8 @@ import menu from '@/assets/menu.svg'
 
 import expandedMenu from '@/assets/expanded-menu.svg'
 import { ref } from 'vue'
-
+import IconMenuExpanded from './icons/IconMenuExpanded.vue'
+import IconMenu from './icons/IconMenu.vue'
 interface RouterLinkModel {
   path: string
   name: string
@@ -24,9 +25,8 @@ const getRouterLink = (path: string, name: string): RouterLinkModel => {
 }
 
 const navMenuConfig = [
-  getRouterLink('/about', 'About me'),
-  getRouterLink('/', 'Personal Experiences'),
-  getRouterLink('/cart', 'Cart'),
+  getRouterLink('/', 'About me'),
+  getRouterLink('/my-experience', 'Personal Experiences'),
   getRouterLink('/skills', 'Portfolio'),
 ]
 </script>
@@ -34,8 +34,11 @@ const navMenuConfig = [
 <template>
   <div class="menu-wrapper">
     <div class="menu-icon-wrapper">
-      <img v-if="!isExpanded" :src="menu" @click="toggleMenu" />
-      <img v-if="isExpanded" :src="expandedMenu" @click="toggleMenu" />
+      <IconMenu v-if="isExpanded" foregroundColor="var(--highlight-color)" @click="toggleMenu"/>
+      <IconMenuExpanded v-if="!isExpanded" foregroundColor="var(--highlight-color)" @click="toggleMenu"/>
+
+      <!-- <img v-ifF="!isExpanded" :src="menu" @click="toggleMenu" />
+      <img v-if="isExpanded" :src="expandedMenu" @click="toggleMenu" /> -->
     </div>
     <nav class="desktop-nav">
       <div v-for="link of navMenuConfig">
@@ -46,8 +49,8 @@ const navMenuConfig = [
     </nav>
     <div class="fancy-nav-wrapper-mobile" v-if="isExpanded">
       <nav class="mobile-nav">
-        <div v-for="link of navMenuConfig" class="navigation-item">
-          <RouterLink :to="link.path" @click="closeMenu" :key="link.path">{{
+        <div v-for="link of navMenuConfig" class="navigation-item" >
+          <RouterLink class="navigation-item" :to="link.path" @click="closeMenu" :key="link.path">{{
             link.name
           }}</RouterLink>
         </div>
@@ -122,10 +125,18 @@ a.router-link-exact-active:hover {
   z-index: 9999;
   width: 60px;
   height: 60px;
-  padding: 0.66em;
-  background-color: rgba(255, 255, 255, 0.48);
-  border: 1px solid whitesmoke;
+  padding: 0.33;
+  text-align: center;
+  margin : auto au/to;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--highlight-color);
   border-radius: 1em;
+      display: flex
+;
+  > * {
+  transition: all .3s ease-in;
+  } 
+ 
 }
 .desktop-nav {
   display: none;

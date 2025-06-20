@@ -70,7 +70,7 @@ header {
   line-height: 1.5;
   max-height: 100vh;
   width: 100%;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 1px solid var(--highlight-color);
 }
 
 .items-in-cart-overview {

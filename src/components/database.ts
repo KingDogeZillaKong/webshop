@@ -16,7 +16,7 @@ import pokerdex from '@/assets/pokerdex.svg'
 import type { SkillModel } from '@/skill-model'
 import type { Shape } from '@/shape-model'
 import { capitalize } from 'vue'
-
+import cappucino from "@/assets/coffee.svg"
 const getPortfolioAssignment = (
   tech: SkillModel[],
   title: string,
@@ -63,7 +63,7 @@ const ASTON_MARTIN_VUE_WEBSHOP = getPortfolioAssignment(
   'Luukgoedhart.nl',
   "A dashboard built in Vue for Aston Martin's Formula 1 team.",
   new Date(),
-  vue,
+  cappucino,
   vue,
   '/',
   'https://github.com/KingDogeZillaKong/webshop',

@@ -4,14 +4,17 @@ import CatalogView from '@/views/CatalogView.vue'
 import PortfolioView from '@/views/PortfolioView.vue'
 import SkillsView from '@/views/SkillsView.vue'
 import CartOverview from '@/components/CartOverview.vue'
+import AboutView from '../views/AboutView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
+{
       path: '/',
-      name: 'Catalog',
-      component: CatalogView,
+      name: 'about',component: AboutView
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      
     },
     { path: '/portfolio', name: 'Portfolio', component: PortfolioView },
     { path: '/skills', name: 'Skills', component: SkillsView },
@@ -21,15 +24,8 @@ const router = createRouter({
       name: 'Cart',
       component: CartOverview,
     },
-
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
-    },
+    {path: '/my-experience', name: 'Adventures', component: CatalogView},
+    
   ],
 })
 

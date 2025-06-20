@@ -51,6 +51,8 @@ const { assignment } = props
 summary {
   cursor: pointer;
   text-decoration: underline 1px solid whitesmoke;
+  border: 10px solid transparent;
+  border-bottom-color:  var(--secondary-color);
 }
 .portfolio-description {
   grid-row: 3;
@@ -58,7 +60,7 @@ summary {
 }
 .portfolio-assignment-wrapper {
   border: 1px solid transparent;
-  border-bottom-color: whitesmoke;
+  border-bottom-color: var(--highlight-color);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 2fr 1fr 2fr auto;
@@ -85,8 +87,9 @@ summary {
   grid-column: 1/-1;
   place-self: end;
 
-  background: rgba(193, 193, 193, 0.624);
-
+  /* background: rgba(193, 193, 193, 0.624); */
+  background: var(--highlight-color);
+  color: var(--primary-color);
   padding: 0 0.66em;
   border-radius: 3px;
 }

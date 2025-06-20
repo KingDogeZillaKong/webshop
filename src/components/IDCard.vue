@@ -233,7 +233,7 @@ const onClickImage = () => {
   text-align: center;
   font-style: italic;
   color: gray;
-  font-size: 2.4em;
+  font-size: 1.8em;
 
   &::before {
     content: open-quote;
@@ -283,13 +283,14 @@ const onClickImage = () => {
   cursor: pointer;
   justify-self: center;
   border-radius: 100%;
-  max-width: 100%;
+  max-width: 100%;  
 
   aspect-ratio: 1/1;
   border: transparent 3px dashed;
   outline: 2px solid var(--primary-color);
   transition: all 0.21s linear;
-
+  max-width: 50vw;;
+  
   &:hover {
     border-color: var(--highlight-color);
   }
@@ -359,7 +360,7 @@ const onClickImage = () => {
     text-wrap: wrap;
     text-align: center;
     font-style: italic;
-    color: gray;
+    color: var(--primary-color);
     font-size: 2.4em;
 
     &::before {
