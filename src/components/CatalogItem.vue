@@ -66,12 +66,14 @@ const props = defineProps<{ item: ProductModel; amountInCart: number | undefined
 
     h3 {
       letter-spacing: 0.1em;
+      color: whitesmoke;
     }
 
     .price {
       display: flex;
       gap: 0.15em;
       font-weight: bold;
+      color: white;
     }
   }
 

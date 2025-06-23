@@ -19,6 +19,6 @@ export const ALL_PRODUCTS: ProductModel[] = [
   getProduct(423, 'Python Hackathons', 5, python),
 ]
 
-function getProduct(barcode: number, title: string, price: number, preview: string): ProductModel {
+export function getProduct(barcode: number, title: string, price: number, preview: string): ProductModel {
   return { barcode, title, price, preview }
 }

@@ -67,7 +67,7 @@ const onClickImage = () => {
         alt="luuk foto"
       />
       <div>
-        <h1>Luuk Goedhart</h1>
+        <h1 class="my-name">Luuk Goedhart</h1>
         <span class="quote"
           >I
           <span class="turn" :style="{ textDecorationColor: `${underlineColor}` }">turn</span>
@@ -120,6 +120,9 @@ const onClickImage = () => {
   </div>
 </template>
 <style scoped>
+.my-name {
+    color: var(--primary-color);
+}
 .profile-pic-dialog {
   viewtransitionname: image-transition;
 }
@@ -210,6 +213,7 @@ const onClickImage = () => {
 
 .tech-item {
   text-align: center;
+  /* color: red; */
 }
 
 .card-top-rule {

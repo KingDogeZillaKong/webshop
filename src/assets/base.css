@@ -23,6 +23,7 @@
   --futuristic-color: #2af7cf;
   --secondary-highlight: #000f58;
   --primary-highlight: rgb(48, 108, 117); /* #306C75 */
+  --default-text-color: light-dark(var(--primary-color), whitesmoke);
 }
 
 /* semantic color variables for this project */
@@ -81,6 +82,19 @@
     opacity: 1;
     transform: translate(0%);
   }
+}
+
+h1 {
+    color: rgb(37, 227, 202)
+  /* color: light-dark(var(--primary-color),   var(--color-text)); */
+
+}
+h2 {
+  /* color:  var(--default-text-color); */
+  /* color: var(--primary-color); */
+}
+p , span, h3{
+    /* color: var(--default-text-color); */
 }
 
 dialog[open] {

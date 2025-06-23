@@ -90,7 +90,10 @@ const scrollToCatalogSection = () => {
   right: 0;
   z-index: 999;
   padding: 2px 4px;
-  background: gray;
+  border-radius: 12px;
+  box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
+  background: rgba(122, 122, 122, 0.21);
+  backdrop-filter: blur(9px);
   width: 240px;
   opacity: 0;
   transition: opacity .4s ease-in-out;
