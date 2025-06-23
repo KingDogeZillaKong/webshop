@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ProductModel } from '../product-model'
 import ProductInCart from './ProductInCart.vue'
-import IconCoffee from '../components/icons/IconCoffee.vue'
+import IconCoffee from '@/components/icons/IconCoffee.vue'
 const props = defineProps<{ item: ProductModel; amountInCart: number | undefined }>() //({barcode: -1, title: "Undefined", price: 0.00, preview: "logo.svg"});
 </script>
 <template>

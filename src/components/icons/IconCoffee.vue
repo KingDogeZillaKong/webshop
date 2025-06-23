@@ -2,8 +2,6 @@
 <template>
   <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
   <svg
-    width="800px"
-    height="800px"
     viewBox="0 0 500 500"
     id="Layer_1"
     data-name="Layer 1"

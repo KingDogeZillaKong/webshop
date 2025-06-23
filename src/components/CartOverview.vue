@@ -2,7 +2,7 @@
 import type { ProductModel } from '@/product-model'
 import { useCartStore } from '@/stores/cart'
 import CartListItem from './CartListItem.vue'
-import IconCoffee from './icons/IconCoffee.vue'
+import IconCoffee from '@/components/icons/IconCoffee.vue'
 
 const cartStore = useCartStore()
 

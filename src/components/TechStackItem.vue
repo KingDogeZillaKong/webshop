@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import TextBubble from '@/components/TextBubble.vue'
-const { img, text } = defineProps<{ img: string; text: string  }>()
+const { img, text } = defineProps<{ img: string; text: string }>()
 </script>
 <template>
-  <div class="tech-stack-item-wrapper" >
+  <div class="tech-stack-item-wrapper">
     <img :src="img" :alt="text" />
     <div class="w-full">
       <span>{{ text }}</span>
@@ -16,7 +16,7 @@ const { img, text } = defineProps<{ img: string; text: string  }>()
   display: flex;
   flex-direction: row;
   align-items: center;
- 
+
   /* border-radius: 100vw; */
   /* border-top: 1px solid var(--primary-color); */
   padding: 1rem 1.2rem;

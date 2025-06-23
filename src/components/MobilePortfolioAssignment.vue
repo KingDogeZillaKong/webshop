@@ -52,7 +52,7 @@ summary {
   cursor: pointer;
   text-decoration: underline 1px solid whitesmoke;
   border: 10px solid transparent;
-  border-bottom-color:  var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
 }
 .portfolio-description {
   grid-row: 3;

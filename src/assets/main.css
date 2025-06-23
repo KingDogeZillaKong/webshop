@@ -2,13 +2,13 @@
 
 #app {
   /* max-width: 1280px; */
-  padding: .45rem;
+  padding: 0.45rem;
   font-weight: normal;
   margin: auto 0;
   width: 100vw;
   overflow: hidden;
 }
-@media (orientation: landscape){
+@media (orientation: landscape) {
   #app {
     padding: 2rem;
   }

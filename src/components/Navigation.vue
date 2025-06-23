@@ -34,8 +34,12 @@ const navMenuConfig = [
 <template>
   <div class="menu-wrapper">
     <div class="menu-icon-wrapper">
-      <IconMenu v-if="isExpanded" foregroundColor="var(--highlight-color)" @click="toggleMenu"/>
-      <IconMenuExpanded v-if="!isExpanded" foregroundColor="var(--highlight-color)" @click="toggleMenu"/>
+      <IconMenu v-if="isExpanded" foregroundColor="var(--highlight-color)" @click="toggleMenu" />
+      <IconMenuExpanded
+        v-if="!isExpanded"
+        foregroundColor="var(--highlight-color)"
+        @click="toggleMenu"
+      />
 
       <!-- <img v-ifF="!isExpanded" :src="menu" @click="toggleMenu" />
       <img v-if="isExpanded" :src="expandedMenu" @click="toggleMenu" /> -->
@@ -49,7 +53,7 @@ const navMenuConfig = [
     </nav>
     <div class="fancy-nav-wrapper-mobile" v-if="isExpanded">
       <nav class="mobile-nav">
-        <div v-for="link of navMenuConfig" class="navigation-item" >
+        <div v-for="link of navMenuConfig" class="navigation-item">
           <RouterLink class="navigation-item" :to="link.path" @click="closeMenu" :key="link.path">{{
             link.name
           }}</RouterLink>
@@ -127,16 +131,14 @@ a.router-link-exact-active:hover {
   height: 60px;
   padding: 0.33;
   text-align: center;
-  margin : auto au/to;
+  margin: auto au/to;
   background-color: var(--secondary-color);
   border: 1px solid var(--highlight-color);
   border-radius: 1em;
-      display: flex
-;
+  display: flex;
   > * {
-  transition: all .3s ease-in;
-  } 
- 
+    transition: all 0.3s ease-in;
+  }
 }
 .desktop-nav {
   display: none;

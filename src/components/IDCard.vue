@@ -283,14 +283,14 @@ const onClickImage = () => {
   cursor: pointer;
   justify-self: center;
   border-radius: 100%;
-  max-width: 100%;  
+  max-width: 100%;
 
   aspect-ratio: 1/1;
   border: transparent 3px dashed;
   outline: 2px solid var(--primary-color);
   transition: all 0.21s linear;
-  max-width: 50vw;;
-  
+  max-width: 50vw;
+
   &:hover {
     border-color: var(--highlight-color);
   }

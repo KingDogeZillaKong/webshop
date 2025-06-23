@@ -47,8 +47,6 @@ onUpdated(() => {
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.33);
     color: whitesmoke;
-      
-
   }
 }
 

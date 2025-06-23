@@ -16,7 +16,7 @@ import pokerdex from '@/assets/pokerdex.svg'
 import type { SkillModel } from '@/skill-model'
 import type { Shape } from '@/shape-model'
 import { capitalize } from 'vue'
-import cappucino from "@/assets/coffee.svg"
+import cappucino from '@/assets/coffee.svg'
 const getPortfolioAssignment = (
   tech: SkillModel[],
   title: string,

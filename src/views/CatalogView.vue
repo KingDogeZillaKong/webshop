@@ -3,10 +3,13 @@ import { ALL_PRODUCTS } from '@/catalog'
 import CatalogItem from '@/components/CatalogItem.vue'
 import type { ProductModel } from '@/product-model'
 import { useCartStore } from '@/stores/cart'
-import { ref } from 'vue'
-const products = ALL_PRODUCTS
-const cartStore = useCartStore()
-const catalogSection = ref<HTMLElement | null>(null)
+import IconCoffee from '@/components/icons/IconCoffee.vue'
+import info from '@/assets/info.svg'
+import { ref, Transition } from 'vue'
+const products = ALL_PRODUCTS;
+const cartStore = useCartStore();
+const catalogSection = ref<HTMLElement | null>(null);
+const showTooltip = ref<boolean>(false);
 const onProductAddedToCart = (product: ProductModel) => {
   cartStore.onProductAddedToCart(product)
 }
@@ -17,10 +20,26 @@ const scrollToCatalogSection = () => {
 </script>
 
 <template>
-  <h1>Development Adventures</h1>
-  <h2 class="underline" @click="scrollToCatalogSection">Explore my development adventures</h2>
+  <div class="catalog-wrapper">
+    <div class="absoluteley">
+      <div class="tooltip" @mouseover="showTooltip = true" @mouseleave="showTooltip = false">
+        <img
+          :src="info"
+          class="coffee-info-icon"
+          :style="{ backgroundColor: 'whitesmoke', borderRadius: '100%' }"
+        />
+        <i><IconCoffee/></i>
+      </div>
 
-  <h2 class="funnyness">
+            <span @mouseover="showTooltip = true"  @mouseleave="showTooltip = false" :style="{opacity: showTooltip ? '1' : '0'}" id="cappuccino-help">Consider each cappuccino a marker of the time needed to share the full story — vision, challenges, and choices included.</span>
+
+    </div>
+
+
+    <h1>Development Adventures</h1>
+    <h2 class="underline" @click="scrollToCatalogSection">Explore my development adventures</h2>
+
+    <!-- <h2 class="funnyness">
     In my opinion, years of experience is an inaccurate measure of somebody's experience. I learn
     much more diving into something new, which is frigthening and challenging, than when I
     comfortably write simple and easy code I've written hundreds of times before.
@@ -28,27 +47,162 @@ const scrollToCatalogSection = () => {
 
   <h2 class="funnyness">
     Therefore, I rather use the amount of cappucinos that I would've to drink during a conversation
-    to cover the vision, thoughts, challenges, and decisions that went into it.
-  </h2>
+    to cover the vision, thoughts, challenges, and decisions that went into the projectit.
+  </h2> -->
 
-  <main ref="catalogSection" class="wrapper">
-    <div v-for="product in products" :key="product?.barcode" class="product-container">
-      <CatalogItem
-        :item="product"
-        :amountInCart="cartStore.cartItems.get(product.barcode)"
-        @addProductToCart="onProductAddedToCart(product)"
-      />
-    </div>
-  </main>
+    <main ref="catalogSection" class="wrapper">
+      <div v-for="product in products" :key="product?.barcode" class="product-container">
+        <CatalogItem
+          :item="product"
+          :amountInCart="cartStore.cartItems.get(product.barcode)"
+          @addProductToCart="onProductAddedToCart(product)"
+        />
+      </div>
+    </main>
+  </div>
 </template>
 
 <style scoped>
+.absoluteley {
+
+  position:absolute; 
+  top: 0;
+  right: 0;
+
+
+  z-index: 99;
+
+
+  .coffee-info-icon {
+    &:hover {
+      #cappuccino-help {
+        opacity: 1;
+      }
+    }
+    background: blue;
+  }
+
+
+
+ #cappuccino-help {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 999;
+  padding: 2px 4px;
+  background: gray;
+  width: 240px;
+  opacity: 0;
+  transition: opacity .4s ease-in-out;
+
+
+  
+ }
+.tooltip {
+
+
+
+  z-index :1; 
+        display: block;
+
+    border-radius: 100%;
+    /* padding: .75em; */
+  position: absolute;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  /* float: right; */
+  top: 1em; 
+  right: 1em;
+  i {
+    width: 5em;
+    height: 5em;
+  }
+
+
+
+}
+}
+
+/* 
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 20px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  position: absolute;
+  bottom: 3px;
+  transform: translate(-100%, 75%);
+  z-index: 999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.33s ease-out;
+}
+
+
+.tooltip .tooltiptext::after {
+  content: '';
+  position: absolute;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.coffee-info-icon {
+  position: absolute;
+  top: -3px;
+  right: -2px;
+  width: 2.1em;
+  height: 2.1em;
+}
+.catalog-wrapper {
+  position: relative;
+  /* background: blue; */
+}
+.coffee-tooltip {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+
+  /* top: 1em; */
+  /* right: 100px; */
+}
+
+.coffee-explaination {
+  /* width: 100px;
+ height: 100px;
+  max-width: 100px;
+  max-height: 100px; */
+  aspect-ratio: 1/1;
+  /* width: 10px; */
+  width: 3rem;
+  height: 3rem;
+}
+
 .funnyness {
   width: 75%;
   text-wrap: wrap;
   margin: auto;
 }
-.underline {
+* .underline {
   cursor: pointer;
   text-decoration: underline 1px solid white;
   text-underline-offset: 0.33em;

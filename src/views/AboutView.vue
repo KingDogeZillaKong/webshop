@@ -6,34 +6,36 @@ import angular from '@/assets/angular.svg'
 const spawn = ref(false)
 const dialogRef = ref<HTMLDialogElement | null>(null)
 const imageBigSrc = ref<string>(angular)
-const mediaWindow =  ref<Window & typeof globalThis>(window)
+const mediaWindow = ref<Window & typeof globalThis>(window)
 const isLandscape = ref(window.matchMedia('(orientation: landscape)').matches)
 let mediaQuery: MediaQueryList
+const aboutMeSection = ref<HTMLElement | null>(null)
+const scrollToAboutMeSection = () => {
+  aboutMeSection.value?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+}
 const handleOrientationChange = (e: MediaQueryListEvent) => {
-      isLandscape.value = e.matches;
-    }
+  isLandscape.value = e.matches
+}
 
-    const cardStyle = computed(() => {
+const cardStyle = computed(() => {
   if (!isLandscape.value) {
     return {} // no animation on portrait
   }
+  scrollToAboutMeSection()
   return {
     transform: spawn.value ? 'translateX(0%)' : 'translateX(100%)',
-    transition: 'transform 0.3s ease'
+    transition: 'transform 0.3s ease',
   }
 })
 
-
-
 onMounted(() => {
-  spawnElements();
-
+  spawnElements()
+  scrollToAboutMeSection()
   mediaQuery = window.matchMedia('(orientation: landscape)')
 
   mediaQuery.addEventListener('change', handleOrientationChange)
 
   isLandscape.value = mediaQuery.matches
-
 })
 
 onUnmounted(() => {
@@ -57,8 +59,6 @@ function closeDialog() {
   }
 }
 
-
-
 const openModal = async () => {
   imageBigSrc.value = luuk
   await nextTick()
@@ -73,7 +73,8 @@ const openModal = async () => {
     <dialog
       ref="dialogRef"
       @click.self="closeDialog"
-      :style="{ margin: 'auto', viewTransitionName: 'image-transition' }">
+      :style="{ margin: 'auto', viewTransitionName: 'image-transition' }"
+    >
       <img :src="imageBigSrc" :style="{ maxWidth: '80vw', maxHeight: '80vh' }" />
     </dialog>
 
@@ -84,7 +85,7 @@ const openModal = async () => {
       <!-- Text on the left side-->
       <!-- Card on the right side-->
       <!-- residu van de tekst onder, maar over de hele breedte-->
-      <div :style="{...cardStyle}" class="card">
+      <div :style="{ ...cardStyle }" class="card" ref="aboutMeSection">
         <IDCard @clickImage="openModal" />
       </div>
 
@@ -165,12 +166,10 @@ const openModal = async () => {
     </div> -->
     </div>
   </div>
-
 </template>
 
 <style scoped>
-.about-view-parent{
-
+.about-view-parent {
 }
 /* .v-enter-active,
 .v-leave-active {
@@ -186,13 +185,13 @@ h2 {
   font-weight: bold;
   font-size: 2rem;
   color: whitesmoke;
-  padding-left: .5em;
+  padding-left: 0.5em;
   margin-top: 1.5em;
 }
 
-p{
+p {
   color: whitesmoke;
-  }
+}
 
 .favourite-stack {
   text-align: center;
@@ -203,7 +202,7 @@ p{
   /* max-width: 500px; */
   margin: 50px auto;
   width: 100%;
-  border-radius: 100vw;;
+  border-radius: 100vw;
   /* outline: 3px solid whitesmoke; */
 }
 
@@ -230,8 +229,6 @@ p{
   text-align: center;
 }
 
-
-
 /* Tech name styling */
 .tech-name {
   font-family: 'Arial', sans-serif;
@@ -240,12 +237,11 @@ p{
   color: #444;
 }
 
-
 @media (orientation: landscape) {
   .text-section3 {
-  grid-row: 3;
-  grid-column: 3/-1;
-}
+    grid-row: 3;
+    grid-column: 3/-1;
+  }
   .text-section {
     grid-row: 1;
     grid-column: 3/-1;
@@ -254,57 +250,51 @@ p{
     /* margin: auto 0;. */
     padding: 4rem 0rem;
     transition: all 1.5s ease-in;
-    margin-top :1.5em;
-}
+    margin-top: 1.5em;
+  }
 
   .text-section2 {
-  /* grid-row: 4/6; */
+    /* grid-row: 4/6; */
     grid-row: 2;
     grid-column: 3/-1;
   }
-.about-me-wrapper {
-  display: grid;
-  width: 100%;
-  /* grid-column-gap: 1.5em; */
-  /* padding-right: -1.5rem; */
-  overflow: hidden;
-  /* background-color: orange; */
+  .about-me-wrapper {
+    display: grid;
+    width: 100%;
+    /* grid-column-gap: 1.5em; */
+    /* padding-right: -1.5rem; */
+    overflow: hidden;
+    /* background-color: orange; */
     grid-template-rows: repeat(4, auto);
-  grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(5, auto);
 
-  background: transparent;
-  border-radius: 24px;
-  transition: background-color 1s ease-out;
+    background: transparent;
+    border-radius: 24px;
+    transition: background-color 1s ease-out;
     box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
-  /* grid-template-rows: repeat( 6, 1fr); */
-}
+    /* grid-template-rows: repeat( 6, 1fr); */
+  }
 
   .card {
     /* background: whitesmoke;
     color: black; */
-      box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
-  grid-row: 1;
-  grid-column:1/3;
-  z-index: 9;
-  overflow: hidden;
-  display: flex;
-      /* box-shadow:  10px 0px 12px 7px rgba(0,0,0.2); */
+    box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
+    grid-row: 1;
+    grid-column: 1/3;
+    z-index: 9;
+    overflow: hidden;
+    display: flex;
+    /* box-shadow:  10px 0px 12px 7px rgba(0,0,0.2); */
     width: 100%;
-    background-color: black;;
+    background-color: black;
 
     border-radius: 24px;
 
     transition: transform 1.5s ease-in;
-
-
-
   }
-
 }
 
-
 #links-to-socials {
-
   > * {
     cursor: pointer;
   }
@@ -318,31 +308,24 @@ p{
   background: linear-gradient(45deg, var(--primary-color), gray);
   padding: 6px;
   outline: 3px solid transparent;
-  transition: all .33s ease-in-out;
-
-
+  transition: all 0.33s ease-in-out;
 
   &:hover {
     /* outline-color: ; */
 
-        animation-name: border-loop;
-    animation-duration:2s;
-animation-iteration-count:infinite;
+    animation-name: border-loop;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
   }
-
-
-
 }
 
 p {
-    font-size: 1.5em;
-    padding: 0.3em 0.9em 0.3em 0.6em;
-    margin: 1.2em 0 1.2em;;
-    line-height: 2em;
-    width: 100%;
-
+  font-size: 1.5em;
+  padding: 0.3em 0.9em 0.3em 0.6em;
+  margin: 1.2em 0 1.2em;
+  line-height: 2em;
+  width: 100%;
 }
-
 
 .text-section {
   /* grid-row: 4/6; */
@@ -350,7 +333,5 @@ p {
   /* grid-column: 1/-1; */
   /* background-color: blue; */
   width: 100%;
-
-
 }
 </style>

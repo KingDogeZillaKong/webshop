@@ -9,12 +9,12 @@ import AboutView from '../views/AboutView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-{
+    {
       path: '/',
-      name: 'about',component: AboutView
+      name: 'about',
+      component: AboutView,
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
-      
     },
     { path: '/portfolio', name: 'Portfolio', component: PortfolioView },
     { path: '/skills', name: 'Skills', component: SkillsView },
@@ -24,8 +24,7 @@ const router = createRouter({
       name: 'Cart',
       component: CartOverview,
     },
-    {path: '/my-experience', name: 'Adventures', component: CatalogView},
-    
+    { path: '/my-experience', name: 'Adventures', component: CatalogView },
   ],
 })
 

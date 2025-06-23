@@ -3,14 +3,13 @@ import type { ProductModel } from '@/product-model'
 import Counter from './Counter.vue'
 import { useCartStore } from '@/stores/cart'
 import { onUpdated, ref } from 'vue'
-import IconCoffee from '../components/icons/IconCoffee.vue'
+import IconCoffee from '@/components/icons/IconCoffee.vue'
 
 const props = defineProps<{ item: ProductModel; quantity: number }>()
 const { item, quantity } = props
 const quantityRef = ref(quantity)
 
 onUpdated(() => {
-  // console.warn("Updated")
   quantityRef.value = props.quantity
 })
 
