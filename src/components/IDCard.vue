@@ -27,7 +27,7 @@ const onMouseDown = () => {
   scale.value = 0.96
   thresholdDeg.value = THRESHOLD_DEGREE
   underlineColor.value = 'var(--highlight-color)'
-  if (rotation.value === undefined) rotation.value = setInterval(rotate, 150)
+  if (rotation.value === undefined) setInterval(rotate, 150)
 }
 
 function rotate() {
@@ -121,12 +121,11 @@ const onClickImage = () => {
 </template>
 <style scoped>
 .my-name {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
-.profile-pic-dialog {
-  viewtransitionname: image-transition;
-}
+
 .turn {
+  color: var(--primary-color);
   transition: all 1s ease-in-out;
   text-underline-offset: 3px;
   text-decoration: 2px underline solid;
@@ -171,9 +170,7 @@ const onClickImage = () => {
 .tech-list {
   display: flex;
   justify-content: space-between;
-  /* width: 100%; */
   padding: 6px;
-  /* gap: 1.5em; */
 }
 .id-card-wrapper {
   display: flex;
@@ -181,15 +178,10 @@ const onClickImage = () => {
   justify-content: center;
   background: whitesmoke;
   color: black;
-  /* grid-row: 1;
-  grid-column: 3/4; */
 
-  /* z-index: 999; */
   overflow: hidden;
   padding: 2em 1em;
   border-radius: 24px;
-  /* border: 3px solid var(--secondary-color); */
-  /* border-color: black; */
   display: flex;
   flex-direction: column;
   gap: 1.2em;
@@ -213,7 +205,7 @@ const onClickImage = () => {
 
 .tech-item {
   text-align: center;
-  /* color: red; */
+  /* width: 100px; */
 }
 
 .card-top-rule {
@@ -336,7 +328,6 @@ const onClickImage = () => {
     padding: 2em 1em;
     border-radius: 24px;
 
-    /* border: 3px solid var(--secondary-color); */
     display: flex;
     flex-direction: column;
     gap: 1.2em;
@@ -403,8 +394,6 @@ const onClickImage = () => {
     transition: all 0.33s ease-in-out;
 
     &:hover {
-      /* outline-color: ; */
-
       animation-name: border-loop;
       animation-duration: 2s;
       animation-iteration-count: infinite;

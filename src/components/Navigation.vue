@@ -95,7 +95,7 @@ a.router-link-exact-active {
     transform: translate(-100%, -50%);
     width: 6px;
     height: 1.5em;
-    background-color: whitesmoke;
+    background-color: var(--nav-page-indent-clr);
     border-radius: 2px;
   }
 }

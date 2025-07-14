@@ -33,7 +33,12 @@ const { assignment } = props
         />
       </div>
       <div class="portfolio-assignment-thumbnail">
-        <ReplaceableIcon :imageSrc="github" :type="'code'" @click="$emit('openGithub')" />
+        <ReplaceableIcon
+          :outline="true"
+          :imageSrc="github"
+          :type="'code'"
+          @click="$emit('openGithub')"
+        />
       </div>
     </div>
     <details>
@@ -52,7 +57,9 @@ summary {
   cursor: pointer;
   text-decoration: underline 1px solid whitesmoke;
   border: 10px solid transparent;
-  border-bottom-color: var(--secondary-color);
+  padding-bottom: 3px;
+  margin-bottom: 3px;
+  border-bottom-color: var(--flex-list-background);
 }
 .portfolio-description {
   grid-row: 3;

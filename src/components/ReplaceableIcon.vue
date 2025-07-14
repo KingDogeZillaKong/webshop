@@ -6,8 +6,8 @@ import IconFile from '@/components/icons/IconFile.vue'
 import IconApp from '@/components/icons/IconApp.vue'
 import IconCode from './icons/IconCode.vue'
 import type { Shape } from '@/shape-model'
-const props = defineProps<{ imageSrc: string; type: string; shape?: Shape }>() //TODO make type a type
-const { imageSrc, type, shape } = props
+const props = defineProps<{ imageSrc: string; type: string; outline?: boolean; shape?: Shape }>() //TODO make type a type
+const { imageSrc, type, outline, shape } = props
 const shapeRef = ref<Shape>(shape || 'square')
 
 const overlayIsVisible = ref(false)
@@ -30,7 +30,7 @@ const onMouseLeaveSelf = () => {
     </Transition>
 
     <img
-      :class="['original-image', { circle: shapeRef === 'circle' }]"
+      :class="['original-image', { circle: shapeRef === 'circle' }, { outline: outline }]"
       :src="imageSrc"
       :alt="'orignal image'"
     />
@@ -81,6 +81,11 @@ const onMouseLeaveSelf = () => {
 
   &.circle {
     border-radius: 100%;
+  }
+
+  &.outline {
+    /* border: 2px solid black; */
+    background: darkgray;
   }
 }
 </style>

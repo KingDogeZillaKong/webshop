@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import CatalogView from '@/views/CatalogView.vue'
-import PortfolioView from '@/views/PortfolioView.vue'
 import SkillsView from '@/views/SkillsView.vue'
 import CartOverview from '@/components/CartOverview.vue'
 import AboutView from '../views/AboutView.vue'
@@ -16,7 +15,6 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
     },
-    { path: '/portfolio', name: 'Portfolio', component: PortfolioView },
     { path: '/skills', name: 'Skills', component: SkillsView },
     { path: '/skills/:skill', name: 'Skill Details', component: SkillsView },
     {

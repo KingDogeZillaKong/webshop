@@ -37,9 +37,9 @@ const props = defineProps<{ item: ProductModel; amountInCart: number | undefined
   flex-direction: column;
   gap: 1.5em;
   padding: 1em 0.33em;
-  color: white;
+  color: var(--default-text-color);
   border-radius: 6% 6% 0 0;
-  background: linear-gradient(234deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.27));
+  background: var(--catalog-item-background);
   border-bottom: 1px solid transparent;
   .is-in-cart {
     position: absolute;
@@ -53,8 +53,6 @@ const props = defineProps<{ item: ProductModel; amountInCart: number | undefined
   &:hover {
     background-color: rgba(255, 255, 255, 0.15);
     border-bottom: 1px solid whitesmoke;
-
-    cursor: pointer;
   }
 
   .flex {
@@ -66,14 +64,13 @@ const props = defineProps<{ item: ProductModel; amountInCart: number | undefined
 
     h3 {
       letter-spacing: 0.1em;
-      color: whitesmoke;
     }
 
     .price {
       display: flex;
       gap: 0.15em;
       font-weight: bold;
-      color: white;
+      color: var(--default-text-color);
     }
   }
 

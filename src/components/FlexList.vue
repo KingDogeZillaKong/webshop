@@ -35,9 +35,15 @@ onUpdated(() => {
 </template>
 
 <style scoped>
-.tech-item {
-  background: rgba(255, 255, 255, 0.11);
+ul {
+  background: var(--flex-list-background);
+  padding: 3px;
   display: flex;
+  justify-content: space-evenly;
+}
+.tech-item {
+  background: var(--flex-list-item-background);
+  display: block;
   flex-grow: 1;
   padding: 0.1em 0.24em 0.1em 0.24em;
   place-content: center;
@@ -45,13 +51,13 @@ onUpdated(() => {
 
   &:hover {
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.33);
+    background-color: var(--flex-list-hover);
     color: whitesmoke;
   }
 }
 
 .selected {
-  background: rgba(255, 255, 255, 0.33);
-  border-bottom: 1px solid white;
+  background: var(--flex-list-selected);
+  border-bottom: var(--flex-list-selected-border);
 }
 </style>

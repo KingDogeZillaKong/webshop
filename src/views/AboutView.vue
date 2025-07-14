@@ -109,8 +109,8 @@ const openModal = async () => {
           Ondertussen heb ik veel mooie projecten succesvol mogen afsluiten, waardoor ik niet bang
           ben om opnieuw in het onbekende te stappen. Buiten mijn baan om houd ik me ook regelmatig
           bezig met web development als hobby. Door mijn werkervaring bij snelgroeiende IT-bedrijven
-          heb ik het genoegen gehad om me te begeven tussen uiterst ervaren en getalenteerde
-          personen. Ik heb veel opgestoken van deze professionele dienstverbanden, waardoor ik hier
+          heb ik het genoegen gehad om met uiterst ervaren en getalenteerde personen samengewerkt te
+          hebben. Ik heb veel opgestoken van deze professionele dienstverbanden, waardoor ik hier
           nog regelmatig met veel dankbaarheid en voldoening op terugblik.
         </p>
         <p>
@@ -170,6 +170,7 @@ const openModal = async () => {
 
 <style scoped>
 .about-view-parent {
+  background-color: transparent;
 }
 /* .v-enter-active,
 .v-leave-active {
@@ -236,6 +237,9 @@ p {
   font-weight: bold;
   color: #444;
 }
+.about-me-wrapper {
+  border-radius: 24px;
+}
 
 @media (orientation: landscape) {
   .text-section3 {
@@ -247,6 +251,7 @@ p {
     grid-column: 3/-1;
     transform: translate(-100%);
     opacity: 0;
+
     /* margin: auto 0;. */
     padding: 4rem 0rem;
     transition: all 1.5s ease-in;
@@ -259,6 +264,7 @@ p {
     grid-column: 3/-1;
   }
   .about-me-wrapper {
+    border-radius: 24px;
     display: grid;
     width: 100%;
     /* grid-column-gap: 1.5em; */
@@ -269,9 +275,9 @@ p {
     grid-template-columns: repeat(5, auto);
 
     background: transparent;
-    border-radius: 24px;
+
     transition: background-color 1s ease-out;
-    box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
+    box-shadow: 2px 0px 12px 12px rgba(203, 202, 202, 0.21);
     /* grid-template-rows: repeat( 6, 1fr); */
   }
 
@@ -286,10 +292,8 @@ p {
     display: flex;
     /* box-shadow:  10px 0px 12px 7px rgba(0,0,0.2); */
     width: 100%;
-    background-color: black;
-
+    /* background-color: black; */
     border-radius: 24px;
-
     transition: transform 1.5s ease-in;
   }
 }
@@ -331,7 +335,7 @@ p {
   /* grid-row: 4/6; */
 
   /* grid-column: 1/-1; */
-  /* background-color: blue; */
+
   width: 100%;
 }
 </style>

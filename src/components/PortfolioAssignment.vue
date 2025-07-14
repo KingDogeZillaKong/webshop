@@ -53,7 +53,13 @@ const onSkillClicked = (tech: Tech) => {
       </div>
 
       <div class="portfolio-assignment-thumbnail">
-        <ReplaceableIcon :imageSrc="github" :type="'code'" @click="$emit('openGithub')" />
+        <ReplaceableIcon
+          :imageSrc="github"
+          :type="'code'"
+          shape="circle"
+          :outline="true"
+          @click="$emit('openGithub')"
+        />
       </div>
     </div>
   </div>
@@ -74,6 +80,7 @@ summary {
   gap: 0.33em;
   width: 100%;
   height: 100%;
+
   overflow: hidden;
   align-items: center;
   .portfolio-assignment-thumbnail {

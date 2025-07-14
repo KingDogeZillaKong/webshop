@@ -19,7 +19,6 @@ const { text, borderColor, backgroundColor, img } = defineProps<{
 </template>
 <style scoped>
 div {
-    
   border-radius: 100%;
   aspect-ratio: 1/1;
   display: flex;
@@ -31,7 +30,7 @@ div {
 
   width: min(120px, 25vw);
   height: auto;
-  
+
   padding: 0.9em;
   text-wrap: wrap;
   font-size: 1.5em;
@@ -62,11 +61,10 @@ div {
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
     }
   }
-  span{
+  span {
     color: var(--primary-color);
-
   }
-  &&::after {
+  &::after {
     content: '';
     position: absolute;
     top: 0;

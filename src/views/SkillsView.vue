@@ -118,11 +118,11 @@ const onSkillClicked = (skill: Tech) => {
   .project-list-item {
     /* display: grid; */
     place-items: start;
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color: var(--portfolio-assignment-background);
     transition: background-color 0.33s ease-in-out;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.33);
+      background-color: var(--portfolio-assignment-background--hover);
     }
   }
 }
@@ -140,14 +140,12 @@ const onSkillClicked = (skill: Tech) => {
     .project-list-item {
       margin: 0.5em 0 0.5em 0;
     }
-    /* background-color: red; */
   }
 }
 
 @media (orientation: portrait) {
   .project-list-mobile {
     display: grid;
-    /* background-color: green; */
   }
   .project-list {
     display: none;
@@ -167,7 +165,6 @@ const onSkillClicked = (skill: Tech) => {
   margin: auto auto;
   display: flex;
   flex: 1;
-  /* background-color: orange; */
 }
 .center-align {
   text-align: center;

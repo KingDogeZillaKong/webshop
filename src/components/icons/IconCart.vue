@@ -1,6 +1,6 @@
 <template>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g data-name="Layer 2">
+    <g data-name="Layer 2" fill="var(--cart-color)">
       <g data-name="shopping-cart">
         <rect width="24" height="24" opacity="0" />
         <path

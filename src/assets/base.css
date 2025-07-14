@@ -1,31 +1,3 @@
-/* color palette from <https://github.com/vuejs/theme> */
-:root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
-
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
-
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-
-  --futuristic-color: #2af7cf;
-  --secondary-highlight: #000f58;
-  --primary-highlight: rgb(48, 108, 117); /* #306C75 */
-  --default-text-color: light-dark(var(--primary-color), whitesmoke);
-}
-
 /* semantic color variables for this project */
 :root {
   --color-background: var(--vt-c-white);
@@ -43,10 +15,77 @@
   --highlight-color: var(--futuristic-color);
   --primary-color: var(--primary-highlight);
   --secondary-color: var(--secondary-highlight);
+
+  color-scheme: light dark;
+
+  --vt-c-white: #ffffff;
+  --vt-c-white-soft: #f8f8f8;
+  --vt-c-white-mute: #f2f2f2;
+
+  --vt-c-black: #181818;
+  --vt-c-black-soft: #222222;
+  --vt-c-black-mute: #282828;
+
+  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
+  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
+  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --vt-c-text-light-1: var(--vt-c-indigo);
+  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
+  --vt-c-text-dark-1: var(--vt-c-white);
+  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --futuristic-color: #2af7cf;
+  --secondary-highlight: #000f58;
+  --primary-highlight: rgb(48, 108, 117); /* #306C75 */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --portfolio-assignment-background: rgba(0, 0, 0, 0.12);
+    --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.33);
+    --color-background: var(--vt-c-white);
+    --color-background-soft: var(--vt-c-white-soft);
+    --color-background-mute: var(--vt-c-white-mute);
+
+    --color-border: var(--vt-c-divider-dark-2);
+    --color-border-hover: var(--vt-c-divider-dark-1);
+
+    --color-heading: var(--vt-c-black);
+    --color-text: var(--vt-c-black-soft);
+
+    --highlight-color: var(--futuristic-color);
+    --primary-color: var(--primary-highlight);
+    --secondary-color: var(--secondary-highlight);
+
+    --next-logo-color: black;
+
+    --cart-color: black;
+
+    --default-text-color: var(--vt-c-black-soft);
+    --subtext-color: #1a1f24;
+    --catalog-item-background: linear-gradient(
+      234deg,
+      var(--futuristic-color),
+      white,
+      var(--primary-color)
+    );
+
+    --flex-list-background: rgba(0, 0, 0, 0.09);
+    --flex-list-item-background: whitesmoke;
+    --flex-list-hover: rgba(0, 0, 0, 0.22);
+    --flex-list-selected: rgba(238, 238, 238, 0.33);
+    --flex-list-selected-border: 1px solid white;
+
+    --nav-page-indent-clr: var(--vt-c-black-soft);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --portfolio-assignment-background: rgba(255, 255, 255, 0.12);
+    --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.33);
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-black-mute);
@@ -60,6 +99,26 @@
     --highlight-color: var(--futuristic-color);
     --primary-color: var(--primary-highlight);
     --secondary-color: var(--secondary-highlight);
+
+    --next-logo-color: white;
+
+    --cart-color: white;
+
+    --default-text-color: whitesmoke;
+
+    --catalog-item-background: linear-gradient(
+      234deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.27)
+    );
+
+    --flex-list-background: rgba(255, 255, 255, 0.15);
+    --flex-list-item-background: rgba(255, 255, 255, 0.11);
+    --flex-list-hover: rgba(255, 255, 255, 0.22);
+    --flex-list-selected: rgba(255, 255, 255, 0.33);
+    --flex-list-selected-border: 1px solid white;
+
+    --nav-page-indent-clr: whitesmoke;
   }
 }
 /* ::view-transition-old(image-transition) {
@@ -85,16 +144,16 @@
 }
 
 h1 {
-    color: rgb(37, 227, 202)
+  color: rgb(37, 227, 202);
   /* color: light-dark(var(--primary-color),   var(--color-text)); */
-
 }
 h2 {
-  /* color:  var(--default-text-color); */
-  /* color: var(--primary-color); */
+  color: var(--default-text-color);
 }
-p , span, h3{
-    /* color: var(--default-text-color); */
+p,
+span,
+h3 {
+  /* color: var(--subtext-color) !important; */
 }
 
 dialog[open] {
