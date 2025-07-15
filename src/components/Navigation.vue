@@ -34,10 +34,14 @@ const navMenuConfig = [
 <template>
   <div class="menu-wrapper">
     <div class="menu-icon-wrapper">
-      <IconMenu v-if="isExpanded" foregroundColor="var(--highlight-color)" @click="toggleMenu" />
+      <IconMenu
+        v-if="isExpanded"
+        foregroundColor="var(--hamburger-menu-color)"
+        @click="toggleMenu"
+      />
       <IconMenuExpanded
         v-if="!isExpanded"
-        foregroundColor="var(--highlight-color)"
+        foregroundColor="var(--hamburger-menu-color)"
         @click="toggleMenu"
       />
 
@@ -70,10 +74,12 @@ const navMenuConfig = [
   font-weight: bold;
   width: 100%;
   cursor: pointer;
+  color: var(--hamburger-menu-heading-color);
   &:hover {
     background-color: rgba(255, 255, 255, 0.33);
   }
 }
+
 a {
   display: inline-block;
   border-left: 1px solid var(--color-border);
@@ -85,7 +91,7 @@ a.router-link-exact-active:hover {
 
 a.router-link-exact-active {
   position: relative;
-  color: var(--highlight-color);
+  color: var(--navigation-heading-color-active);
 
   &::before {
     content: '';
@@ -95,7 +101,7 @@ a.router-link-exact-active {
     transform: translate(-100%, -50%);
     width: 6px;
     height: 1.5em;
-    background-color: var(--nav-page-indent-clr);
+    background-color: var(--nav-page-indent-clr-mobile);
     border-radius: 2px;
   }
 }
@@ -132,8 +138,8 @@ a.router-link-exact-active:hover {
   padding: 0.33;
   text-align: center;
   margin: auto au/to;
-  background-color: var(--secondary-color);
-  border: 1px solid var(--highlight-color);
+  background-color: transparent;
+  border: 1px solid var(--secondary-color);
   border-radius: 1em;
   display: flex;
   > * {
@@ -172,6 +178,10 @@ a.router-link-exact-active:hover {
     padding: 0 1rem;
     border-left: 1px solid var(--color-border);
     text-wrap: nowrap;
+
+    &.router-link-exact-active::before {
+      background-color: var(--nav-page-indent-clr);
+    }
   }
   .fancy-nav-wrapper-mobile {
     display: none;

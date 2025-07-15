@@ -4,6 +4,7 @@ import CatalogItem from '@/components/CatalogItem.vue'
 import type { ProductModel } from '@/product-model'
 import { useCartStore } from '@/stores/cart'
 import IconCoffee from '@/components/icons/IconCoffee.vue'
+import IconInfo from '@/components/icons/IconInfo.vue'
 import info from '@/assets/info.svg'
 import { ref, Transition } from 'vue'
 const products = ALL_PRODUCTS
@@ -23,11 +24,13 @@ const scrollToCatalogSection = () => {
   <div class="catalog-wrapper">
     <div class="info-about-coffee">
       <div class="tooltip" @mouseover="showTooltip = true" @mouseleave="showTooltip = false">
-        <img
+        <div
           :src="info"
           class="coffee-info-icon"
           :style="{ backgroundColor: 'whitesmoke', borderRadius: '100%' }"
-        />
+        >
+          <IconInfo fill="var(--secondary-highlight)" />
+        </div>
         <i><IconCoffee /></i>
       </div>
 
@@ -41,7 +44,7 @@ const scrollToCatalogSection = () => {
       >
     </div>
 
-    <h1>Development Adventures</h1>
+    <h1 class="expectional-heading">Development Adventures</h1>
     <h2 class="underline" @click="scrollToCatalogSection">Explore my development adventures</h2>
 
     <!-- <h2 class="funnyness">
@@ -69,6 +72,10 @@ const scrollToCatalogSection = () => {
 
 <style scoped>
 @media (orientation: portrait) {
+  .expectional-heading {
+    width: 75%;
+    margin: auto;
+  }
   .info-about-coffee {
     position: relative;
     display: flex;
@@ -85,14 +92,12 @@ const scrollToCatalogSection = () => {
     }
 
     #cappuccino-help {
-      position: relative;
+      position: absolute;
       /* top: 50%; */
       right: 0;
       z-index: 999;
       padding: 2px 4px;
       border-radius: 12px;
-      box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
-      background: rgba(122, 122, 122, 0.21);
       backdrop-filter: blur(9px);
       width: 240px;
       opacity: 0;
@@ -131,7 +136,6 @@ const scrollToCatalogSection = () => {
           opacity: 1;
         }
       }
-      background: blue;
     }
 
     #cappuccino-help {
@@ -141,8 +145,7 @@ const scrollToCatalogSection = () => {
       z-index: 999;
       padding: 2px 4px;
       border-radius: 12px;
-      box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
-      background: rgba(122, 122, 122, 0.21);
+
       backdrop-filter: blur(9px);
       width: 240px;
       opacity: 0;
@@ -233,6 +236,12 @@ const scrollToCatalogSection = () => {
 
   /* top: 1em; */
   /* right: 100px; */
+}
+
+#cappuccino-help {
+  box-shadow: 2px 3px 12px 12px var(--tooltip-text-box-shadow-color);
+  background: var(--tooltip-text-background);
+  color: var(--tooltip-text-color);
 }
 
 .coffee-explaination {

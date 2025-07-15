@@ -76,6 +76,7 @@ summary {
 }
 .portfolio-assignment-wrapper {
   display: grid;
+  padding: 6px 60px 6px 54px;
   grid-template-columns: 120px 1fr auto;
   gap: 0.33em;
   width: 100%;

@@ -64,12 +64,15 @@
 
     --next-logo-color: black;
 
-    --cart-color: black;
+    --cart-color: var(--secondary-highlight);
 
     --default-text-color: var(--primary-highlight);
     --subtext-color: #1a1f24;
 
-    --catalog-item-background: white;
+    --catalog-item-background: rgb(238, 247, 245);
+
+    --hamburger-menu-color: var(--secondary-color);
+    --hamburger-menu-heading-color: var(--vt-c-white-mute);
     /* --catalog-item-background: linear-gradient(
       234deg,
       var(--futuristic-color),
@@ -81,9 +84,16 @@
     --flex-list-item-background: whitesmoke;
     --flex-list-hover: rgba(0, 0, 0, 0.22);
     --flex-list-selected: rgba(238, 238, 238, 0.33);
-    --flex-list-selected-border: 1px solid white;
+    --flex-list-selected-border: 1px solid var(--futuristic-color);
 
-    --nav-page-indent-clr: var(--vt-c-black-soft);
+    --tooltip-text-box-shadow-color: rgba(183, 182, 182, 0.247);
+    --tooltip-text-background: rgba(246, 246, 246, 0.917);
+    --tooltip-text-color: var(--secondary-highlight);
+    --navigation-heading-color-active: var(--primary-color);
+    --hamburger-menu-heading-color: var(--vt-c-black-mute);
+
+    --nav-page-indent-clr: var(--primary-color);
+    --nav-page-indent-clr-mobile: var(--secondary-color);
   }
 }
 
@@ -97,6 +107,10 @@
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-black-mute);
+
+    --tooltip-text-box-shadow-color: rgba(183, 182, 182, 0.247);
+    --tooltip-text-background: rgba(246, 246, 246, 0.917);
+    --tooltip-text-color: var(--secondary-highlight);
 
     --color-border: var(--vt-c-divider-dark-2);
     --color-border-hover: var(--vt-c-divider-dark-1);
@@ -124,9 +138,15 @@
     --flex-list-item-background: rgba(255, 255, 255, 0.11);
     --flex-list-hover: rgba(255, 255, 255, 0.22);
     --flex-list-selected: rgba(255, 255, 255, 0.33);
-    --flex-list-selected-border: 1px solid white;
+    --flex-list-selected-border: 1px solid var(--futuristic-color);
 
-    --nav-page-indent-clr: whitesmoke;
+    --nav-page-indent-clr: var(--futuristic-color);
+
+    --navigation-heading-color: whitesmoke;
+    --nav-page-indent-clr-mobile: whitesmoke;
+    --hamburger-menu-color: whitesmoke;
+    --navigation-heading-color-active: var(--futuristic-color);
+    --hamburger-menu-heading-color: var(--vt-c-white-mute);
   }
 }
 /* ::view-transition-old(image-transition) {

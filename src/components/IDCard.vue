@@ -194,12 +194,21 @@ const onClickImage = () => {
 
   place-items: center;
   border-radius: 100vw;
+  padding: 6px;
+  &:hover {
+    opacity: 0.9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    transition:
+      opacity 0.2 ease,
+      box-shadow 0.2 ease;
+  }
 }
 
 .company-img {
   height: auto;
   width: 100%;
-
+  cursor: pointer;
   padding: 1.5rem 0.5rem 0.5rem 0.5rem;
 }
 

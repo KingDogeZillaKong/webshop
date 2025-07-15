@@ -241,7 +241,7 @@ p {
   border-radius: 24px;
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-width: 700px) {
   .text-section3 {
     grid-row: 3;
     grid-column: 3/-1;
