@@ -43,6 +43,9 @@
 
 @media (prefers-color-scheme: light) {
   :root {
+    --cart-item-background: rgba(0, 0, 0, 0.85);
+    --cart-overview-background: rgba(0, 0, 0, 0.66);
+
     --portfolio-assignment-background: whitesmoke;
     --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.33);
     --color-background: var(--vt-c-white);
@@ -86,6 +89,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --cart-item-background: rgba(255, 255, 255, 0.15);
+    --cart-overview-background: rgba(122, 122, 122, 0.21);
+
     --portfolio-assignment-background: rgba(255, 255, 255, 0.12);
     --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.33);
     --color-background: var(--vt-c-black);

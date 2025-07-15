@@ -44,6 +44,7 @@ const onAmountUpdatedInShoppingCart = (item: ProductModel, diff: number) => {
 
 <style scoped>
 .list-item {
+  background-color: var(--cart-item-background);
   display: grid;
   grid-template-columns: 96px 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
@@ -81,8 +82,8 @@ const onAmountUpdatedInShoppingCart = (item: ProductModel, diff: number) => {
   }
   .clickable:hover {
     border-bottom-color: white;
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.21);
+    /* cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.21); */
   }
 
   .counter-compontent {

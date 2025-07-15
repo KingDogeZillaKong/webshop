@@ -54,7 +54,7 @@ function findProduct(barcode: number) {
   min-width: 300px;
   border-radius: 12px;
   box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
-  background: rgba(122, 122, 122, 0.21);
+  background: var(--cart-overview-background);
   backdrop-filter: blur(9px);
 }
 .cart-overview-wrapper {
