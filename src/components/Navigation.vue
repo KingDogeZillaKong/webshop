@@ -76,7 +76,7 @@ const navMenuConfig = [
   cursor: pointer;
   color: var(--hamburger-menu-heading-color);
   &:hover {
-    background-color: rgba(255, 255, 255, 0.33);
+    background-color: var(--navigation-link-hover);
   }
 }
 

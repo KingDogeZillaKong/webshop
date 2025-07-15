@@ -43,11 +43,13 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --cart-item-background: rgba(0, 0, 0, 0.85);
+    --cart-item-background: rgba(0, 0, 0, 0.33);
     --cart-overview-background: rgba(0, 0, 0, 0.66);
 
     --portfolio-assignment-background: whitesmoke;
-    --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.33);
+    --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.15);
+    --portfolio-assignment-box-shadow-color: rgba(120, 120, 120, 0.558);
+
     --color-background: var(--vt-c-white);
     --color-background-soft: var(--vt-c-white-soft);
     --color-background-mute: var(--vt-c-white-mute);
@@ -94,6 +96,7 @@
 
     --nav-page-indent-clr: var(--primary-color);
     --nav-page-indent-clr-mobile: var(--secondary-color);
+    --navigation-link-hover: rgba(75, 155, 192, 0.09);
   }
 }
 
@@ -103,7 +106,9 @@
     --cart-overview-background: rgba(122, 122, 122, 0.21);
 
     --portfolio-assignment-background: rgba(255, 255, 255, 0.12);
-    --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.33);
+    --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.18);
+    --portfolio-assignment-box-shadow-color: rgba(120, 120, 120, 0.558);
+
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-black-mute);
@@ -147,6 +152,7 @@
     --hamburger-menu-color: whitesmoke;
     --navigation-heading-color-active: var(--futuristic-color);
     --hamburger-menu-heading-color: var(--vt-c-white-mute);
+    --navigation-link-hover: rgba(255, 255, 255, 0.33);
   }
 }
 /* ::view-transition-old(image-transition) {

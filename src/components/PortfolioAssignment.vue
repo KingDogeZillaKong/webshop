@@ -75,6 +75,7 @@ summary {
   text-decoration: underline 1px solid whitesmoke;
 }
 .portfolio-assignment-wrapper {
+  background-color: var(--portfolio-assignment-background);
   display: grid;
   padding: 6px 60px 6px 54px;
   grid-template-columns: 120px 1fr auto;
@@ -89,6 +90,11 @@ summary {
   border-left: 3px ridge var(--futuristic-color);
   overflow: hidden;
   align-items: center;
+
+  &:hover {
+    background-color: var(--portfolio-assignment-background-hover);
+  }
+
   .portfolio-assignment-thumbnail {
     display: flex;
     width: 120px;

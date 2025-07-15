@@ -117,6 +117,7 @@ const onSkillClicked = (skill: Tech) => {
 
   .project-list-item {
     /* display: grid; */
+    box-shadow: 2px 1px 20px 1px var(--portfolio-assignment-box-shadow-color);
     place-items: start;
     background-color: var(--portfolio-assignment-background);
     transition: background-color 0.33s ease-in-out;
