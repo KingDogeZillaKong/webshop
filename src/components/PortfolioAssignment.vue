@@ -80,7 +80,12 @@ summary {
   gap: 0.33em;
   width: 100%;
   height: 100%;
+  /* border-bottom: 3px ridge var(--futuristic-color); */
+  /* border-right: 3px solid var(--futuristic-color); */
 
+  /* border-top: 3px solid whitesmoke; */
+  border-right: 3px ridge whitesmoke;
+  border-left: 3px ridge var(--futuristic-color);
   overflow: hidden;
   align-items: center;
   .portfolio-assignment-thumbnail {

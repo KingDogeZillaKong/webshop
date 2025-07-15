@@ -36,11 +36,33 @@ const props = defineProps<{ item: ProductModel; amountInCart: number | undefined
   place-items: center;
   flex-direction: column;
   gap: 1.5em;
+
   padding: 1em 0.33em;
   color: var(--default-text-color);
   border-radius: 6% 6% 0 0;
   background: var(--catalog-item-background);
+
+  /**
+    LIGHT COLOR THEME 
+  */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border-top: 4px solid #2af7cf;
+
   border-bottom: 1px solid transparent;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  /* 
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid whitesmoke;
+  } */
+
   .is-in-cart {
     position: absolute;
     top: 0.24em;
@@ -48,11 +70,6 @@ const props = defineProps<{ item: ProductModel; amountInCart: number | undefined
     border-radius: 100%;
     aspect-ratio: 1/1;
     padding: 0.15em;
-  }
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-bottom: 1px solid whitesmoke;
   }
 
   .flex {

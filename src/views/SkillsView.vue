@@ -72,7 +72,7 @@ const onSkillClicked = (skill: Tech) => {
     <div v-if="visibleAssignments">
       <h1 class="center-align">{{ skill?.displayName || 'There is no skill selected' }}</h1>
       <h2>
-        I worked on {{ visibleAssignments.length }} {{ skill?.displayName }}
+        I launched {{ visibleAssignments.length }} {{ skill?.displayName }}
         {{ visibleAssignments.length > 1 ? 'projects' : 'project' }}.
       </h2>
       <ul class="project-list-mobile" v-for="assignment in visibleAssignments">
@@ -122,7 +122,7 @@ const onSkillClicked = (skill: Tech) => {
     transition: background-color 0.33s ease-in-out;
 
     &:hover {
-      background-color: var(--portfolio-assignment-background--hover);
+      background-color: var(--portfolio-assignment-background-hover);
     }
   }
 }
@@ -167,6 +167,10 @@ const onSkillClicked = (skill: Tech) => {
   flex: 1;
 }
 .center-align {
+  color: var(--default-text-color);
+  margin-top: 0.5em;
+  text-decoration: underline 1px var(--futuristic-color);
+  text-underline-offset: 0.15em;
   text-align: center;
 }
 </style>

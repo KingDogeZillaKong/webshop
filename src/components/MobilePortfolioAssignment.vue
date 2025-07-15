@@ -35,6 +35,7 @@ const { assignment } = props
       <div class="portfolio-assignment-thumbnail">
         <ReplaceableIcon
           :outline="true"
+          shape="circle"
           :imageSrc="github"
           :type="'code'"
           @click="$emit('openGithub')"

@@ -6,10 +6,10 @@ import { useCartStore } from '@/stores/cart'
 import IconCoffee from '@/components/icons/IconCoffee.vue'
 import info from '@/assets/info.svg'
 import { ref, Transition } from 'vue'
-const products = ALL_PRODUCTS;
-const cartStore = useCartStore();
-const catalogSection = ref<HTMLElement | null>(null);
-const showTooltip = ref<boolean>(false);
+const products = ALL_PRODUCTS
+const cartStore = useCartStore()
+const catalogSection = ref<HTMLElement | null>(null)
+const showTooltip = ref<boolean>(false)
 const onProductAddedToCart = (product: ProductModel) => {
   cartStore.onProductAddedToCart(product)
 }
@@ -21,20 +21,25 @@ const scrollToCatalogSection = () => {
 
 <template>
   <div class="catalog-wrapper">
-    <div class="absoluteley">
+    <div class="info-about-coffee">
       <div class="tooltip" @mouseover="showTooltip = true" @mouseleave="showTooltip = false">
         <img
           :src="info"
           class="coffee-info-icon"
           :style="{ backgroundColor: 'whitesmoke', borderRadius: '100%' }"
         />
-        <i><IconCoffee/></i>
+        <i><IconCoffee /></i>
       </div>
 
-            <span @mouseover="showTooltip = true"  @mouseleave="showTooltip = false" :style="{opacity: showTooltip ? '1' : '0'}" id="cappuccino-help">Consider each cappuccino a marker of the time needed to share the full story — vision, challenges, and choices included.</span>
-
+      <span
+        @mouseover="showTooltip = true"
+        @mouseleave="showTooltip = false"
+        :style="{ opacity: showTooltip ? '1' : '0' }"
+        id="cappuccino-help"
+        >Consider each cappuccino a marker of the time needed to share the full story — vision,
+        challenges, and choices included.</span
+      >
     </div>
-
 
     <h1>Development Adventures</h1>
     <h2 class="underline" @click="scrollToCatalogSection">Explore my development adventures</h2>
@@ -63,70 +68,112 @@ const scrollToCatalogSection = () => {
 </template>
 
 <style scoped>
-.absoluteley {
-
-  position:absolute; 
-  top: 0;
-  right: 0;
-
-
-  z-index: 99;
-
-
-  .coffee-info-icon {
-    &:hover {
-      #cappuccino-help {
-        opacity: 1;
+@media (orientation: portrait) {
+  .info-about-coffee {
+    position: relative;
+    display: flex;
+    top: 0;
+    right: 0;
+    /* z-index: 99; */
+    /* background: orange; */
+    .coffee-info-icon {
+      &:hover {
+        #cappuccino-help {
+          opacity: 1;
+        }
       }
     }
-    background: blue;
+
+    #cappuccino-help {
+      position: relative;
+      /* top: 50%; */
+      right: 0;
+      z-index: 999;
+      padding: 2px 4px;
+      border-radius: 12px;
+      box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
+      background: rgba(122, 122, 122, 0.21);
+      backdrop-filter: blur(9px);
+      width: 240px;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    .tooltip {
+      z-index: 1;
+      display: block;
+
+      border-radius: 100%;
+      /* padding: .75em; */
+      position: absolute;
+      display: inline-block;
+      border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+      /* float: right; */
+      top: 1em;
+      right: 1em;
+      i {
+        width: 5em;
+        height: 5em;
+      }
+    }
   }
+}
+@media (orientation: landscape) {
+  .info-about-coffee {
+    position: absolute;
+    top: 0;
+    right: 0;
 
+    z-index: 99;
 
+    .coffee-info-icon {
+      &:hover {
+        #cappuccino-help {
+          opacity: 1;
+        }
+      }
+      background: blue;
+    }
 
- #cappuccino-help {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  z-index: 999;
-  padding: 2px 4px;
-  border-radius: 12px;
-  box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
-  background: rgba(122, 122, 122, 0.21);
-  backdrop-filter: blur(9px);
-  width: 240px;
-  opacity: 0;
-  transition: opacity .4s ease-in-out;
+    #cappuccino-help {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      z-index: 999;
+      padding: 2px 4px;
+      border-radius: 12px;
+      box-shadow: 2px 3px 12px 12px rgba(203, 202, 202, 0.21);
+      background: rgba(122, 122, 122, 0.21);
+      backdrop-filter: blur(9px);
+      width: 240px;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    .tooltip {
+      z-index: 1;
+      display: block;
 
-
-  
- }
-.tooltip {
-
-
-
-  z-index :1; 
-        display: block;
-
-    border-radius: 100%;
-    /* padding: .75em; */
-  position: absolute;
-  display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-  /* float: right; */
-  top: 1em; 
-  right: 1em;
-  i {
-    width: 5em;
-    height: 5em;
+      border-radius: 100%;
+      /* padding: .75em; */
+      position: absolute;
+      display: inline-block;
+      border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+      /* float: right; */
+      top: 1em;
+      right: 1em;
+      i {
+        width: 5em;
+        height: 5em;
+      }
+    }
   }
+}
+
+/*
 
 
 
 }
-}
 
-/* 
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -153,7 +200,6 @@ const scrollToCatalogSection = () => {
   opacity: 0;
   transition: opacity 0.33s ease-out;
 }
-
 
 .tooltip .tooltiptext::after {
   content: '';

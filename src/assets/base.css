@@ -43,7 +43,7 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --portfolio-assignment-background: rgba(0, 0, 0, 0.12);
+    --portfolio-assignment-background: whitesmoke;
     --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.33);
     --color-background: var(--vt-c-white);
     --color-background-soft: var(--vt-c-white-soft);
@@ -63,14 +63,16 @@
 
     --cart-color: black;
 
-    --default-text-color: var(--vt-c-black-soft);
+    --default-text-color: var(--primary-highlight);
     --subtext-color: #1a1f24;
-    --catalog-item-background: linear-gradient(
+
+    --catalog-item-background: white;
+    /* --catalog-item-background: linear-gradient(
       234deg,
       var(--futuristic-color),
       white,
       var(--primary-color)
-    );
+    ); */
 
     --flex-list-background: rgba(0, 0, 0, 0.09);
     --flex-list-item-background: whitesmoke;

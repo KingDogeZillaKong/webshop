@@ -63,6 +63,7 @@ div {
   }
   span {
     color: var(--primary-color);
+    font-size: clamp(9px, 5vw, 21px);
   }
   &::after {
     content: '';

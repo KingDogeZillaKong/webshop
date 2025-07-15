@@ -2,22 +2,33 @@
 import { RouterLink, RouterView } from 'vue-router'
 import ProductInCart from './components/ProductInCart.vue'
 import { useCartStore } from './stores/cart'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import router from '@/router'
 import CartOverview from './components/CartOverview.vue'
 import Navigation from '@/components/Navigation.vue'
 const cartStore = useCartStore()
+const canHover = ref(false)
 
 const showCartContents = ref(false)
 function onHideCartContents() {
-  showCartContents.value = false
+  if (canHover.value) {
+    showCartContents.value = false
+  }
 }
 function onShowCartContents() {
-  showCartContents.value = true
+  if (canHover.value) {
+    showCartContents.value = true
+  }
 }
 const navigateToCart = () => {
+  showCartContents.value = false
   router.push({ path: '/cart' })
 }
+
+onMounted(() => {
+  // Detect if the device supports hover
+  canHover.value = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+})
 </script>
 
 <template>
