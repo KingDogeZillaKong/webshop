@@ -78,7 +78,10 @@ summary {
   overflow: hidden;
   align-items: center;
   padding: 0.66em 0.33em;
+  background: var(--mobile-portfolio-assignment-background);
+  box-shadow: var(--mobile-portfolio-assignment-shadow);
   .portfolio-assignment-thumbnail {
+    cursor: pointer;
     display: flex;
     width: 120px;
     background-size: auto;

@@ -147,6 +147,10 @@ const onSkillClicked = (skill: Tech) => {
 @media (orientation: portrait) {
   .project-list-mobile {
     display: grid;
+
+    .project-list-item {
+      margin: 0.75em 0 0.75em;
+    }
   }
   .project-list {
     display: none;

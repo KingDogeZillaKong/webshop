@@ -6,7 +6,7 @@ import { useCartStore } from '@/stores/cart'
 import IconCoffee from '@/components/icons/IconCoffee.vue'
 import IconInfo from '@/components/icons/IconInfo.vue'
 import info from '@/assets/info.svg'
-import { ref, Transition } from 'vue'
+import { ref } from 'vue'
 const products = ALL_PRODUCTS
 const cartStore = useCartStore()
 const catalogSection = ref<HTMLElement | null>(null)
@@ -75,6 +75,7 @@ const scrollToCatalogSection = () => {
   .expectional-heading {
     width: 75%;
     margin: auto;
+    padding: 0 1em;
   }
   .info-about-coffee {
     position: relative;

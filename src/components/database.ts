@@ -61,7 +61,7 @@ function getSkill(tech: Tech, iconSrc: string, displayName?: string): SkillModel
 const ASTON_MARTIN_VUE_WEBSHOP = getPortfolioAssignment(
   SKILLS.filter((skill) => ['vue', 'java', 'uiux'].includes(skill.tech)),
   'Luukgoedhart.nl',
-  "A dashboard built in Vue for Aston Martin's Formula 1 team.",
+  'This website initally started as an experiment to learn about the newest version of Vue.',
   new Date(),
   cappucino,
   vue,

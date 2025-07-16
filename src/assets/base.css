@@ -49,6 +49,13 @@
     --portfolio-assignment-background: white;
     --portfolio-assignment-background-hover: rgba(0, 0, 0, 0.12);
     --portfolio-assignment-box-shadow-color: rgba(192, 207, 213, 0.558);
+    --mobile-portfolio-assignment-background: linear-gradient(
+      160deg,
+      #f8f9fa 0%,
+      #ffffff 50%,
+      #f1f3f5 100%
+    );
+    --mobile-portfolio-assignment-shadow: 0 4px 8px rgba(0, 0, 0, 0.33);
 
     --color-background: var(--vt-c-white);
     --color-background-soft: var(--vt-c-white-soft);
@@ -92,7 +99,8 @@
     --tooltip-text-background: rgba(246, 246, 246, 0.917);
     --tooltip-text-color: var(--secondary-highlight);
     --navigation-heading-color-active: var(--primary-color);
-    --hamburger-menu-heading-color: var(--vt-c-black-mute);
+
+    --hamburger-menu-heading-color: var(--vt-c-white-mute);
 
     --nav-page-indent-clr: var(--primary-color);
     --nav-page-indent-clr-mobile: var(--secondary-color);
@@ -108,6 +116,8 @@
     --portfolio-assignment-background: rgba(50, 72, 88, 0.12);
     --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.18);
     --portfolio-assignment-box-shadow-color: rgba(90, 90, 90, 0.399);
+    --mobile-portfolio-assignment-shadow: 0 4px 8px rgba(255, 255, 255, 0.33);
+    --mobile-portfolio-assignment-background: transparent;
 
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);

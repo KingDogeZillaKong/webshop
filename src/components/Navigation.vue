@@ -58,9 +58,13 @@ const navMenuConfig = [
     <div class="fancy-nav-wrapper-mobile" v-if="isExpanded">
       <nav class="mobile-nav">
         <div v-for="link of navMenuConfig" class="navigation-item">
-          <RouterLink class="navigation-item" :to="link.path" @click="closeMenu" :key="link.path">{{
-            link.name
-          }}</RouterLink>
+          <RouterLink
+            class="navigation-item mobile"
+            :to="link.path"
+            @click="closeMenu"
+            :key="link.path"
+            >{{ link.name }}</RouterLink
+          >
         </div>
       </nav>
     </div>
@@ -74,9 +78,13 @@ const navMenuConfig = [
   font-weight: bold;
   width: 100%;
   cursor: pointer;
-  color: var(--hamburger-menu-heading-color);
+  color: var(--hamburger-menu-heading);
   &:hover {
     background-color: var(--navigation-link-hover);
+  }
+
+  &.mobile {
+    color: var(--hamburger-menu-heading-color);
   }
 }
 
