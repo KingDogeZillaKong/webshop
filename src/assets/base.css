@@ -46,9 +46,9 @@
     --cart-item-background: rgba(0, 0, 0, 0.33);
     --cart-overview-background: rgba(0, 0, 0, 0.66);
 
-    --portfolio-assignment-background: whitesmoke;
-    --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.15);
-    --portfolio-assignment-box-shadow-color: rgba(120, 120, 120, 0.558);
+    --portfolio-assignment-background: white;
+    --portfolio-assignment-background-hover: rgba(0, 0, 0, 0.12);
+    --portfolio-assignment-box-shadow-color: rgba(192, 207, 213, 0.558);
 
     --color-background: var(--vt-c-white);
     --color-background-soft: var(--vt-c-white-soft);
@@ -105,7 +105,7 @@
     --cart-item-background: rgba(255, 255, 255, 0.15);
     --cart-overview-background: rgba(122, 122, 122, 0.21);
 
-    --portfolio-assignment-background: rgba(255, 255, 255, 0.12);
+    --portfolio-assignment-background: rgba(50, 72, 88, 0.12);
     --portfolio-assignment-background-hover: rgba(255, 255, 255, 0.18);
     --portfolio-assignment-box-shadow-color: rgba(120, 120, 120, 0.558);
 
